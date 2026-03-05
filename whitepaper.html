@@ -7,6 +7,8 @@
 <meta name="description" content="Nomad — Le Airbnb du camping nature : marketplace paneuropéenne pour terrains privés et micro-campings. Whitepaper stratégique 2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
 <!-- INSIGHT: Ce whitepaper est un document vivant. Les données de marché (TAM, SAM, volumes concurrents) devront être re-vérifiées à partir de 2027 pour rester crédibles face à des investisseurs. -->
 <!-- INSIGHT: La probabilité de succès estimée (25-30%) est une hypothèse subjective du fondateur. Un investisseur expérimenté la percevra probablement plus bas (~15-20%) sans équipe technique. -->
 <style>
@@ -277,6 +279,168 @@
   .swot-t { background: #fffbeb; border: 1px solid #fde68a; }
   .swot-cell h4 { margin-top: 0; font-size: 0.95rem; }
   .swot-cell ul { margin-left: 16px; margin-bottom: 0; }
+
+  /* ── Chart containers ── */
+  .chart-wrap {
+    position: relative;
+    margin: 28px 0;
+    padding: 20px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .chart-wrap canvas {
+    max-width: 100%;
+  }
+  .chart-wrap .chart-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  /* ── User journey stepper ── */
+  .journey-stepper {
+    margin: 28px 0;
+    padding: 0;
+    list-style: none;
+  }
+  .journey-stepper li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0;
+    position: relative;
+  }
+  .journey-stepper li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 52px;
+    bottom: -4px;
+    width: 2px;
+    background: var(--accent);
+    opacity: 0.3;
+  }
+  .journey-stepper .step-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--accent-light);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+  }
+  .journey-stepper .step-content h4 {
+    margin: 0 0 4px;
+    font-size: 1rem;
+  }
+  .journey-stepper .step-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  .journey-stepper .step-time {
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ── Phase cards (roadmap) ── */
+  .phase-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 28px 0;
+  }
+  .phase-card {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .phase-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .phase-card:nth-child(1)::before { background: var(--accent); }
+  .phase-card:nth-child(2)::before { background: var(--success); }
+  .phase-card:nth-child(3)::before { background: var(--warning); }
+  .phase-card .phase-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .phase-card h4 { margin: 0 0 8px; font-size: 1.05rem; }
+  .phase-card p { margin: 0 0 8px; font-size: 0.88rem; color: var(--text-muted); }
+  .phase-card .phase-metrics {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── Validation Gantt ── */
+  .gantt-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 28px 0;
+  }
+  .gantt-item {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    position: relative;
+  }
+  .gantt-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 10px 10px 0 0;
+  }
+  .gantt-item:nth-child(1)::before { background: #6366f1; }
+  .gantt-item:nth-child(2)::before { background: #f59e0b; }
+  .gantt-item:nth-child(3)::before { background: var(--success); }
+  .gantt-item:nth-child(4)::before { background: #ef4444; }
+  .gantt-item .gantt-month {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .gantt-item ul {
+    margin: 0;
+    padding-left: 16px;
+    font-size: 0.85rem;
+  }
+  .gantt-item li { margin-bottom: 4px; }
+
+  @media (max-width: 640px) {
+    .phase-cards { grid-template-columns: 1fr; }
+    .gantt-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 420px) {
+    .gantt-grid { grid-template-columns: 1fr; }
+  }
 
   /* ── Positioning matrix (ASCII art as styled block) ── */
   .matrix-box {
@@ -774,23 +938,15 @@
 </div>
 
 <h3>4.4 Synthèse visuelle</h3>
-<pre>
-┌─────────────────────────────────────────────────────────────┐
-│                     TAM = ~28 Md€ (2025)                    │
-│              Camping & outdoor, Europe occidentale           │
-│                                                             │
-│    ┌──────────────────────────────────────────────┐         │
-│    │          SAM = ~2,8 Md€ (2025)               │         │
-│    │    Terrains privés, micro-camping, glamping   │         │
-│    │                                                │         │
-│    │   ┌──────────────────────────┐                │         │
-│    │   │  SOM Y5 = ~25 M€ brut   │                │         │
-│    │   │  CA = ~5,5 M€           │                │         │
-│    │   │  15 000 terrains        │                │         │
-│    │   └──────────────────────────┘                │         │
-│    └──────────────────────────────────────────────┘         │
-└─────────────────────────────────────────────────────────────┘
-</pre>
+<div class="chart-wrap">
+  <p class="chart-title">TAM / SAM / SOM — Taille de marché</p>
+  <canvas id="chart-tam" height="280"></canvas>
+</div>
+
+<div class="chart-wrap">
+  <p class="chart-title">Croissance terrains &amp; CA — Scénario base Y1-Y5</p>
+  <canvas id="chart-som-growth" height="260"></canvas>
+</div>
 
 <div class="sources">
 <h4>Sources</h4>
@@ -841,20 +997,10 @@
 </ol>
 
 <h3>5.3 Matrice de positionnement</h3>
-<pre>
-                    Curé / Premium
-                         ↑
-                    Nomady  │  ← NOMAD (cible)
-                            │
-         AlpacaCamping      │
-  Local ────────────────────┼──────────────── Paneuropéen
-                            │
-                    PiNCAMP │  Campspace/HomeCamper
-                            │
-                Park4Night  │
-                         ↓
-                   Non-curé / Volume
-</pre>
+<div class="chart-wrap">
+  <p class="chart-title">Positionnement concurrentiel — Curation × Couverture</p>
+  <canvas id="chart-positioning" height="340"></canvas>
+</div>
 <p><strong>Le quadrant haut-droite est vide.</strong> C'est exactement là que Nomad se positionne.</p>
 
 <div class="sources">
@@ -894,24 +1040,52 @@
 <h4>Étape 4 — Avis &amp; fidélisation</h4>
 <p>Avis vérifiés uniquement (seuls les vrais séjourneurs notent), photos du séjour, favoris, historique. Programme de fidélité en Phase 2.</p>
 
-<pre>
-📱 Ouvrir Nomad
-    │
-    ▼
-🗺️ Découvrir — carte, filtres, recommandations    ⏱️ 2-5 min
-    │
-    ▼
-💳 Réserver — dates, services, paiement sécurisé   ⏱️ 2 min
-    │
-    ▼
-📍 Arriver — GPS, check-in digital
-    │
-    ▼
-🏕️ Séjourner — confort, messagerie, support
-    │
-    ▼
-⭐ Évaluer — avis vérifié, photos, favoris
-</pre>
+<ul class="journey-stepper">
+  <li>
+    <div class="step-icon">📱</div>
+    <div class="step-content">
+      <h4>Ouvrir Nomad</h4>
+      <p>Point d'entrée unique pour le camping nature en Europe</p>
+    </div>
+  </li>
+  <li>
+    <div class="step-icon">🗺️</div>
+    <div class="step-content">
+      <h4>Découvrir</h4>
+      <p>Carte interactive, filtres intelligents, recommandations personnalisées</p>
+      <span class="step-time">⏱️ 2-5 min</span>
+    </div>
+  </li>
+  <li>
+    <div class="step-icon">💳</div>
+    <div class="step-content">
+      <h4>Réserver</h4>
+      <p>Dates, services optionnels, paiement sécurisé — confirmation instantanée</p>
+      <span class="step-time">⏱️ 2 min</span>
+    </div>
+  </li>
+  <li>
+    <div class="step-icon">📍</div>
+    <div class="step-content">
+      <h4>Arriver</h4>
+      <p>Navigation GPS, check-in digital, instructions d'accès</p>
+    </div>
+  </li>
+  <li>
+    <div class="step-icon">🏕️</div>
+    <div class="step-content">
+      <h4>Séjourner</h4>
+      <p>Confort, messagerie hôte, support Nomad 7j/7</p>
+    </div>
+  </li>
+  <li>
+    <div class="step-icon">⭐</div>
+    <div class="step-content">
+      <h4>Évaluer</h4>
+      <p>Avis vérifiés, photos du séjour, favoris</p>
+    </div>
+  </li>
+</ul>
 
 <h3>6.3 Parcours propriétaire</h3>
 
@@ -1086,6 +1260,11 @@
 <tr><td>Marge opérationnelle</td><td>-603&nbsp;%</td><td>-135&nbsp;%</td><td>-26&nbsp;%</td><td>+10&nbsp;%</td><td>+28&nbsp;%</td></tr>
 </tbody>
 </table>
+</div>
+
+<div class="chart-wrap">
+  <p class="chart-title">Projection financière Y1-Y5 (K€)</p>
+  <canvas id="chart-financials" height="280"></canvas>
 </div>
 
 <h3>8.4 Besoin en financement</h3>
@@ -1357,19 +1536,26 @@
 <!-- INSIGHT: La timeline est ambitieuse. L'estimation "MVP en 2-3 mois pour un dev senior" suppose un développeur disponible immédiatement. En pratique, recrutement CTO + onboarding + développement = plutôt 5-6 mois avant un MVP live. -->
 
 <h3>12.1 Vue d'ensemble</h3>
-<pre>
-      Y0-Y1              Y1-Y3              Y3-Y5+
-┌──────────────┐   ┌──────────────┐   ┌──────────────┐
-│   PHASE 1    │   │   PHASE 2    │   │   PHASE 3    │
-│    LIEUX     │──▶│  VÉHICULES   │──▶│ INFRASTRUCTURE│
-│              │   │              │   │              │
-│ Marketplace  │   │ Location P2P │   │ Écosystème   │
-│ terrains     │   │ de vans +    │   │ du voyage    │
-│ privés       │   │ spots+vans   │   │ nature       │
-└──────────────┘   └──────────────┘   └──────────────┘
- CH → FR             + DACH              + 8 marchés
- 200 → 2 500         2 500 → 8 000       8 000 → 20 000+
-</pre>
+<div class="phase-cards">
+  <div class="phase-card">
+    <div class="phase-label">Phase 1 — Y0-Y1</div>
+    <h4>🏕️ Lieux</h4>
+    <p>Marketplace terrains privés — lancement et validation product-market fit</p>
+    <div class="phase-metrics">CH → FR · 200 → 2&nbsp;500 terrains</div>
+  </div>
+  <div class="phase-card">
+    <div class="phase-label">Phase 2 — Y1-Y3</div>
+    <h4>🚐 Véhicules</h4>
+    <p>Location P2P de vans intégrée — spots + véhicules en un seul parcours</p>
+    <div class="phase-metrics">+ DACH · 2&nbsp;500 → 8&nbsp;000 terrains</div>
+  </div>
+  <div class="phase-card">
+    <div class="phase-label">Phase 3 — Y3-Y5+</div>
+    <h4>🌍 Infrastructure</h4>
+    <p>Écosystème complet du voyage nature — équipement, expériences, API B2B</p>
+    <div class="phase-metrics">+ 8 marchés · 8&nbsp;000 → 20&nbsp;000+ terrains</div>
+  </div>
+</div>
 
 <h3>12.2 Phase 1 — Lieux (Y0-Y1)</h3>
 <p><strong>Objectif&nbsp;:</strong> Valider le product-market fit sur le marché francophone.</p>
@@ -1477,17 +1663,36 @@
 </div>
 
 <h3>13.3 Calendrier de validation</h3>
-<pre>
-     Mois 1          Mois 2          Mois 3          Mois 4
-  ┌───────────┐   ┌───────────┐   ┌───────────┐   ┌───────────┐
-  │ Juridique │   │ Pitch café│   │  MVP live  │   │   Bilan   │
-  │ (CH)      │   │ + Fake    │   │  100 nuits │   │  Go/No-go │
-  │           │   │ door      │   │  actif     │   │           │
-  │ Recrut.   │   │           │   │  Weekend   │   │ Décision  │
-  │ hôtes     │   │ Landing   │   │  Nomad x5  │   │ investir  │
-  │ (visites) │   │ page      │   │            │   │ ou stop   │
-  └───────────┘   └───────────┘   └───────────┘   └───────────┘
-</pre>
+<div class="gantt-grid">
+  <div class="gantt-item">
+    <div class="gantt-month">Mois 1</div>
+    <ul>
+      <li>Cadre juridique (CH)</li>
+      <li>Recrutement hôtes (visites terrain)</li>
+    </ul>
+  </div>
+  <div class="gantt-item">
+    <div class="gantt-month">Mois 2</div>
+    <ul>
+      <li>Pitch café + Fake door test</li>
+      <li>Landing page live</li>
+    </ul>
+  </div>
+  <div class="gantt-item">
+    <div class="gantt-month">Mois 3</div>
+    <ul>
+      <li>MVP live — objectif 100 nuits</li>
+      <li>Weekend Nomad ×5</li>
+    </ul>
+  </div>
+  <div class="gantt-item">
+    <div class="gantt-month">Mois 4</div>
+    <ul>
+      <li>Bilan KPIs</li>
+      <li>Décision Go / Pivot / Stop</li>
+    </ul>
+  </div>
+</div>
 
 <p><strong>Investissement total&nbsp;:</strong> 3&nbsp;000-5&nbsp;000&nbsp;€ + 4 mois de temps<br>
 <strong>Résultat&nbsp;:</strong> Décision informée GO/PIVOT/STOP avec données réelles</p>
@@ -1629,6 +1834,265 @@
   <p>Mars 2026 · Document confidentiel</p>
   <p style="margin-top:8px; font-size:0.8rem; color:#94a3b8;">Assemblé par Isaak · Toutes les données et projections sont basées sur des sources secondaires et des estimations. Ce document ne constitue pas un conseil en investissement.</p>
 </footer>
+
+<script>
+// ─── Chart.js global config ─────────────────────────────────
+Chart.defaults.font.family = "'Inter', -apple-system, sans-serif";
+Chart.defaults.font.size = 13;
+Chart.defaults.color = '#6b6b6b';
+Chart.defaults.plugins.legend.labels.usePointStyle = true;
+Chart.defaults.plugins.legend.labels.padding = 16;
+Chart.defaults.responsive = true;
+Chart.defaults.maintainAspectRatio = false;
+
+// Helper: register datalabels only on charts that need it
+const datalabelsPlugin = ChartDataLabels;
+
+// ─── 1. TAM / SAM / SOM — Nested Doughnut ──────────────────
+(function() {
+  const ctx = document.getElementById('chart-tam');
+  if (!ctx) return;
+  new Chart(ctx, {
+    type: 'doughnut',
+    plugins: [datalabelsPlugin],
+    data: {
+      labels: ['TAM — Reste', 'SAM — Reste', 'SOM Y5'],
+      datasets: [{
+        label: 'Marché (Md€)',
+        data: [25.2, 2.775, 0.025],
+        backgroundColor: ['#dbeafe', '#93c5fd', '#2563eb'],
+        borderColor: '#fff',
+        borderWidth: 3,
+        hoverOffset: 6
+      }]
+    },
+    options: {
+      cutout: '35%',
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(ctx) {
+              const labels = {
+                'TAM — Reste': 'TAM total : ~28 Md€ (camping EU occidentale)',
+                'SAM — Reste': 'SAM : ~2,8 Md€ (terrains privés, micro-camping)',
+                'SOM Y5': 'SOM Y5 : ~25 M€ brut · CA ~5,5 M€ · 15 000 terrains'
+              };
+              return labels[ctx.label] || ctx.label;
+            }
+          }
+        },
+        datalabels: {
+          color: function(ctx) {
+            return ctx.dataIndex === 2 ? '#fff' : '#1e40af';
+          },
+          font: { weight: '600', size: 11 },
+          formatter: function(value, ctx) {
+            const names = ['TAM\n~28 Md€', 'SAM\n~2,8 Md€', 'SOM Y5\n~25 M€'];
+            return names[ctx.dataIndex];
+          },
+          textAlign: 'center'
+        }
+      }
+    }
+  });
+})();
+
+// ─── 2. SOM Growth — Bar + Line combo ───────────────────────
+(function() {
+  const ctx = document.getElementById('chart-som-growth');
+  if (!ctx) return;
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Y1', 'Y2', 'Y3', 'Y4', 'Y5'],
+      datasets: [
+        {
+          label: 'Terrains actifs',
+          data: [200, 1200, 4000, 8500, 15000],
+          backgroundColor: '#93c5fd',
+          borderColor: '#2563eb',
+          borderWidth: 1,
+          borderRadius: 6,
+          yAxisID: 'y'
+        },
+        {
+          label: 'CA Nomad (M€)',
+          data: [0.03, 0.26, 1.11, 2.77, 5.55],
+          type: 'line',
+          borderColor: '#16a34a',
+          backgroundColor: 'rgba(22,163,106,0.1)',
+          borderWidth: 2.5,
+          pointRadius: 5,
+          pointBackgroundColor: '#16a34a',
+          fill: true,
+          tension: 0.3,
+          yAxisID: 'y1'
+        }
+      ]
+    },
+    options: {
+      scales: {
+        y: {
+          position: 'left',
+          title: { display: true, text: 'Terrains actifs', font: { size: 11 } },
+          grid: { color: '#e5e5e0' },
+          ticks: { callback: v => v >= 1000 ? (v/1000)+'K' : v }
+        },
+        y1: {
+          position: 'right',
+          title: { display: true, text: 'CA (M€)', font: { size: 11 } },
+          grid: { drawOnChartArea: false },
+          min: 0
+        },
+        x: { grid: { display: false } }
+      },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function(ctx) {
+              if (ctx.dataset.yAxisID === 'y1') return ctx.dataset.label + ' : ' + ctx.parsed.y + ' M€';
+              return ctx.dataset.label + ' : ' + ctx.parsed.y.toLocaleString('fr-CH');
+            }
+          }
+        }
+      }
+    }
+  });
+})();
+
+// ─── 3. Positioning Matrix — Scatter ────────────────────────
+(function() {
+  const ctx = document.getElementById('chart-positioning');
+  if (!ctx) return;
+
+  const competitors = [
+    { x: 3, y: 8, label: 'Nomady', r: 8 },
+    { x: 2, y: 5.5, label: 'AlpacaCamping', r: 6 },
+    { x: 8, y: 3, label: 'Campspace/HC', r: 10 },
+    { x: 4, y: 3, label: 'PiNCAMP', r: 7 },
+    { x: 5, y: 2, label: 'Park4Night', r: 12 },
+    { x: 9, y: 9, label: '← NOMAD', r: 10 }
+  ];
+
+  new Chart(ctx, {
+    type: 'bubble',
+    plugins: [datalabelsPlugin],
+    data: {
+      datasets: [
+        {
+          label: 'Concurrents',
+          data: competitors.slice(0, 5).map(c => ({ x: c.x, y: c.y, r: c.r })),
+          backgroundColor: 'rgba(148,163,184,0.5)',
+          borderColor: '#64748b',
+          borderWidth: 1.5
+        },
+        {
+          label: 'Nomad (cible)',
+          data: [{ x: 9, y: 9, r: 12 }],
+          backgroundColor: 'rgba(37,99,235,0.6)',
+          borderColor: '#2563eb',
+          borderWidth: 2.5
+        }
+      ]
+    },
+    options: {
+      scales: {
+        x: {
+          min: 0, max: 11,
+          title: { display: true, text: 'Local ← → Paneuropéen', font: { size: 12, weight: '600' } },
+          grid: { color: ctx => ctx.tick.value === 5.5 ? '#94a3b8' : '#e5e5e0' },
+          ticks: { display: false }
+        },
+        y: {
+          min: 0, max: 11,
+          title: { display: true, text: 'Non-curé ← → Curé / Premium', font: { size: 12, weight: '600' } },
+          grid: { color: ctx => ctx.tick.value === 5.5 ? '#94a3b8' : '#e5e5e0' },
+          ticks: { display: false }
+        }
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(ctx) {
+              return competitors[ctx.datasetIndex === 0 ? ctx.dataIndex : 5].label;
+            }
+          }
+        },
+        datalabels: {
+          color: '#1a1a1a',
+          font: { size: 11, weight: '600' },
+          anchor: 'end',
+          align: 'top',
+          offset: 4,
+          formatter: function(value, ctx) {
+            if (ctx.datasetIndex === 1) return '← NOMAD';
+            return competitors[ctx.dataIndex].label;
+          }
+        }
+      }
+    }
+  });
+})();
+
+// ─── 4. Financial Projections — Grouped Bar ─────────────────
+(function() {
+  const ctx = document.getElementById('chart-financials');
+  if (!ctx) return;
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Y1', 'Y2', 'Y3', 'Y4', 'Y5'],
+      datasets: [
+        {
+          label: 'Revenus (K€)',
+          data: [30, 260, 1110, 2770, 5550],
+          backgroundColor: '#22c55e',
+          borderRadius: 4
+        },
+        {
+          label: 'Coûts (K€)',
+          data: [211, 610, 1396, 2488, 3969],
+          backgroundColor: '#f87171',
+          borderRadius: 4
+        },
+        {
+          label: 'Résultat (K€)',
+          data: [-181, -350, -286, 282, 1581],
+          backgroundColor: function(ctx) {
+            return ctx.parsed.y >= 0 ? '#2563eb' : '#fbbf24';
+          },
+          borderRadius: 4
+        }
+      ]
+    },
+    options: {
+      scales: {
+        y: {
+          grid: { color: '#e5e5e0' },
+          ticks: {
+            callback: function(v) {
+              if (Math.abs(v) >= 1000) return (v/1000).toFixed(1) + 'M';
+              return v + 'K';
+            }
+          }
+        },
+        x: { grid: { display: false } }
+      },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function(ctx) {
+              return ctx.dataset.label + ' : ' + ctx.parsed.y.toLocaleString('fr-CH') + ' K€';
+            }
+          }
+        }
+      }
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
