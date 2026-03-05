@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nomad — Whitepaper 2026</title>
+<meta name="description" content="Nomad — Le Airbnb du camping nature : marketplace paneuropéenne pour terrains privés et micro-campings. Whitepaper stratégique 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<!-- INSIGHT: Ce whitepaper est un document vivant. Les données de marché (TAM, SAM, volumes concurrents) devront être re-vérifiées à partir de 2027 pour rester crédibles face à des investisseurs. -->
+<!-- INSIGHT: La probabilité de succès estimée (25-30%) est une hypothèse subjective du fondateur. Un investisseur expérimenté la percevra probablement plus bas (~15-20%) sans équipe technique. -->
+<style>
+  :root {
+    --bg: #fafaf9;
+    --bg-alt: #f5f5f0;
+    --text: #1a1a1a;
+    --text-muted: #6b6b6b;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --border: #e5e5e0;
+    --border-dark: #d4d4cc;
+    --success: #16a34a;
+    --warning: #d97706;
+    --danger: #dc2626;
+    --code-bg: #f0f0ea;
+    --max-w: 720px;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-serif: 'Georgia', 'Times New Roman', serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: #fff;
+    padding: 80px 24px 60px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+  .hero .subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: #94a3b8;
+    max-width: 540px;
+    margin: 0 auto 24px;
+    line-height: 1.6;
+  }
+  .hero .meta {
+    font-size: 0.85rem;
+    color: #64748b;
+  }
+
+  /* ── Container ── */
+  .container {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Table of Contents ── */
+  .toc {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin: 48px auto;
+    max-width: var(--max-w);
+  }
+  .toc h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+  }
+  .toc ol {
+    list-style: none;
+    counter-reset: toc-counter;
+    padding: 0;
+  }
+  .toc ol li {
+    counter-increment: toc-counter;
+    margin-bottom: 8px;
+  }
+  .toc ol li a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .toc ol li a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .toc ol li a::before {
+    content: counter(toc-counter, decimal-leading-zero);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    min-width: 24px;
+  }
+
+  /* ── Sections ── */
+  section {
+    padding: 56px 0 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  h2.section-title {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    color: var(--text);
+  }
+  h2.section-title .num {
+    color: var(--accent);
+    margin-right: 8px;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 36px 0 12px;
+    color: var(--text);
+  }
+
+  h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 28px 0 8px;
+    color: var(--text);
+  }
+
+  p {
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  strong { font-weight: 600; }
+
+  em { font-style: italic; }
+
+  /* ── Links ── */
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── Lists ── */
+  ul, ol {
+    margin: 0 0 16px 24px;
+  }
+  li { margin-bottom: 6px; }
+  li::marker { color: var(--accent); }
+
+  /* ── Tables ── */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 20px 0;
+    -webkit-overflow-scrolling: touch;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  thead th {
+    background: var(--bg-alt);
+    font-weight: 600;
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 2px solid var(--border-dark);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody tr:hover { background: var(--bg-alt); }
+
+  /* ── Blockquotes ── */
+  blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 12px 20px;
+    margin: 20px 0;
+    background: var(--accent-light);
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: #1e40af;
+  }
+
+  /* ── Code / Pre ── */
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 20px 0;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  /* ── Callout boxes ── */
+  .callout {
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 0.95rem;
+  }
+  .callout-info {
+    background: #eff6ff;
+    border-left: 3px solid var(--accent);
+  }
+  .callout-warn {
+    background: #fffbeb;
+    border-left: 3px solid var(--warning);
+  }
+  .callout-danger {
+    background: #fef2f2;
+    border-left: 3px solid var(--danger);
+  }
+  .callout-success {
+    background: #f0fdf4;
+    border-left: 3px solid var(--success);
+  }
+
+  /* ── SWOT grid ── */
+  .swot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .swot-cell {
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+  .swot-s { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .swot-w { background: #fef2f2; border: 1px solid #fecaca; }
+  .swot-o { background: #eff6ff; border: 1px solid #bfdbfe; }
+  .swot-t { background: #fffbeb; border: 1px solid #fde68a; }
+  .swot-cell h4 { margin-top: 0; font-size: 0.95rem; }
+  .swot-cell ul { margin-left: 16px; margin-bottom: 0; }
+
+  /* ── Positioning matrix (ASCII art as styled block) ── */
+  .matrix-box {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin: 24px 0;
+    text-align: center;
+  }
+
+  /* ── Horizontal rule ── */
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Sources ── */
+  .sources {
+    background: var(--bg-alt);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 32px 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .sources h4 {
+    margin: 0 0 12px;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+  .sources ol { margin-left: 20px; }
+  .sources li { margin-bottom: 4px; }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  /* ── Back to top ── */
+  .back-top {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .back-top:hover { text-decoration: underline; }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .hero { padding: 60px 20px 48px; }
+    .toc { padding: 24px 20px; margin: 32px 16px; }
+    .container { padding: 0 16px; }
+    section { padding: 40px 0 32px; }
+    .swot-grid { grid-template-columns: 1fr; }
+    table { font-size: 0.8rem; }
+    thead th, tbody td { padding: 8px 8px; }
+    pre { padding: 14px; font-size: 0.78rem; }
+  }
+
+  @media print {
+    .hero { background: #1e293b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .back-top { display: none; }
+    .toc { break-after: page; }
+    section { break-inside: avoid; }
+    pre { white-space: pre-wrap; word-break: break-all; }
+    a[href]::after { content: " (" attr(href) ")"; font-size: 0.75em; color: #888; }
+    a.back-top::after, nav a::after { content: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--                         HERO                               -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<header class="hero" id="top">
+  <h1>Nomad</h1>
+  <p class="subtitle">Le Airbnb du camping nature&nbsp;: une marketplace paneuropéenne pour les terrains privés et les micro-campings.</p>
+  <p class="meta">Whitepaper v1.0 — Mars 2026</p>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--                   TABLE OF CONTENTS                        -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<nav class="toc container" aria-label="Table des matières">
+  <h2>Table des matières</h2>
+  <ol>
+    <li><a href="#s1">Executive Summary</a></li>
+    <li><a href="#s2">Constat &amp; Problème (Jobs-to-be-done)</a></li>
+    <li><a href="#s3">Tendances &amp; Timing — Analyse PESTEL</a></li>
+    <li><a href="#s4">Le Marché — TAM / SAM / SOM</a></li>
+    <li><a href="#s5">Analyse de la concurrence &amp; substituts</a></li>
+    <li><a href="#s6">La solution Nomad — Produit &amp; parcours</a></li>
+    <li><a href="#s7">Proposition de valeur &amp; différenciation</a></li>
+    <li><a href="#s8">Modèle économique &amp; logique financière</a></li>
+    <li><a href="#s9">Stratégie de mise sur le marché (GTM)</a></li>
+    <li><a href="#s10">Stratégie de défense concurrentielle</a></li>
+    <li><a href="#s11">Analyse SWOT</a></li>
+    <li><a href="#s12">Roadmap stratégique</a></li>
+    <li><a href="#s13">Stratégie de validation terrain</a></li>
+    <li><a href="#s14">Pourquoi ce projet peut gagner</a></li>
+  </ol>
+</nav>
+
+<main class="container">
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--                  SECTION 1 — EXECUTIVE SUMMARY             -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s1">
+<h2 class="section-title"><span class="num">01</span> Executive Summary</h2>
+
+<!-- INSIGHT: L'executive summary est conçu pour être lu indépendamment par un investisseur pressé. Chaque sous-section contient les données clés sans nécessiter la lecture du whitepaper complet. -->
+
+<h3>Le problème</h3>
+<p>Chaque soir, des centaines de milliers de voyageurs en van, camping-car ou tente cherchent un endroit pour dormir en nature en Europe. Ils passent <strong>1 à 2&nbsp;heures par jour</strong> à jongler entre 3 à 5 applications (Park4Night, Google Maps, Booking, Campspace…), consulter des avis obsolètes, et naviguer dans un flou juridique permanent. Le camping sauvage est illégal dans la majorité des pays européens (amendes de 50 à 1&nbsp;500&nbsp;€). Les campings classiques sont standardisés, bondés et impersonnels. Le résultat&nbsp;: du stress, pas du voyage.</p>
+<p>De l'autre côté, des dizaines de milliers de propriétaires ruraux — agriculteurs, vignerons, domaines privés — possèdent des terrains sous-utilisés qu'ils aimeraient valoriser. Mais la complexité administrative, le manque de visibilité et l'absence de protection juridique et assurantielle les en dissuadent. <strong>95&nbsp;% abandonnent avant la première nuitée.</strong></p>
+<p>Entre ces deux populations frustrées et complémentaires&nbsp;: <strong>rien.</strong> Aucune plateforme paneuropéenne qui fasse le pont de manière simple, sécurisée et fiable.</p>
+
+<hr>
+
+<h3>La solution</h3>
+<p><strong>Nomad est le Airbnb du camping nature</strong>&nbsp;: une marketplace mobile-first qui permet de découvrir, réserver et payer un emplacement nature — terrain privé, ferme, domaine viticole ou camping — en quelques minutes, avec assurance intégrée, spots vérifiés et un tiers de confiance qui gère le reste.</p>
+<p><strong>Pour le voyageur&nbsp;:</strong> fini le stress quotidien. Un catalogue curé, des photos validées, un cadre légal clair, une réservation instantanée et une assurance intégrée. De 2&nbsp;heures de galère à 5&nbsp;minutes de tranquillité.</p>
+<p><strong>Pour le propriétaire&nbsp;:</strong> un guichet unique qui transforme un terrain inutilisé en revenu complémentaire. Onboarding assisté, visibilité gratuite, paiement automatique, assurance collective, guide réglementaire. Zéro marketing, zéro paperasse, zéro risque.</p>
+
+<hr>
+
+<h3>L'opportunité</h3>
+<p>Le marché du camping en Europe occidentale représente <strong>~28&nbsp;Md€ en 2025</strong>, en croissance de ~10&nbsp;% par an. Le sous-segment adressable par Nomad — terrains privés et micro-campings réservés via plateforme digitale — est estimé à <strong>~2,8&nbsp;Md€</strong>, avec un potentiel de <strong>~5&nbsp;Md€ d'ici 2030</strong>. Ce segment est sous-pénétré à plus de 95&nbsp;%&nbsp;: les plateformes existantes ne captent que 75-115&nbsp;M€ de volume brut.</p>
+<p>Trois moteurs structurels alimentent la croissance&nbsp;:</p>
+<ul>
+  <li><strong>Arbitrage prix post-inflation</strong>&nbsp;: le camping (15-35&nbsp;€/nuit) devient l'alternative rationnelle aux hôtels (80-150&nbsp;€) et Airbnb (100-200&nbsp;€)</li>
+  <li><strong>Vanlife mainstream</strong>&nbsp;: 16M+ posts Instagram #vanlife, 221&nbsp;000 véhicules de loisirs immatriculés en Europe en 2024 (+5&nbsp;%)</li>
+  <li><strong>Slow tourism et quête de nature</strong>&nbsp;: tendance durable post-COVID, soutenue par les politiques publiques de tourisme durable</li>
+</ul>
+
+<hr>
+
+<h3>La concurrence — et pourquoi personne n'a gagné</h3>
+<p>Le paysage est <strong>fragmenté mais pas vide</strong>&nbsp;:</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Acteur</th><th>Ce qu'il fait bien</th><th>Ce qui lui manque</th></tr></thead>
+<tbody>
+<tr><td><strong>Nomady</strong> (CH, 1&nbsp;600 spots)</td><td>Curé, communauté, modèle validé</td><td>Trop petit, DACH uniquement, funding ~125K CHF</td></tr>
+<tr><td><strong>Campspace/HomeCamper</strong> (75K spots)</td><td>Volume, couverture géographique</td><td>Qualité non contrôlée, UX fragmentée post-fusion</td></tr>
+<tr><td><strong>Park4Night</strong> (6M downloads)</td><td>Base massive, référence vanlife</td><td>Non transactionnel, pas de terrains privés sécurisés</td></tr>
+<tr><td><strong>Hipcamp</strong> (US, 500K sites, ~75M$ levés)</td><td>Leader mondial, tech mature</td><td><strong>Absent d'Europe continentale</strong></td></tr>
+</tbody>
+</table>
+</div>
+<p>Le quadrant <strong>curé + paneuropéen</strong> est vide. C'est exactement là que Nomad se positionne. La fenêtre d'opportunité avant une entrée de Hipcamp en Europe est estimée à <strong>24-48 mois</strong>.</p>
+
+<!-- INSIGHT: Les chiffres de funding de Nomady (~125K CHF) sont une estimation basée sur des données publiques limitées. Vérifier lors d'une prise de contact directe ou via le registre du commerce. -->
+
+<hr>
+
+<h3>Le modèle économique</h3>
+<ul>
+  <li><strong>Commission de 15&nbsp;%</strong> sur chaque réservation (10&nbsp;% voyageur + 5&nbsp;% hôte), alignée sur le standard du marché</li>
+  <li><strong>Services additionnels</strong> (~24&nbsp;% du panier)&nbsp;: eau, électricité, produits locaux</li>
+  <li><strong>Forfaits Premium</strong> et mise en avant payante (à partir de Y2)</li>
+  <li><strong>Phase 2 — véhicules</strong>&nbsp;: location de vans P2P, panier moyen 3-7× supérieur</li>
+</ul>
+
+<p><strong>Projections (scénario base)&nbsp;:</strong></p>
+<div class="table-wrap">
+<table>
+<thead><tr><th></th><th>Y1</th><th>Y3</th><th>Y5</th></tr></thead>
+<tbody>
+<tr><td>Terrains actifs</td><td>200</td><td>4&nbsp;000</td><td>15&nbsp;000</td></tr>
+<tr><td>Volume brut (M€)</td><td>0,15</td><td>5,04</td><td>24,75</td></tr>
+<tr><td>CA Nomad (M€)</td><td>0,03</td><td>1,11</td><td>5,55</td></tr>
+<tr><td>Marge opérationnelle</td><td>-603&nbsp;%</td><td>-26&nbsp;%</td><td><strong>+28&nbsp;%</strong></td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Breakeven opérationnel en Y3-Y4 avec ~1&nbsp;M€ de funding cumulé.</strong> Trajectoire capital-efficient, type Booking.com, pas Airbnb.</p>
+
+<hr>
+
+<h3>Ce qui protège Nomad</h3>
+<p>Les moats s'activent progressivement&nbsp;:</p>
+<ol>
+  <li><strong>Curation qualitative</strong> (immédiat)&nbsp;: chaque spot vérifié = différenciation dès le jour 1</li>
+  <li><strong>Expertise légale multi-pays</strong> (immédiat)&nbsp;: conformité CH/FR puis DACH = moat défensif quasi impossible à rattraper</li>
+  <li><strong>Effet de réseau bi-face</strong> (Y2+)&nbsp;: auto-entretenu au-delà de ~500-1&nbsp;000 terrains par marché</li>
+  <li><strong>Données et intelligence</strong> (Y3+)&nbsp;: pricing dynamique, matching IA, yield management hôtes</li>
+</ol>
+
+<hr>
+
+<h3>Ce qui manque — honnêtement</h3>
+<div class="callout callout-warn">
+<ul>
+  <li><strong>Équipe solo</strong>&nbsp;: pas de co-fondateur technique, pas d'équipe terrain. C'est la faiblesse #1.</li>
+  <li><strong>Aucune validation terrain</strong>&nbsp;: 0 réservation, 0 hôte recruté, 0 ligne de code. Le whitepaper n'est pas un produit.</li>
+  <li><strong>Retard vs Nomady</strong>&nbsp;: 5+ ans d'avance, 1&nbsp;600 spots, communauté, marque établie.</li>
+  <li><strong>Funding zéro</strong> à ce stade.</li>
+</ul>
+</div>
+<p>Le plan de validation (MVP «&nbsp;100 nuits&nbsp;») coûte <strong>3-5&nbsp;K€ sur 4 mois</strong> et fournit une décision GO/PIVOT/STOP basée sur des données réelles. C'est le prix de la certitude.</p>
+
+<hr>
+
+<h3>La thèse d'investissement en temps</h3>
+<p>Nomad n'invente pas un besoin. Il structure un marché qui existe déjà de manière chaotique, en devenant le tiers de confiance manquant entre deux populations frustrées. Le modèle est validé par d'autres (Nomady, Hipcamp). Le timing macro est exceptionnel. Le marché francophone (CH + France = 1<sup>er</sup> marché camping d'Europe) est sous-servi. La fenêtre concurrentielle est ouverte.</p>
+<p><strong>Le facteur décisif n'est ni la vision, ni le marché, ni le modèle. C'est la vitesse d'exécution.</strong> Les 6 prochains mois déterminent si Nomad devient un acteur réel ou reste un document. Les priorités sont dans l'ordre&nbsp;:</p>
+<ol>
+  <li>Recruter un co-fondateur technique</li>
+  <li>Exécuter le plan de validation (3-5&nbsp;K€, 4 mois)</li>
+  <li>Construire le MVP (2-3 mois)</li>
+  <li>Recruter les 200 premiers terrains</li>
+  <li>Lever le pre-seed (200-300&nbsp;K€)</li>
+</ol>
+<p>La fenêtre est ouverte. Le timing est bon. Mais les fenêtres se ferment.</p>
+
+<div class="sources">
+<h4>Sources</h4>
+<p>Ce résumé synthétise l'ensemble des analyses détaillées du présent whitepaper — sections 2 à 14.</p>
+</div>
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--              SECTION 2 — PROBLÈME / JTBD                  -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s2">
+<h2 class="section-title"><span class="num">02</span> Analyse du problème utilisateur — Jobs-to-be-done</h2>
+
+<!-- INSIGHT: Le framework JTBD est utilisé ici pour structurer la demande, mais aucune interview terrain formelle n'a été conduite. Les insights proviennent de sources secondaires (Reddit, Trustpilot, Park4Night). Des interviews utilisateur (10 vanlifers + 10 propriétaires) seraient nécessaires pour valider. -->
+<!-- INSIGHT: Le chiffre "1-2 heures par jour" pour la recherche de spot est une estimation qualitative basée sur des témoignages, pas une mesure statistique. À valider lors du MVP. -->
+
+<p>Le camping nature en Europe souffre d'un paradoxe&nbsp;: la demande n'a jamais été aussi forte (#vanlife cumule 16M+ posts Instagram, 221&nbsp;000 véhicules de loisirs immatriculés en Europe en 2024), mais l'offre reste fragmentée, opaque et mal outillée.</p>
+
+<h3>2.1 Côté voyageur — Jobs-to-be-done</h3>
+
+<h4>JTBD 1&nbsp;: Trouver un spot nature fiable et légal, sans stress</h4>
+<p><strong>Le job&nbsp;:</strong> «&nbsp;Quand je voyage en van/camping-car, je veux trouver un endroit sûr, légal et agréable pour dormir ce soir — sans passer une heure à chercher, sans risquer une amende, et sans me faire déloger à 2h du matin.&nbsp;»</p>
+<p><strong>Frictions actuelles&nbsp;:</strong></p>
+<ul>
+  <li><strong>Stress décisionnel quotidien</strong>&nbsp;: chaque soir, le vanlife doit refaire le même parcours — ouvrir 2-3 apps, lire des dizaines d'avis, croiser les doigts</li>
+  <li><strong>Information périmée</strong>&nbsp;: les spots communautaires (Park4Night, iOverlander) sont souvent obsolètes. Un utilisateur Trustpilot&nbsp;: <em>«&nbsp;Half the places I know of to park legally overnight are not even listed.&nbsp;»</em></li>
+  <li><strong>Zones grises légales</strong>&nbsp;: le voyageur navigue en permanence dans un flou juridique</li>
+  <li><strong>Fatigue de recherche</strong>&nbsp;: en haute saison, les spots gratuits connus sont saturés</li>
+</ul>
+<p><strong>Pourquoi les workarounds échouent&nbsp;:</strong> Aucun ne fournit de <strong>garantie</strong>. Il manque un tiers de confiance qui valide le spot, sécurise la transaction et intervient en cas de problème.</p>
+
+<h4>JTBD 2&nbsp;: Réserver simplement, comme on réserve un Airbnb</h4>
+<p><strong>Le job&nbsp;:</strong> «&nbsp;Quand j'ai trouvé un spot qui me plaît, je veux pouvoir le réserver en 2&nbsp;minutes, avec un prix clair, une confirmation instantanée et un contact hôte.&nbsp;»</p>
+<p>Le marché du camping est resté à l'ère pré-Airbnb. Les campings classiques ont des sites web des années 2010, des formulaires de contact sans réponse, et des systèmes de réservation manuels. Il n'existe pas d'interface unique qui permette de chercher → comparer → réserver → payer un emplacement nature en Europe.</p>
+
+<h4>JTBD 3&nbsp;: Vivre une expérience authentique</h4>
+<p><strong>Le job&nbsp;:</strong> «&nbsp;Je ne veux pas juste un bout de terrain plat. Je veux une expérience — un endroit avec du caractère, un hôte sympa, des produits locaux.&nbsp;»</p>
+<p>Les vignobles, fermes, alpages et domaines privés offrent exactement cela — mais sans canal de distribution.</p>
+
+<h4>JTBD 4&nbsp;: Accéder aux services de base</h4>
+<p>La majorité des vanlifers sont des «&nbsp;soft vanlifers&nbsp;» — ils aiment la nature mais pas l'inconfort absolu. Les services de base (eau, électricité, sanitaires) ne sont pas intégrés dans l'expérience de réservation actuelle.</p>
+
+<h3>2.2 Côté propriétaire — Jobs-to-be-done</h3>
+
+<h4>JTBD 5&nbsp;: Valoriser un terrain inutilisé sans complexité</h4>
+<p>En Europe, des millions d'hectares de terrain privé sont sous-utilisés. Mais le passage de «&nbsp;terrain vide&nbsp;» à «&nbsp;accueil de campeurs&nbsp;» est un parcours du combattant administratif. <strong>95&nbsp;% des propriétaires potentiels abandonnent avant l'étape «&nbsp;créer une présence en ligne&nbsp;».</strong></p>
+
+<!-- INSIGHT: Le chiffre "95% d'abandon" est une estimation narrative, pas une donnée mesurée. Il serait utile de le qualifier comme tel face à des investisseurs rigoureux. -->
+
+<h4>JTBD 6&nbsp;: Revenu sans effort marketing</h4>
+<p>Pour un agriculteur dont le revenu moyen en France est de ~1&nbsp;500&nbsp;€/mois (MSA, 2023), 10-20 nuitées par mois en été à 20-35&nbsp;€/nuit représentent 200-700&nbsp;€ de complément — significatif. Mais ce revenu n'est accessible que si le propriétaire n'a pas à investir en marketing, en tech ou en temps administratif.</p>
+
+<h4>JTBD 7&nbsp;: Accueillir en toute sécurité juridique</h4>
+<p>La responsabilité civile du propriétaire est le frein psychologique n°1 à l'ouverture d'un terrain privé. Le propriétaire a besoin d'une assurance, d'un cadre contractuel et d'une médiation — mutualisés par une plateforme.</p>
+
+<h3>2.3 Le parcours actuel — 7 frictions</h3>
+
+<p><strong>Parcours du voyageur&nbsp;:</strong></p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Étape</th><th>Action</th><th>Friction</th><th>Temps</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Ouvrir Park4Night / iOverlander</td><td>Trop de résultats non pertinents</td><td>5 min</td></tr>
+<tr><td>2</td><td>Filtrer et lire les avis</td><td>Avis contradictoires, info obsolète</td><td>15-30 min</td></tr>
+<tr><td>3</td><td>Croiser avec Google Maps</td><td>Vérifier l'accès, la taille, l'environnement</td><td>10 min</td></tr>
+<tr><td>4</td><td>Vérifier la légalité</td><td>Réglementations locales introuvables</td><td>10-20 min</td></tr>
+<tr><td>5</td><td>Se rendre sur place</td><td>Spot occupé, fermé ou différent</td><td>20-60 min</td></tr>
+<tr><td>6</td><td>S'installer</td><td>Stress résiduel</td><td>—</td></tr>
+<tr><td>7</td><td>Le lendemain</td><td>Refaire la même chose</td><td>∞</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Temps total estimé&nbsp;: 1 à 2&nbsp;heures par jour.</strong></p>
+
+<h3>2.4 Synthèse des gaps</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Besoin</th><th>Solutions actuelles</th><th>Ce qui manque</th><th>Réponse Nomad</th></tr></thead>
+<tbody>
+<tr><td>Spot légal et sûr</td><td>Park4Night (non vérifié)</td><td>Vérification, cadre légal</td><td>Spots validés, assurance</td></tr>
+<tr><td>Réservation simple</td><td>Téléphone, email, 5 apps</td><td>Interface unique</td><td>Marketplace unifiée</td></tr>
+<tr><td>Expérience authentique</td><td>Bouche-à-oreille</td><td>Découvrabilité digitale</td><td>Catalogue curé</td></tr>
+<tr><td>Valoriser un terrain</td><td>Aucune solution simple</td><td>Guichet unique</td><td>Onboarding assisté</td></tr>
+<tr><td>Sécurité juridique</td><td>Assurance inadaptée</td><td>Assurance mutualisée</td><td>Couverture collective</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Nomad n'invente pas un besoin. Il structure un marché qui existe déjà de manière chaotique, en devenant le <strong>tiers de confiance</strong> qui manque entre deux populations frustrées et complémentaires.</p>
+
+<div class="sources">
+<h4>Sources</h4>
+<ol>
+  <li>Trustpilot — Park4Night reviews (2025-2026)</li>
+  <li>Reddit r/VanLife, r/vandwellers</li>
+  <li>CIVD — European Caravan Industry Report 2024</li>
+  <li>Instagram — #vanlife (16M+ posts)</li>
+  <li>MSA (Mutualité Sociale Agricole) — revenu moyen agriculteurs France 2023</li>
+  <li>Code civil français — Article 1242</li>
+</ol>
+</div>
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--                  SECTION 3 — PESTEL                        -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s3">
+<h2 class="section-title"><span class="num">03</span> Tendances &amp; Timing — Analyse PESTEL</h2>
+
+<!-- INSIGHT: Les données PESTEL datent de 2024-2025. Le paysage réglementaire évolue rapidement — surveiller en particulier les éventuelles restrictions municipales en France (précédent Airbnb) et les évolutions cantonales en Suisse. -->
+<!-- INSIGHT: L'hypothèse d'un CAGR de ~10% pour le marché camping est basée sur des rapports pré-2026. Un ralentissement économique pourrait réduire ce taux à 5-7%. -->
+
+<h3>3.1 Politique</h3>
+<ul>
+  <li><strong>Tourisme durable en plein essor&nbsp;:</strong> Green Deal EU, Destination France 2030 (1,9&nbsp;Md€), programme Swisstainable</li>
+  <li><strong>Subventions agricoles&nbsp;:</strong> PAC 2023-2027 encourage la diversification des revenus (LEADER/FEADER)</li>
+  <li><strong>Pression anti-surtourisme&nbsp;:</strong> restrictions croissantes à Barcelone, Amsterdam, Venise → les touristes se reportent vers le rural</li>
+</ul>
+
+<h3>3.2 Économique</h3>
+<ul>
+  <li><strong>Arbitrage post-inflation&nbsp;:</strong> après le pic à 10,6&nbsp;% en zone euro (octobre 2022), les ménages ont durablement modifié leurs habitudes. Le camping bénéficie du «&nbsp;trading down&nbsp;»</li>
+  <li><strong>Camping résilient&nbsp;:</strong> +6,8&nbsp;% de nuits en hébergements touristiques en 2023 vs 2022 (Eurostat)</li>
+  <li><strong>Véhicules de loisirs&nbsp;:</strong> 221&nbsp;000 nouvelles immatriculations en 2024 (+5&nbsp;%), 3<sup>e</sup> meilleur résultat historique</li>
+  <li><strong>Sweet spot prix&nbsp;:</strong> camping nature 15-35&nbsp;€/nuit vs hôtel 80-150&nbsp;€ vs Airbnb 100-200&nbsp;€</li>
+</ul>
+
+<h3>3.3 Social</h3>
+<ul>
+  <li><strong>Vanlife mainstream&nbsp;:</strong> 16M+ posts Instagram #vanlife, 13Md+ vues TikTok. Le «&nbsp;soft vanlife&nbsp;» s'est démocratisé</li>
+  <li><strong>Quête de nature post-COVID&nbsp;:</strong> 65&nbsp;% des résidents EU ont voyagé en 2023 (Eurostat). Les destinations rurales captent une part croissante</li>
+  <li><strong>Slow tourism&nbsp;:</strong> voyager moins loin, plus longtemps, plus consciemment. Les micro-aventures touchent un public large</li>
+</ul>
+
+<h3>3.4 Technologique</h3>
+<ul>
+  <li><strong>Mobile-first&nbsp;:</strong> 70&nbsp;% des réservations touristiques en Europe se font via mobile</li>
+  <li><strong>Paiements numériques&nbsp;:</strong> Apple Pay, Stripe, Twint — le tiers de confiance numérique est une attente standard</li>
+  <li><strong>Cartographie&nbsp;:</strong> Komoot (40M+ utilisateurs EU), Park4Night (6M downloads) ont démontré la viabilité d'un modèle géolocalisé</li>
+</ul>
+
+<h3>3.5 Écologique</h3>
+<ul>
+  <li><strong>Surtourisme en zones naturelles&nbsp;:</strong> quotas imposés aux Calanques, Cinque Terre, Lofoten. Nomad disperse les flux</li>
+  <li><strong>Labels éco-tourisme&nbsp;:</strong> Charte Européenne du Tourisme Durable, Clef Verte — intégrables dans le référencement Nomad</li>
+  <li><strong>Tourisme régénératif&nbsp;:</strong> Campspace revendique 95&nbsp;% de réduction CO₂ vs séjours classiques</li>
+</ul>
+
+<h3>3.6 Légal ⚠️ (Dimension critique)</h3>
+<p>Le cadre juridique varie considérablement en Europe. C'est la dimension la plus critique pour Nomad.</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Pays</th><th>Camping sauvage</th><th>Terrain privé</th><th>Cadre agritourisme</th><th>Priorité</th></tr></thead>
+<tbody>
+<tr><td>🇨🇭 Suisse</td><td>Cantonal, toléré en altitude</td><td>✅ Oui</td><td>Partiel</td><td>⭐⭐⭐</td></tr>
+<tr><td>🇫🇷 France</td><td>Bivouac oui, camping restreint</td><td>✅ Oui (&lt;6 empl.)</td><td>✅ ANC</td><td>⭐⭐⭐</td></tr>
+<tr><td>🇩🇪 Allemagne</td><td>Interdit (Länder)</td><td>✅ Oui (varie)</td><td>Partiel</td><td>⭐⭐⭐</td></tr>
+<tr><td>🇮🇹 Italie</td><td>Interdit</td><td>✅ Oui (agriturismo)</td><td>✅ Loi 96/2006</td><td>⭐⭐⭐</td></tr>
+<tr><td>🇪🇸 Espagne</td><td>Interdit (CA)</td><td>⚠️ Zone grise</td><td>Alojamiento rural</td><td>⭐⭐</td></tr>
+<tr><td>🇳🇱 Pays-Bas</td><td>Interdit</td><td>✅ Oui (SVR)</td><td>✅</td><td>⭐⭐</td></tr>
+<tr><td>🇸🇪🇳🇴🇫🇮 Nordiques</td><td>✅ Droit d'accès</td><td>✅ Oui</td><td>Limité</td><td>⭐</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- INSIGHT: Le cadre légal suisse est plus permissif que présenté ici pour les cantons comme le Valais et les Grisons, mais les réglementations communales peuvent surprendre. Une vérification commune par commune sera nécessaire pour les 200 premiers spots. -->
+
+<h3>Synthèse PESTEL</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Dimension</th><th>Signal dominant</th><th>Impact Nomad</th></tr></thead>
+<tbody>
+<tr><td>Politique</td><td>Tourisme durable encouragé</td><td>✅ Favorable</td></tr>
+<tr><td>Économique</td><td>Camping résilient, VL en croissance</td><td>✅ Très favorable</td></tr>
+<tr><td>Social</td><td>Vanlife mainstream, slow tourism</td><td>✅ Très favorable</td></tr>
+<tr><td>Technologique</td><td>Mobile-first, paiements numériques</td><td>✅ Favorable</td></tr>
+<tr><td>Écologique</td><td>Labels, tourisme régénératif</td><td>✅ Favorable</td></tr>
+<tr><td>Légal</td><td>Fragmenté, complexe</td><td>⚠️ Mixte — opportunité structurante</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sources">
+<h4>Sources</h4>
+<ol>
+  <li>Eurostat — Tourism statistics 2023</li>
+  <li>CIVD — European Leisure Vehicle Market 2024</li>
+  <li>Statista — Camping Market Outlook Europe</li>
+  <li>Commission européenne — Green Deal</li>
+  <li>France — Plan Destination France 2030</li>
+  <li>Suisse Tourisme — Swisstainable</li>
+  <li>PAC 2023-2027, mesures LEADER/FEADER</li>
+  <li>Wikipedia — Wild camping / Camping sauvage</li>
+</ol>
+</div>
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--               SECTION 4 — TAM/SAM/SOM                     -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s4">
+<h2 class="section-title"><span class="num">04</span> Le Marché — TAM / SAM / SOM</h2>
+
+<!-- INSIGHT: Le TAM de ~28 Md€ inclut l'équipement camping et les bungalows/mobil-homes, qui ne sont pas dans le périmètre Nomad. Le SAM est une estimation plus pertinente pour les investisseurs. -->
+<!-- INSIGHT: L'approche bottom-up (nombre de terrains × nuitées × prix) donne un chiffre de 7,5 Md€ potentiel — significativement supérieur au top-down. L'écart reflète l'incertitude sur le taux d'adoption des propriétaires, qui est l'hypothèse la plus critique du modèle. -->
+
+<h3>4.1 TAM — Marché total du camping en Europe occidentale</h3>
+<p>Le marché mondial du camping est estimé à <strong>~57&nbsp;Md$ en 2025</strong>, avec une projection de ~123&nbsp;Md$ d'ici 2033 (CAGR ~10&nbsp;%). L'Europe occidentale (8 marchés cibles) représente <strong>~28&nbsp;Md€</strong>.</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Pays</th><th>Part marché</th><th>Taille 2025 (Md€)</th><th>Nuits/an</th></tr></thead>
+<tbody>
+<tr><td>🇫🇷 France</td><td>~24,6&nbsp;%</td><td>~7,0</td><td>113M</td></tr>
+<tr><td>🇩🇪 Allemagne</td><td>~22&nbsp;%</td><td>~6,2</td><td>42M</td></tr>
+<tr><td>🇮🇹 Italie</td><td>~12&nbsp;%</td><td>~3,4</td><td>31M</td></tr>
+<tr><td>🇪🇸 Espagne</td><td>~10&nbsp;%</td><td>~2,8</td><td>38M</td></tr>
+<tr><td>🇨🇭 Suisse</td><td>~3&nbsp;%</td><td>~0,8</td><td>9M</td></tr>
+<tr><td><strong>Total 8 marchés</strong></td><td><strong>~83&nbsp;%</strong></td><td><strong>~23,3</strong></td><td><strong>~264M</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>4.2 SAM — Segment adressable par Nomad</h3>
+<p>Le SAM couvre les réservations de nuitées sur <strong>terrains privés et micro-campings via plateforme digitale</strong>. Ce sous-segment représente 8-12&nbsp;% du TAM.</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th></th><th>2025</th><th>2030</th><th>2033</th></tr></thead>
+<tbody>
+<tr><td><strong>SAM médian</strong></td><td><strong>~2,8&nbsp;Md€</strong></td><td><strong>~5,0&nbsp;Md€</strong></td><td><strong>~6,8&nbsp;Md€</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>Validation croisée&nbsp;:</strong> les plateformes existantes captent ~75-115&nbsp;M€ de volume brut, soit seulement <strong>3-5&nbsp;% du SAM</strong>. Le marché est largement sous-pénétré.</p>
+
+<h3>4.3 SOM — Part capturable par Nomad (Y1-Y5)</h3>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Métrique</th><th>Y1</th><th>Y2</th><th>Y3</th><th>Y4</th><th>Y5</th></tr></thead>
+<tbody>
+<tr><td>Marchés actifs</td><td>CH romande</td><td>CH+FR</td><td>CH+FR+DE</td><td>+AT/IT</td><td>8 marchés</td></tr>
+<tr><td>Terrains actifs</td><td>200</td><td>1&nbsp;200</td><td>4&nbsp;000</td><td>8&nbsp;500</td><td>15&nbsp;000</td></tr>
+<tr><td>Volume brut (M€)</td><td>0,15</td><td>1,18</td><td>5,04</td><td>12,33</td><td>24,75</td></tr>
+<tr><td>CA Nomad (M€)</td><td>0,03</td><td>0,26</td><td>1,11</td><td>2,77</td><td>5,55</td></tr>
+<tr><td>Part du SAM</td><td>0,005&nbsp;%</td><td>—</td><td>0,13&nbsp;%</td><td>—</td><td>0,50&nbsp;%</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>Scénarios</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Scénario</th><th>Terrains Y5</th><th>Volume brut (M€)</th><th>CA Nomad (M€)</th></tr></thead>
+<tbody>
+<tr><td>Pessimiste</td><td>5&nbsp;000</td><td>7,5</td><td>1,5</td></tr>
+<tr><td><strong>Base</strong></td><td><strong>15&nbsp;000</strong></td><td><strong>24,75</strong></td><td><strong>5,55</strong></td></tr>
+<tr><td>Optimiste</td><td>30&nbsp;000</td><td>54</td><td>12</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>4.4 Synthèse visuelle</h3>
+<pre>
+┌─────────────────────────────────────────────────────────────┐
+│                     TAM = ~28 Md€ (2025)                    │
+│              Camping & outdoor, Europe occidentale           │
+│                                                             │
+│    ┌──────────────────────────────────────────────┐         │
+│    │          SAM = ~2,8 Md€ (2025)               │         │
+│    │    Terrains privés, micro-camping, glamping   │         │
+│    │                                                │         │
+│    │   ┌──────────────────────────┐                │         │
+│    │   │  SOM Y5 = ~25 M€ brut   │                │         │
+│    │   │  CA = ~5,5 M€           │                │         │
+│    │   │  15 000 terrains        │                │         │
+│    │   └──────────────────────────┘                │         │
+│    └──────────────────────────────────────────────┘         │
+└─────────────────────────────────────────────────────────────┘
+</pre>
+
+<div class="sources">
+<h4>Sources</h4>
+<ol>
+  <li>Grand View Research — Camping Market Report 2025-2033</li>
+  <li>Statista — Camping Market Outlook Europe</li>
+  <li>Allied Market Research — Europe Glamping Market Forecast</li>
+  <li>CIVD — European Leisure Vehicle Market Report 2024</li>
+  <li>Eurostat — Tourism statistics 2023</li>
+  <li>FNHPA — Chiffres clés HPA France</li>
+</ol>
+</div>
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--              SECTION 5 — CONCURRENCE                       -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s5">
+<h2 class="section-title"><span class="num">05</span> Analyse de la concurrence &amp; substituts</h2>
+
+<!-- INSIGHT: Les données de funding de Nomady et AlpacaCamping sont des estimations. Un approfondissement via Crunchbase ou contact direct serait utile pour un pitch investisseur. -->
+<!-- INSIGHT: L'hypothèse que Park4Night ne deviendra pas transactionnel est un pari. Une acquisition de Park4Night par un acteur capitalé (Booking, TripAdvisor) changerait radicalement la donne. -->
+
+<h3>5.1 Tableau comparatif</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Acteur</th><th>Spots</th><th>Géo</th><th>Modèle</th><th>Funding</th><th>Forces</th><th>Faiblesses</th></tr></thead>
+<tbody>
+<tr><td><strong>Nomady</strong></td><td>1&nbsp;600+</td><td>DACH</td><td>Commission ~15&nbsp;%</td><td>~125K CHF</td><td>Curé, communauté, app native</td><td>Petit, lent, pas de FR</td></tr>
+<tr><td><strong>Campspace</strong></td><td>75&nbsp;000+</td><td>45+ pays</td><td>Commission ~15&nbsp;%</td><td>~2-5M €</td><td>Volume, couverture large</td><td>Qualité non contrôlée, UX fragmentée</td></tr>
+<tr><td><strong>Park4Night</strong></td><td>300&nbsp;000+ POIs</td><td>Global</td><td>Freemium</td><td>Autofinancé</td><td>6M downloads, référence vanlife</td><td>Non transactionnel</td></tr>
+<tr><td><strong>AlpacaCamping</strong></td><td>3&nbsp;000+</td><td>DE</td><td>Commission</td><td>Bootstrap</td><td>Niche DE bien servie</td><td>Géographiquement limité</td></tr>
+<tr><td><strong>Hipcamp</strong></td><td>500&nbsp;000+</td><td>US/CA/AU/UK</td><td>Commission 15-20&nbsp;%</td><td>~75M $</td><td>Leader mondial, tech mature</td><td>Absent d'Europe continentale</td></tr>
+<tr><td><strong>PiNCAMP</strong></td><td>12&nbsp;000+</td><td>DACH</td><td>Listing payant</td><td>ADAC</td><td>20M membres ADAC</td><td>Campings institutionnels only</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>5.2 Limites structurelles communes</h3>
+<ol>
+  <li><strong>Fragmentation géographique</strong>&nbsp;: aucun acteur ne couvre toute l'Europe occidentale efficacement</li>
+  <li><strong>Absence de curation qualitative à grande échelle</strong></li>
+  <li><strong>Pas d'écosystème intégré</strong>&nbsp;: terrains + campings + véhicules</li>
+  <li><strong>Tech basique</strong>&nbsp;: pas de pricing dynamique, pas d'IA</li>
+  <li><strong>Expertise légale absente</strong>&nbsp;: la conformité multi-pays est le vrai moat, personne ne l'a construit</li>
+</ol>
+
+<h3>5.3 Matrice de positionnement</h3>
+<pre>
+                    Curé / Premium
+                         ↑
+                    Nomady  │  ← NOMAD (cible)
+                            │
+         AlpacaCamping      │
+  Local ────────────────────┼──────────────── Paneuropéen
+                            │
+                    PiNCAMP │  Campspace/HomeCamper
+                            │
+                Park4Night  │
+                         ↓
+                   Non-curé / Volume
+</pre>
+<p><strong>Le quadrant haut-droite est vide.</strong> C'est exactement là que Nomad se positionne.</p>
+
+<div class="sources">
+<h4>Sources</h4>
+<ol>
+  <li>nomady.camp, campspace.com, park4night.com, alpacacamping.de, hipcamp.com — consultés mars 2026</li>
+  <li>Crunchbase — profils Hipcamp, Indie Campers, Yescapa</li>
+  <li>CIVD — European Caravan Industry Report 2024</li>
+</ol>
+</div>
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--              SECTION 6 — SOLUTION PRODUIT                  -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s6">
+<h2 class="section-title"><span class="num">06</span> La solution Nomad — Produit &amp; parcours utilisateur</h2>
+
+<!-- INSIGHT: Le parcours décrit ici est l'idéal. Le MVP réel (section 13) sera nettement plus simple — landing page + Stripe, pas d'app native. L'écart entre vision et réalité doit être géré dans la communication investisseurs. -->
+
+<h3>6.1 Le produit en une phrase</h3>
+<p>Nomad est le <strong>Airbnb du camping nature</strong>&nbsp;: une application mobile-first qui permet de découvrir, réserver et payer un emplacement nature en quelques minutes, avec assurance intégrée, avis vérifiés et un tiers de confiance qui gère tout le reste.</p>
+
+<h3>6.2 Parcours voyageur</h3>
+
+<h4>Étape 1 — Découverte (2-5 min)</h4>
+<p>Carte interactive, filtres intelligents (type de terrain, services, prix, véhicule), fiches détaillées avec photos validées, badge de vérification ✓, et avis vérifiés. <strong>Un seul point d'entrée au lieu de 3-5 apps.</strong></p>
+
+<h4>Étape 2 — Réservation (2 min)</h4>
+<p>Sélection des dates, ajout de services optionnels (eau, électricité, panier local), paiement sécurisé (Apple Pay, Stripe), confirmation instantanée avec adresse exacte et messagerie hôte.</p>
+
+<h4>Étape 3 — Séjour</h4>
+<p>Navigation GPS, check-in digital, guide du séjour in-app, messagerie hôte, support Nomad 7j/7, signalement de problème avec médiation.</p>
+
+<h4>Étape 4 — Avis &amp; fidélisation</h4>
+<p>Avis vérifiés uniquement (seuls les vrais séjourneurs notent), photos du séjour, favoris, historique. Programme de fidélité en Phase 2.</p>
+
+<pre>
+📱 Ouvrir Nomad
+    │
+    ▼
+🗺️ Découvrir — carte, filtres, recommandations    ⏱️ 2-5 min
+    │
+    ▼
+💳 Réserver — dates, services, paiement sécurisé   ⏱️ 2 min
+    │
+    ▼
+📍 Arriver — GPS, check-in digital
+    │
+    ▼
+🏕️ Séjourner — confort, messagerie, support
+    │
+    ▼
+⭐ Évaluer — avis vérifié, photos, favoris
+</pre>
+
+<h3>6.3 Parcours propriétaire</h3>
+
+<h4>Inscription (5-10 min)</h4>
+<p>Vérification d'identité, justificatif de propriété, guide réglementaire personnalisé par commune, <strong>assurance RC collective incluse dès l'inscription</strong>.</p>
+
+<h4>Création du listing</h4>
+<p>Assistant guidé, photos ciblées, checklist services, pricing assisté, validation Nomad avant publication.</p>
+
+<h4>Réception des réservations</h4>
+<p>Mode instantané ou demande, notifications push, messagerie pré-séjour, calendrier en temps réel.</p>
+
+<h4>Paiement</h4>
+<p>Virement hebdomadaire automatique, relevé détaillé, factures conformes générées, guide fiscal par pays.</p>
+
+<h3>6.4 Le rôle de tiers de confiance</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Fonction</th><th>Ce que fait Nomad</th><th>Ce que ça remplace</th></tr></thead>
+<tbody>
+<tr><td>Vérification</td><td>Identité vérifiée, photos validées</td><td>Croire un listing anonyme</td></tr>
+<tr><td>Assurance</td><td>RC collective hôtes &amp; voyageurs</td><td>Chercher seul un assureur</td></tr>
+<tr><td>Paiement</td><td>Escrow, virement automatique</td><td>Espèces, virement manuel</td></tr>
+<tr><td>Médiation</td><td>Arbitre neutre en cas de litige</td><td>Propriétaire seul face au problème</td></tr>
+<tr><td>Conformité</td><td>Guide légal par pays/commune</td><td>Réinventer la roue juridique</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sources">
+<h4>Sources</h4>
+<ol>
+  <li>Concept brief Nomad (Johan, janvier 2026) — vision produit, parcours utilisateurs</li>
+  <li>Business Model Canvas Nomad (Johan, janvier 2026) — proposition de valeur, segments</li>
+  <li>Section 2 du whitepaper — frictions identifiées (JTBD)</li>
+  <li>Section 5 du whitepaper — analyse concurrentielle et gaps exploitables</li>
+  <li>Nomady.camp — modèle d'assurance intégrée et parcours hôte (mars 2026)</li>
+  <li>Stripe Connect — documentation marketplace multi-vendeurs (stripe.com/connect)</li>
+</ol>
+</div>
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--        SECTION 7 — PROPOSITION DE VALEUR                   -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s7">
+<h2 class="section-title"><span class="num">07</span> Proposition de valeur &amp; différenciation</h2>
+
+<h3>7.1 Pour le voyageur — «&nbsp;Dors en nature, en confiance&nbsp;»</h3>
+<blockquote>Tu veux dormir sous les étoiles dans un vignoble, te réveiller avec le chant des oiseaux, et savoir que tu as le droit d'être là&nbsp;? C'est exactement ça, Nomad.</blockquote>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Dimension</th><th>Nomad</th><th>Aujourd'hui</th></tr></thead>
+<tbody>
+<tr><td>Légalité</td><td>Chaque terrain vérifié, cadre conforme</td><td>Zones grises, camping sauvage illégal</td></tr>
+<tr><td>Fiabilité</td><td>Photos validées, avis confirmés</td><td>Photos trompeuses, spots obsolètes</td></tr>
+<tr><td>Simplicité</td><td>Une seule app&nbsp;: recherche → réservation → paiement</td><td>3-5 apps fragmentées</td></tr>
+<tr><td>Sécurité</td><td>Assurance intégrée, support 7j/7</td><td>Aucun recours</td></tr>
+<tr><td>Prix</td><td>15-40&nbsp;€/nuit</td><td>Gratuit (illégal) ou 25-60&nbsp;€ (camping classique)</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>7.2 Pour le propriétaire — «&nbsp;Votre terrain travaille pour vous&nbsp;»</h3>
+<blockquote>Votre grand-père rêvait que cette terre rapporte. Avec Nomad, elle rapporte enfin — et vous n'avez qu'à accueillir les gens avec le sourire.</blockquote>
+<p><strong>Impact financier concret&nbsp;:</strong></p>
+<ul>
+  <li>10 nuitées/mois à 25&nbsp;€ = 250&nbsp;€ brut → ~240&nbsp;€ net</li>
+  <li>20 nuitées/mois à 35&nbsp;€ (haute saison) = 700&nbsp;€ brut → ~670&nbsp;€ net</li>
+  <li>Pour un agriculteur à ~1&nbsp;500&nbsp;€/mois (MSA), c'est <strong>+15 à +45&nbsp;% de revenu complémentaire</strong></li>
+</ul>
+
+<h3>7.3 Nomad vs. la concurrence</h3>
+
+<h4>Nomad vs. Nomady</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Critère</th><th>Nomady</th><th>Nomad</th></tr></thead>
+<tbody>
+<tr><td>Géographie</td><td>DACH uniquement</td><td>Paneuropéen — lancement CH+FR</td></tr>
+<tr><td>Catalogue</td><td>~1&nbsp;600 spots</td><td>Terrains privés <strong>ET</strong> campings classiques</td></tr>
+<tr><td>Pricing</td><td>Souvent &gt;40 CHF/nuit</td><td>Gamme large&nbsp;: 15-40&nbsp;€/nuit</td></tr>
+<tr><td>Funding</td><td>~125K CHF</td><td>Ambition alignée avec l'échelle</td></tr>
+<tr><td>Langue</td><td>Germanophone d'abord</td><td>Francophone d'abord → 1<sup>er</sup> marché camping EU</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>7.4 La proposition en 3 phrases</h3>
+<div class="callout callout-info">
+<p><strong>Pour les voyageurs&nbsp;:</strong> L'assurance de trouver un spot nature légal, vérifié et confortable partout en Europe — réservé en 5&nbsp;minutes.</p>
+<p><strong>Pour les propriétaires&nbsp;:</strong> Transformez un terrain inutilisé en revenu complémentaire — sans marketing, sans paperasse, sans risque.</p>
+<p><strong>Pour le marché&nbsp;:</strong> La couche infrastructure manquante du camping nature en Europe — le tiers de confiance qui structure un marché fragmenté.</p>
+</div>
+
+<div class="sources">
+<h4>Sources</h4>
+<ol>
+  <li>Concept brief Nomad (Johan, janvier 2026) — différenciation, USP</li>
+  <li>Business Model Canvas Nomad — VP par segment, avantages clés</li>
+  <li>Section 2 du whitepaper — JTBD et frictions par segment</li>
+  <li>Section 5 du whitepaper — analyse détaillée de chaque acteur et gaps</li>
+  <li>MSA (Mutualité Sociale Agricole) — revenu moyen agriculteurs France 2023</li>
+  <li>Eurostat — nuitées hôtellerie de plein air France 2023 (113M)</li>
+  <li>Nomady.camp, Campspace.com, Park4Night.com — comparaison fonctionnalités (mars 2026)</li>
+</ol>
+</div>
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--           SECTION 8 — MODÈLE ÉCONOMIQUE                   -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s8">
+<h2 class="section-title"><span class="num">08</span> Modèle économique &amp; logique financière</h2>
+
+<!-- INSIGHT: La marge brute de 82% par transaction est optimiste — elle ne prend pas en compte les coûts de support proportionnels au volume (réclamations, médiation). À Y5, la marge brute réelle sera probablement 65-75%. -->
+<!-- INSIGHT: Le ratio LTV/CAC de 15-23x côté voyageur suppose une rétention de 3-4 ans. Pour une marketplace récente sans marque, une rétention de 2 ans serait plus prudente → LTV/CAC ~10-15x (toujours excellent). -->
+
+<h3>8.1 Mécanique de revenus</h3>
+
+<h4>Flux 1 — Commission sur réservations (cœur)</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Composante</th><th>Taux</th><th>Payé par</th></tr></thead>
+<tbody>
+<tr><td>Frais de service</td><td>10-12&nbsp;%</td><td>Voyageur</td></tr>
+<tr><td>Frais hôte</td><td>3-5&nbsp;%</td><td>Propriétaire</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>~15&nbsp;%</strong></td><td><strong>Réparti</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>Flux 2 — Services additionnels (~24&nbsp;% du panier)</h4>
+<p>Électricité, eau, vidange, petit-déjeuner, bois, activités — commissionnés à 15&nbsp;%.</p>
+
+<h4>Flux 3 — Mise en avant payante (Y2+)</h4>
+<p>«&nbsp;Spot en vedette&nbsp;»&nbsp;: 2-5&nbsp;€/jour. Maximum 10-15&nbsp;% de résultats sponsorisés.</p>
+
+<h4>Flux 4 — Forfait Premium propriétaire (Y2-Y3)</h4>
+<p>Standard (gratuit) → Pro (15-25&nbsp;€/mois, analytics, pricing dynamique) → Business (40-60&nbsp;€/mois, multi-emplacements, yield management).</p>
+
+<h3>8.2 Unit economics</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Métrique</th><th>Valeur</th></tr></thead>
+<tbody>
+<tr><td>Panier moyen / réservation</td><td>93&nbsp;€ (75&nbsp;€ nuitées + 18&nbsp;€ services)</td></tr>
+<tr><td>Revenu Nomad / réservation</td><td>~14&nbsp;€</td></tr>
+<tr><td>Marge brute / transaction</td><td>~82&nbsp;%</td></tr>
+<tr><td>CAC voyageur</td><td>~6-8&nbsp;€</td></tr>
+<tr><td>LTV voyageur</td><td>~105-140&nbsp;€</td></tr>
+<tr><td><strong>LTV/CAC voyageur</strong></td><td><strong>~15-23×</strong></td></tr>
+<tr><td>CAC propriétaire</td><td>~30-50&nbsp;€</td></tr>
+<tr><td>LTV propriétaire</td><td>~1&nbsp;000-1&nbsp;700&nbsp;€</td></tr>
+<tr><td><strong>LTV/CAC propriétaire</strong></td><td><strong>~20-56×</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>8.3 Projection financière Y1-Y5</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Métrique</th><th>Y1</th><th>Y2</th><th>Y3</th><th>Y4</th><th>Y5</th></tr></thead>
+<tbody>
+<tr><td>Revenus (K€)</td><td>30</td><td>260</td><td>1&nbsp;110</td><td>2&nbsp;770</td><td>5&nbsp;550</td></tr>
+<tr><td>Coûts (K€)</td><td>211</td><td>610</td><td>1&nbsp;396</td><td>2&nbsp;488</td><td>3&nbsp;969</td></tr>
+<tr><td><strong>Résultat (K€)</strong></td><td><strong>-181</strong></td><td><strong>-350</strong></td><td><strong>-286</strong></td><td><strong>+282</strong></td><td><strong>+1&nbsp;581</strong></td></tr>
+<tr><td>Marge opérationnelle</td><td>-603&nbsp;%</td><td>-135&nbsp;%</td><td>-26&nbsp;%</td><td>+10&nbsp;%</td><td>+28&nbsp;%</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>8.4 Besoin en financement</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Phase</th><th>Période</th><th>Besoin</th><th>Usage</th></tr></thead>
+<tbody>
+<tr><td>Pre-seed</td><td>Y0-Y1</td><td>200-300&nbsp;K€</td><td>MVP, 200 terrains, validation</td></tr>
+<tr><td>Seed</td><td>Y1-Y2</td><td>500K-1&nbsp;M€</td><td>Expansion FR, équipe, marketing</td></tr>
+<tr><td>Série A (opt.)</td><td>Y3</td><td>2-5&nbsp;M€</td><td>Scaling DACH, tech avancée</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>8.5 Quand la plateforme devient rentable</h3>
+<p>Le <strong>seuil de rentabilité se situe à ~3&nbsp;000-5&nbsp;000 terrains actifs</strong> et ~120&nbsp;000-225&nbsp;000 nuitées/an, correspondant à un CA de ~700&nbsp;K€-1,2&nbsp;M€. Atteignable en <strong>Y3 dans le scénario base</strong>.</p>
+<p>Trajectoire <strong>Booking.com</strong> (profitable en Y5 avec ~3,7&nbsp;M€) plutôt qu'Airbnb (10 ans et 6&nbsp;Md$ avant rentabilité).</p>
+
+<div class="sources">
+<h4>Sources</h4>
+<ol>
+  <li>Airbnb — Service fees (airbnb.com/help/article/1857)</li>
+  <li>Hipcamp, Campspace, Nomady — pages hôtes et FAQ</li>
+  <li>Stripe — Tarification standard Europe</li>
+  <li>Crunchbase — données funding Airbnb, Booking Holdings, Hipcamp</li>
+</ol>
+</div>
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--                SECTION 9 — GTM                             -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s9">
+<h2 class="section-title"><span class="num">09</span> Stratégie de mise sur le marché (GTM)</h2>
+
+<!-- INSIGHT: Le plan de démarchage physique (200 terrains en 3 mois) suppose un fondateur à plein temps. Si Johan conserve son emploi chez MAGENTA, ce calendrier est irréaliste — il faut soit un congé, soit un co-fondateur dédié supply. -->
+
+<h3>9.1 L'offre d'abord, la demande ensuite</h3>
+<p>Un voyageur qui arrive sur une plateforme vide ne revient jamais. Le playbook prouvé (Airbnb, Hipcamp, Nomady)&nbsp;: construire l'offre <strong>avant</strong> d'ouvrir la demande. 100-200 terrains dans une zone suffisent pour un catalogue attractif.</p>
+
+<h3>9.2 Géographie — Suisse romande puis France</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Phase</th><th>Période</th><th>Marché</th><th>Objectif terrains</th></tr></thead>
+<tbody>
+<tr><td>Pré-lancement</td><td>M-3 → M0</td><td>Suisse romande</td><td>200 terrains recrutés</td></tr>
+<tr><td>Lancement</td><td>M0 → M6</td><td>Suisse romande</td><td>200 → 400</td></tr>
+<tr><td>Expansion FR</td><td>M6 → M12</td><td>France (sud-est)</td><td>400 → 1&nbsp;200</td></tr>
+<tr><td>Consolidation</td><td>M12 → M18</td><td>CH + FR</td><td>1&nbsp;200 → 2&nbsp;500</td></tr>
+<tr><td>Scaling DACH</td><td>M18+</td><td>Allemagne, Autriche</td><td>+2&nbsp;000</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>Pourquoi la Suisse romande d'abord&nbsp;:</strong> marché natif, réglementation favorable, pouvoir d'achat élevé, Nomady absent de la Romandie, taille maîtrisable (~200 terrains).</p>
+<p><strong>Pourquoi la France ensuite&nbsp;:</strong> 1<sup>er</sup> marché camping d'Europe (113M nuitées/an), même langue, cadre légal exploitable (&lt;6 emplacements sans permis), aucun concurrent dominant sur les terrains privés.</p>
+
+<h3>9.3 Acquisition propriétaires — Les 200 premiers</h3>
+<ol>
+  <li>Cartographier les propriétaires potentiels (registres agricoles, Google Maps satellite)</li>
+  <li>Prioriser&nbsp;: domaines viticoles (Lavaux, Valais), fermes avec vues (Gruyère, Jura)</li>
+  <li>Démarcher physiquement — montrer le MVP sur tablette</li>
+  <li>Incentive early adopter&nbsp;: frais hôte 0&nbsp;% pendant 6 mois, badge «&nbsp;Pionnier&nbsp;»</li>
+  <li>Onboarder en personne (photos, description, profil)</li>
+</ol>
+<p><strong>Coût&nbsp;:</strong> 200 terrains × 80&nbsp;€ CAC moyen = <strong>12&nbsp;000-16&nbsp;000&nbsp;€</strong></p>
+
+<h3>9.4 Acquisition voyageurs</h3>
+<ul>
+  <li><strong>Instagram / TikTok</strong> (contenu organique)&nbsp;: CAC 1-3&nbsp;€</li>
+  <li><strong>Influenceurs vanlife</strong> (micro, 10-50K)&nbsp;: CAC 5-12&nbsp;€</li>
+  <li><strong>Google Ads</strong> (requêtes intentionnistes)&nbsp;: CAC 8-15&nbsp;€</li>
+  <li><strong>SEO</strong> (blog, guides de destination)&nbsp;: CAC 2-5&nbsp;€, lent puis puissant</li>
+  <li><strong>Parrainage</strong> (10&nbsp;€ offerts)&nbsp;: CAC 5-8&nbsp;€, conversion élevée</li>
+  <li><strong>Levier Park4Night</strong>&nbsp;: 6M+ utilisateurs sont des prospects naturels</li>
+</ul>
+
+<h3>9.5 KPIs de traction</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>KPI</th><th>M3</th><th>M6</th><th>M12</th></tr></thead>
+<tbody>
+<tr><td>Terrains actifs</td><td>200</td><td>400</td><td>1&nbsp;200</td></tr>
+<tr><td>Réservations / mois</td><td>50</td><td>300</td><td>2&nbsp;000</td></tr>
+<tr><td>Taux conversion visite → réservation</td><td>3&nbsp;%</td><td>4&nbsp;%</td><td>5&nbsp;%</td></tr>
+<tr><td>NPS voyageur</td><td>&gt;40</td><td>&gt;45</td><td>&gt;50</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sources">
+<h4>Sources</h4>
+<ol>
+  <li>Section 5 du whitepaper — analyse concurrentielle, CAC supply/demand</li>
+  <li>Section 8 du whitepaper — projections Y1-Y5</li>
+  <li>Section 3 du whitepaper (PESTEL) — cadre légal par pays</li>
+  <li>INSEE — Hôtellerie de plein air en France 2023 (113M nuitées)</li>
+  <li>Park4Night — App Store / Google Play (6M+ downloads)</li>
+  <li>Prométerre — Réseau agricole vaudois (prometerre.ch)</li>
+  <li>Code de l'urbanisme français — Art. R. 111-42 (camping chez l'habitant)</li>
+</ol>
+</div>
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--             SECTION 10 — DÉFENSE                           -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s10">
+<h2 class="section-title"><span class="num">10</span> Stratégie de défense concurrentielle</h2>
+
+<!-- INSIGHT: L'évaluation des moats est volontairement honnête. Cette transparence est un atout face à des investisseurs chevronnés — mais certains VC pourraient lire "pas de moat au démarrage" comme un signal négatif. Considérer le framing. -->
+
+<h3>10.1 Évaluation honnête des moats</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Moat</th><th>Force</th><th>Disponibilité</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr><td>Curation qualitative</td><td>⭐⭐⭐</td><td>Immédiat</td><td>Arme principale au lancement</td></tr>
+<tr><td>Expertise légale multi-pays</td><td>⭐⭐⭐</td><td>Immédiat</td><td>Moat «&nbsp;boring&nbsp;» mais quasi impossible à rattraper</td></tr>
+<tr><td>Effet de réseau bi-face</td><td>⭐⭐⭐</td><td>Y2+</td><td>Objectif, pas une protection au démarrage</td></tr>
+<tr><td>Données et intelligence</td><td>⭐⭐</td><td>Y3+</td><td>Moat futur</td></tr>
+<tr><td>Marque de confiance</td><td>⭐⭐</td><td>Long terme</td><td>Important mais pas défensif au démarrage</td></tr>
+<tr><td>Exclusivité des biens</td><td>⭐</td><td>Irréaliste</td><td>Wishful thinking — gagner par la qualité</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>10.2 Risque Hipcamp — Le scénario principal</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Scénario</th><th>Probabilité</th><th>Timeline</th></tr></thead>
+<tbody>
+<tr><td>Entrée organique en EU</td><td>Faible</td><td>3-5 ans</td></tr>
+<tr><td><strong>Acquisition</strong> (Nomady, AlpacaCamping…)</td><td>Moyenne</td><td>2-4 ans</td></tr>
+<tr><td>Pas d'entrée (focus US)</td><td>Possible</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Meilleure défense&nbsp;:</strong> être incontournable avant qu'ils arrivent. Construire le moat réglementaire. Être une <strong>cible d'acquisition attractive</strong> plutôt qu'un concurrent à éliminer.</p>
+
+<h3>10.3 Ce qui protège vraiment Nomad</h3>
+<div class="callout callout-info">
+<ol>
+  <li><strong>L'exécution</strong> — La vitesse est le seul avantage au démarrage</li>
+  <li><strong>La niche francophone</strong> — Personne ne travaille CH romande + France avec sérieux</li>
+  <li><strong>La conformité légale</strong> — Le «&nbsp;boring moat&nbsp;» que personne ne veut construire</li>
+  <li><strong>La relation hôte</strong> — Un propriétaire satisfait ne change pas de plateforme pour 2&nbsp;% de commission</li>
+</ol>
+</div>
+
+<div class="sources">
+<h4>Sources</h4>
+<ol>
+  <li>Section 5 du whitepaper — analyse concurrentielle (funding, faiblesses, moats)</li>
+  <li>Section 8 du whitepaper — projections terrains, CAC, LTV</li>
+  <li>Section 3 du whitepaper (PESTEL) — cadre légal multi-pays</li>
+  <li>Hipcamp — profil Crunchbase (~75M$ funding), présence UK depuis 2022</li>
+  <li>Digital Markets Act (EU Regulation 2022/1925) — restrictions exclusivité</li>
+  <li>NFX — «&nbsp;The Network Effects Manual&nbsp;» (nfx.com/post/network-effects-manual)</li>
+</ol>
+</div>
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--                 SECTION 11 — SWOT                          -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s11">
+<h2 class="section-title"><span class="num">11</span> Analyse SWOT</h2>
+
+<!-- INSIGHT: Le SWOT identifie la faiblesse "équipe solo" comme critique, mais n'explore pas assez la difficulté réelle de recruter un CTO dans l'écosystème suisse romand (marché tendu, salaires élevés, peu d'appétit pour le risque startup). C'est probablement le goulot d'étranglement le plus sous-estimé. -->
+
+<div class="swot-grid">
+  <div class="swot-cell swot-s">
+    <h4>💪 Forces</h4>
+    <ul>
+      <li>Positionnement unique&nbsp;: curé + paneuropéen (quadrant vide)</li>
+      <li>Francophone → accès au 1<sup>er</sup> marché camping EU (France, 113M nuitées/an)</li>
+      <li>Infrastructure de confiance = moat défensif réel</li>
+      <li>Modèle validé par d'autres (Nomady, Hipcamp, Campspace)</li>
+      <li>Capital-efficient&nbsp;: breakeven Y3-Y4 avec ~1&nbsp;M€</li>
+      <li>Timing macro exceptionnel</li>
+    </ul>
+  </div>
+  <div class="swot-cell swot-w">
+    <h4>⚠️ Faiblesses</h4>
+    <ul>
+      <li>Équipe solo — pas de CTO, pas d'équipe terrain</li>
+      <li>Zéro validation terrain&nbsp;: 0 réservation, 0 hôte, 0 code</li>
+      <li>Retard vs Nomady&nbsp;: 5+ ans d'avance</li>
+      <li>Pas de produit</li>
+      <li>Funding = zéro, pas de track record startup</li>
+      <li>Saisonnalité&nbsp;: 70-80&nbsp;% du CA sur mai-sept</li>
+      <li>Chicken-and-egg non résolu</li>
+    </ul>
+  </div>
+  <div class="swot-cell swot-o">
+    <h4>🚀 Opportunités</h4>
+    <ul>
+      <li>France = plus grand marché sans acteur dominant</li>
+      <li>Hipcamp absent d'Europe → fenêtre 24-48 mois</li>
+      <li>Campspace post-fusion = vulnérable</li>
+      <li>Cadre légal FR/CH favorable (&lt;6 empl. sans permis)</li>
+      <li>Phase 2 véhicules&nbsp;: panier ×3-7</li>
+      <li>Partenariats&nbsp;: Indie Campers, Yescapa, offices du tourisme</li>
+      <li>IA comme différenciateur tech</li>
+    </ul>
+  </div>
+  <div class="swot-cell swot-t">
+    <h4>🔴 Menaces</h4>
+    <ul>
+      <li>Hipcamp acquiert un acteur européen (2-4 ans)</li>
+      <li>Nomady lève et vise le francophone</li>
+      <li>Campspace pivote vers la curation</li>
+      <li>Booking.com/Google lance une verticale camping</li>
+      <li>Durcissement réglementaire</li>
+      <li>Désintermédiation hôte-voyageur</li>
+      <li>Été pluvieux → CA -30-50&nbsp;%</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Croisements stratégiques</h3>
+
+<h4>Stratégies offensives (Forces × Opportunités)</h4>
+<ul>
+  <li><strong>Blitzkrieg francophone</strong>&nbsp;: prendre la Suisse romande puis la France avant tout concurrent</li>
+  <li><strong>Construire le moat légal</strong>&nbsp;: investir dans la conformité CH+FR. Quand Hipcamp arrive, Nomad est la cible/partenaire naturel</li>
+  <li><strong>Qualité augmentée par la tech</strong>&nbsp;: IA pour scaler la curation sans exploser les coûts</li>
+</ul>
+
+<h4>Stratégies défensives (Faiblesses × Menaces)</h4>
+<ul>
+  <li><strong>Recruter un CTO avant tout</strong>&nbsp;: le risque #1 (Hipcamp) se neutralise par la vitesse, qui nécessite une équipe</li>
+  <li><strong>Valider MAINTENANT</strong>&nbsp;: le plan «&nbsp;100 nuits&nbsp;» coûte 3-5&nbsp;K€. Chaque mois de retard = un mois pour les concurrents</li>
+  <li><strong>Rester lean</strong>&nbsp;: le breakeven à ~1&nbsp;M€ est la meilleure défense contre la fermeture de la fenêtre</li>
+</ul>
+
+<h3>Verdict</h3>
+<div class="callout callout-warn">
+<p><strong>Le facteur décisif&nbsp;:</strong> la bataille ne se jouera pas sur la vision (claire), ni le marché (réel), ni le modèle (prouvé). Elle se jouera sur un seul facteur&nbsp;: <strong>la vitesse d'exécution</strong>. Les 6 prochains mois sont décisifs.</p>
+</div>
+
+<div class="sources">
+<h4>Sources</h4>
+<ol>
+  <li>Sections 3-10 du whitepaper — ensemble de l'analyse (fondements du SWOT)</li>
+  <li>Eurostat — Tourism statistics 2023 (113M nuitées France)</li>
+  <li>CIVD — European Leisure Vehicle Market 2024</li>
+  <li>Hipcamp — Crunchbase (~75M$, valorisation ~300M$)</li>
+  <li>Commission européenne — Green Deal &amp; PAC 2023-2027</li>
+</ol>
+</div>
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--               SECTION 12 — ROADMAP                         -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s12">
+<h2 class="section-title"><span class="num">12</span> Roadmap stratégique</h2>
+
+<!-- INSIGHT: La timeline est ambitieuse. L'estimation "MVP en 2-3 mois pour un dev senior" suppose un développeur disponible immédiatement. En pratique, recrutement CTO + onboarding + développement = plutôt 5-6 mois avant un MVP live. -->
+
+<h3>12.1 Vue d'ensemble</h3>
+<pre>
+      Y0-Y1              Y1-Y3              Y3-Y5+
+┌──────────────┐   ┌──────────────┐   ┌──────────────┐
+│   PHASE 1    │   │   PHASE 2    │   │   PHASE 3    │
+│    LIEUX     │──▶│  VÉHICULES   │──▶│ INFRASTRUCTURE│
+│              │   │              │   │              │
+│ Marketplace  │   │ Location P2P │   │ Écosystème   │
+│ terrains     │   │ de vans +    │   │ du voyage    │
+│ privés       │   │ spots+vans   │   │ nature       │
+└──────────────┘   └──────────────┘   └──────────────┘
+ CH → FR             + DACH              + 8 marchés
+ 200 → 2 500         2 500 → 8 000       8 000 → 20 000+
+</pre>
+
+<h3>12.2 Phase 1 — Lieux (Y0-Y1)</h3>
+<p><strong>Objectif&nbsp;:</strong> Valider le product-market fit sur le marché francophone.</p>
+
+<h4>MVP (M0)</h4>
+<ul>
+  <li>Recherche par carte + filtres</li>
+  <li>Profils terrains (photos, description, prix)</li>
+  <li>Réservation + paiement sécurisé (Stripe)</li>
+  <li>Messagerie hôte-voyageur</li>
+  <li>Système d'avis</li>
+  <li>Dashboard hôte basique</li>
+  <li>Responsive web app (mobile-first)</li>
+</ul>
+
+<h4>Stack technique</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Composant</th><th>Choix</th><th>Justification</th></tr></thead>
+<tbody>
+<tr><td>Frontend</td><td>React / Next.js (PWA)</td><td>Mobile-first, SEO</td></tr>
+<tr><td>Backend</td><td>Node.js / Python</td><td>Rapidité de développement</td></tr>
+<tr><td>BDD</td><td>PostgreSQL + PostGIS</td><td>Requêtes géospatiales</td></tr>
+<tr><td>Paiement</td><td>Stripe Connect</td><td>Marketplace multi-vendeurs, escrow natif</td></tr>
+<tr><td>Maps</td><td>Mapbox / MapTiler</td><td>Cartes personnalisables</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>12.3 Phase 2 — Véhicules (Y1-Y3)</h3>
+<p>Condition&nbsp;: &gt;1&nbsp;000 terrains, &gt;5&nbsp;000 réservations, NPS &gt;45, seed bouclé.</p>
+<p>Location de vans P2P intégrée. Commission 10-12&nbsp;%. Panier moyen 80-200&nbsp;€/jour (3-7× supérieur). Parcours intégré spot + van.</p>
+
+<h3>12.4 Phase 3 — Infrastructure (Y3-Y5+)</h3>
+<p>Devenir l'infrastructure standard du voyage nature en Europe&nbsp;: équipement, expériences, B2B tourisme, API partenaires.</p>
+
+<h3>12.5 Timeline consolidée</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Trimestre</th><th>Activité</th><th>Terrains</th><th>Marchés</th></tr></thead>
+<tbody>
+<tr><td>T-1</td><td>Pré-lancement, recrutement supply, MVP</td><td>200</td><td>CH romande</td></tr>
+<tr><td>T1-T2</td><td>Lancement, premières réservations</td><td>200 → 400</td><td>CH romande</td></tr>
+<tr><td>T3-T4</td><td>Expansion FR, seed round</td><td>400 → 1&nbsp;200</td><td>CH + FR</td></tr>
+<tr><td>T5-T8</td><td>DACH, module véhicules</td><td>1&nbsp;200 → 5&nbsp;000</td><td>CH+FR+DE/AT</td></tr>
+<tr><td>T9-T20</td><td>Scaling, Phase 3</td><td>5&nbsp;000 → 20&nbsp;000+</td><td>Pan-européen</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sources">
+<h4>Sources</h4>
+<ol>
+  <li>Section 8 du whitepaper — modèle économique, projections Y1-Y5</li>
+  <li>Section 9 du whitepaper — stratégie GTM, timeline</li>
+  <li>Concept Brief Nomad (Johan, janvier 2026) — Roadmap V1/V2/V3</li>
+  <li>Yescapa / Goboony — Modèle P2P location de vans (benchmarks)</li>
+  <li>Stripe Connect — Documentation marketplace multi-vendeurs</li>
+</ol>
+</div>
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--             SECTION 13 — VALIDATION                        -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s13">
+<h2 class="section-title"><span class="num">13</span> Stratégie de validation terrain</h2>
+
+<!-- INSIGHT: Le plan "100 nuits" est excellent en théorie, mais suppose un lancement pendant la haute saison camping (mai-sept). Si le projet démarre en octobre-mars, la validation est reportée de 6-8 mois — ce qui impacte lourdement la fenêtre concurrentielle. -->
+<!-- INSIGHT: Le test A/B pricing (15€ vs 25€ vs 40€) avec un échantillon de 10-15 terrains aura une puissance statistique très faible. Les résultats seront indicatifs, pas conclusifs. -->
+
+<h3>13.1 Top 5 des hypothèses critiques</h3>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Hypothèse</th><th>Criticité</th><th>Comment tester</th><th>Coût</th><th>GO</th><th>STOP</th></tr></thead>
+<tbody>
+<tr><td>1. Propriétaires acceptent de lister</td><td>⭐⭐⭐</td><td>Démarcher 30 propriétaires (visites physiques)</td><td>500-800&nbsp;€</td><td>&gt;30&nbsp;% conversion</td><td>&lt;15&nbsp;%</td></tr>
+<tr><td>2. Voyageurs réservent et paient</td><td>⭐⭐⭐</td><td>Landing page + vrais terrains + Stripe</td><td>300-500&nbsp;€</td><td>&gt;3&nbsp;% conversion, &gt;10 réservations</td><td>&lt;1&nbsp;%, 0-2 réservations</td></tr>
+<tr><td>3. Prix moyen 25-35&nbsp;€ accepté</td><td>⭐⭐</td><td>A/B testing sur 3 niveaux de prix</td><td>Mutualisé</td><td>Conversion stable à 25&nbsp;€</td><td>Conversion uniquement &lt;15&nbsp;€</td></tr>
+<tr><td>4. Hôtes délivrent une bonne expérience</td><td>⭐⭐</td><td>NPS après 10 premières réservations</td><td>Mutualisé</td><td>NPS &gt;40, &lt;10&nbsp;% réclamations</td><td>NPS &lt;20, &gt;25&nbsp;% réclamations</td></tr>
+<tr><td>5. Réglementation navigable</td><td>⭐⭐</td><td>Consultation juridique CH + FR</td><td>1&nbsp;500-3&nbsp;000&nbsp;€</td><td>Cadre clair et permissif</td><td>Risque juridique majeur</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>13.2 Le MVP «&nbsp;100 nuits&nbsp;»</h3>
+<p><strong>Objectif&nbsp;:</strong> Faire réserver 100 nuits sur 10-15 terrains en Suisse romande pendant une saison.</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Composant</th><th>Solution MVP</th><th>Coût</th></tr></thead>
+<tbody>
+<tr><td>Catalogue</td><td>10-15 terrains recrutés en personne</td><td>500&nbsp;€ (déplacements)</td></tr>
+<tr><td>Site web</td><td>Landing page (Webflow ou Next.js simple)</td><td>0-500&nbsp;€</td></tr>
+<tr><td>Réservation</td><td>Calendly + Stripe Payment Links</td><td>0&nbsp;€</td></tr>
+<tr><td>Messagerie</td><td>WhatsApp direct</td><td>0&nbsp;€</td></tr>
+<tr><td>Juridique</td><td>Clause responsabilité dans CGV</td><td>200&nbsp;€</td></tr>
+<tr><td>Marketing</td><td>Instagram + 3-5 micro-influenceurs</td><td>500-1&nbsp;000&nbsp;€</td></tr>
+<tr><td><strong>Total</strong></td><td></td><td><strong>1&nbsp;200-2&nbsp;200&nbsp;€</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>13.3 Calendrier de validation</h3>
+<pre>
+     Mois 1          Mois 2          Mois 3          Mois 4
+  ┌───────────┐   ┌───────────┐   ┌───────────┐   ┌───────────┐
+  │ Juridique │   │ Pitch café│   │  MVP live  │   │   Bilan   │
+  │ (CH)      │   │ + Fake    │   │  100 nuits │   │  Go/No-go │
+  │           │   │ door      │   │  actif     │   │           │
+  │ Recrut.   │   │           │   │  Weekend   │   │ Décision  │
+  │ hôtes     │   │ Landing   │   │  Nomad x5  │   │ investir  │
+  │ (visites) │   │ page      │   │            │   │ ou stop   │
+  └───────────┘   └───────────┘   └───────────┘   └───────────┘
+</pre>
+
+<p><strong>Investissement total&nbsp;:</strong> 3&nbsp;000-5&nbsp;000&nbsp;€ + 4 mois de temps<br>
+<strong>Résultat&nbsp;:</strong> Décision informée GO/PIVOT/STOP avec données réelles</p>
+
+<h3>13.4 Ce qui n'a PAS besoin d'être validé</h3>
+<div class="callout callout-success">
+<ul>
+  <li>✅ La demande de spots nature existe (6M+ downloads Park4Night)</li>
+  <li>✅ Le modèle marketplace terrains privés fonctionne (Nomady, Hipcamp, Campspace)</li>
+  <li>✅ Les gens paient pour du camping (113M nuitées/an en France)</li>
+  <li>✅ La commission ~15&nbsp;% est acceptée (standard du marché)</li>
+</ul>
+<p><strong>Ce qui reste à valider&nbsp;:</strong> est-ce que ÇA fonctionne, ICI, MAINTENANT, avec CETTE exécution.</p>
+</div>
+
+<div class="sources">
+<h4>Sources</h4>
+<ol>
+  <li>Eric Ries — <em>The Lean Startup</em> (méthodologie MVP et validation)</li>
+  <li>Ash Maurya — <em>Running Lean</em> (hypothèses critiques, go/no-go)</li>
+  <li>Sections 8-10 du whitepaper — unit economics, GTM, défense</li>
+  <li>Stripe — Payment Links / Connect (stripe.com)</li>
+  <li>Webflow — Outil landing page no-code (webflow.com)</li>
+</ol>
+</div>
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--             SECTION 14 — CONCLUSION                        -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s14">
+<h2 class="section-title"><span class="num">14</span> Pourquoi ce projet peut gagner — Synthèse stratégique</h2>
+
+<!-- INSIGHT: Cette section est la plus susceptible de devenir obsolète rapidement. Si Hipcamp annonce une entrée en Europe ou si Nomady lève un round significatif, le verdict stratégique devra être révisé. Surveiller trimestriellement. -->
+<!-- INSIGHT: La probabilité de succès de 25-30% est probablement généreuse pour un solo founder sans produit. Les statistiques générales des marketplaces seed donnent plutôt 10-15% de taux de survie à 5 ans. Le pari asymétrique (downside 3-5K€ vs upside 5M€+ CA) reste valide malgré cela. -->
+
+<h3>14.1 Les signaux qui disent oui</h3>
+
+<h4>Le marché existe et personne ne le sert correctement</h4>
+<p>Park4Night a 6 millions de téléchargements. Nomady génère des revenus avec 125K CHF de funding. Hipcamp vaut 300M$ aux États-Unis. Le sous-segment terrains privés digitalisés est <strong>pénétré à moins de 5&nbsp;%</strong>. C'est l'équivalent du marché hôtelier en 2008, juste avant Airbnb.</p>
+
+<h4>Le timing est exceptionnellement favorable</h4>
+<p>Social (vanlife mainstream), économique (arbitrage prix), politique (tourisme durable), technologique (briques matures), concurrentiel (Hipcamp absent, Campspace fragilisé). <strong>Un timing pareil ne se reproduit pas souvent.</strong></p>
+
+<h4>Le modèle est prouvé et capital-efficient</h4>
+<p>Breakeven Y3-Y4 avec ~1&nbsp;M€. LTV/CAC de 15-23× côté voyageur, 20-56× côté propriétaire. Marge brute ~82&nbsp;%. Trajectoire Booking.com, pas Airbnb.</p>
+
+<h3>14.2 Les signaux qui inquiètent</h3>
+
+<div class="callout callout-danger">
+<ul>
+  <li><strong>L'exécution est à zéro.</strong> Zéro réservation, zéro hôte, zéro code.</li>
+  <li><strong>Le fondateur est seul.</strong> Red flag classique des investisseurs.</li>
+  <li><strong>Nomady a 5 ans d'avance.</strong> Rien ne les empêche de viser le francophone.</li>
+  <li><strong>Saisonnalité brutale.</strong> 70-80&nbsp;% du CA sur 4-5 mois.</li>
+  <li><strong>L'assurance collective est non triviale.</strong> Les assureurs veulent des données que Nomad n'a pas.</li>
+</ul>
+</div>
+
+<h3>14.3 Les conditions de succès</h3>
+<ol>
+  <li><strong>Un co-fondateur technique rejoint le projet</strong> (critique — sans CTO, pas de produit)</li>
+  <li><strong>La validation terrain confirme les hypothèses</strong> (critique — &gt;30&nbsp;% conversion propriétaire, &gt;3&nbsp;% voyageur)</li>
+  <li><strong>L'exécution démarre avant la saison 2026</strong> (la prochaine fenêtre est mai)</li>
+  <li><strong>Le pre-seed est bouclé avant M6</strong> (200-300&nbsp;K€)</li>
+</ol>
+
+<h3>14.4 Les scénarios réalistes</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Scénario</th><th>Probabilité</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>A — Succès</strong></td><td>25-30&nbsp;%</td><td>CTO recruté, validation OK, MVP live en haute saison, 5&nbsp;000+ terrains en Y3, breakeven</td></tr>
+<tr><td><strong>B — Pivot</strong></td><td>30-35&nbsp;%</td><td>Validation partielle → pivot vers micro-campings existants ou outil SaaS pour campings</td></tr>
+<tr><td><strong>C — Échec</strong></td><td>35-40&nbsp;%</td><td>Pas de CTO, signaux rouges en validation, ou Nomady vise le francophone. <strong>Coût de l'échec&nbsp;: 3-5&nbsp;K€</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>14.5 Verdict final</h3>
+
+<div class="callout callout-info" style="font-size:1.05rem;">
+<p><strong>Est-ce que ça vaut le coup&nbsp;? Oui, avec des réserves importantes.</strong></p>
+<p>C'est un <strong>pari asymétrique favorable</strong>&nbsp;: le coût de la validation est faible (3-5&nbsp;K€), le potentiel est élevé (5&nbsp;M€+ de CA en Y5), et les signaux de marché sont alignés. Le risque principal n'est pas le marché — c'est l'exécution.</p>
+</div>
+
+<p>Ce document a fait son travail&nbsp;: cartographier le marché, identifier les gaps, quantifier l'opportunité, évaluer les risques, et proposer un plan. Mais <strong>un whitepaper ne remplace pas 10 propriétaires qui disent oui, 100 nuits réservées, et un NPS de 50</strong>.</p>
+
+<p style="font-size:1.1rem; font-weight:600; margin-top:32px; text-align:center;">Nomad a les ingrédients d'un projet qui fonctionne — un vrai problème, un vrai marché, un timing rare et un modèle prouvé — mais tout repose sur la capacité à passer de l'analyse à l'action dans les 6 prochains mois.</p>
+
+<div class="sources">
+<h4>Sources — Whitepaper complet</h4>
+<ol>
+  <li>Grand View Research — Camping Market Report 2025-2033</li>
+  <li>Statista — Camping Market Outlook Europe</li>
+  <li>CIVD — European Leisure Vehicle Market Report 2024</li>
+  <li>Eurostat — Tourism statistics 2023</li>
+  <li>Allied Market Research — Europe Glamping Market Forecast</li>
+  <li>FNHPA — Chiffres clés HPA France</li>
+  <li>Commission européenne — Green Deal &amp; tourisme</li>
+  <li>France — Plan Destination France 2030</li>
+  <li>Suisse Tourisme — Programme Swisstainable</li>
+  <li>PAC 2023-2027 — Mesures LEADER/FEADER</li>
+  <li>Code de l'urbanisme français — Art. R. 111-42</li>
+  <li>Legge italiana 96/2006 — Agriturismo</li>
+  <li>Land Reform (Scotland) Act 2003</li>
+  <li>Nomady.camp — site officiel et conditions (mars 2026)</li>
+  <li>Campspace.com / HomeCamper.com (mars 2026)</li>
+  <li>Park4Night.com — fonctionnalités et base utilisateurs</li>
+  <li>AlpacaCamping.de (mars 2026)</li>
+  <li>Hipcamp.com — site officiel, Crunchbase</li>
+  <li>PiNCAMP.de (ADAC), ACSI.eu</li>
+  <li>Yescapa.com, IndeCampers.com — Crunchbase</li>
+  <li>Airbnb — Service fees (airbnb.com/help/article/1857)</li>
+  <li>Stripe — Tarification standard Europe</li>
+  <li>Trustpilot — Park4Night reviews (2025-2026)</li>
+  <li>Reddit r/VanLife, r/vandwellers</li>
+  <li>Instagram — #vanlife (16M+ posts)</li>
+  <li>MSA — Revenu moyen agriculteurs France 2023</li>
+  <li>SVR Kamperen — Pays-Bas (svr.nl)</li>
+  <li>Europarc Federation — ECST / Sustainable Tourism</li>
+  <li>Concept brief Nomad (Johan, janvier 2026)</li>
+  <li>Business Model Canvas Nomad (Johan, janvier 2026)</li>
+</ol>
+</div>
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+</main>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--                        FOOTER                              -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<footer>
+  <p><strong>Nomad</strong> — Whitepaper v1.0</p>
+  <p>Mars 2026 · Document confidentiel</p>
+  <p style="margin-top:8px; font-size:0.8rem; color:#94a3b8;">Assemblé par Isaak · Toutes les données et projections sont basées sur des sources secondaires et des estimations. Ce document ne constitue pas un conseil en investissement.</p>
+</footer>
+
+</body>
+</html>
