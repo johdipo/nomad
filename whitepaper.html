@@ -289,6 +289,10 @@
     border: 1px solid var(--border);
     border-radius: 12px;
   }
+  .chart-wrap .chart-canvas-wrap {
+    position: relative;
+    width: 100%;
+  }
   .chart-wrap canvas {
     max-width: 100%;
   }
@@ -506,6 +510,7 @@
     table { font-size: 0.8rem; }
     thead th, tbody td { padding: 8px 8px; }
     pre { padding: 14px; font-size: 0.78rem; }
+    .chart-wrap .chart-canvas-wrap { height: 240px !important; }
   }
 
   @media print {
@@ -940,12 +945,12 @@
 <h3>4.4 Synthèse visuelle</h3>
 <div class="chart-wrap">
   <p class="chart-title">TAM / SAM / SOM — Taille de marché</p>
-  <canvas id="chart-tam" height="280"></canvas>
+  <div class="chart-canvas-wrap" style="height:280px;"><canvas id="chart-tam"></canvas></div>
 </div>
 
 <div class="chart-wrap">
   <p class="chart-title">Croissance terrains &amp; CA — Scénario base Y1-Y5</p>
-  <canvas id="chart-som-growth" height="260"></canvas>
+  <div class="chart-canvas-wrap" style="height:260px;"><canvas id="chart-som-growth"></canvas></div>
 </div>
 
 <div class="sources">
@@ -999,7 +1004,7 @@
 <h3>5.3 Matrice de positionnement</h3>
 <div class="chart-wrap">
   <p class="chart-title">Positionnement concurrentiel — Curation × Couverture</p>
-  <canvas id="chart-positioning" height="340"></canvas>
+  <div class="chart-canvas-wrap" style="height:340px;"><canvas id="chart-positioning"></canvas></div>
 </div>
 <p><strong>Le quadrant haut-droite est vide.</strong> C'est exactement là que Nomad se positionne.</p>
 
@@ -1264,7 +1269,7 @@
 
 <div class="chart-wrap">
   <p class="chart-title">Projection financière Y1-Y5 (K€)</p>
-  <canvas id="chart-financials" height="280"></canvas>
+  <div class="chart-canvas-wrap" style="height:280px;"><canvas id="chart-financials"></canvas></div>
 </div>
 
 <h3>8.4 Besoin en financement</h3>
@@ -1844,6 +1849,9 @@ Chart.defaults.plugins.legend.labels.usePointStyle = true;
 Chart.defaults.plugins.legend.labels.padding = 16;
 Chart.defaults.responsive = true;
 Chart.defaults.maintainAspectRatio = false;
+// Fix: each canvas is inside a .chart-canvas-wrap with explicit height.
+// Chart.js respects the container height when maintainAspectRatio=false
+// AND the container has position:relative + a fixed height.
 
 // Helper: register datalabels only on charts that need it
 const datalabelsPlugin = ChartDataLabels;
