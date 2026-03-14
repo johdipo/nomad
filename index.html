@@ -480,6 +480,31 @@
   .sources ol { margin-left: 20px; }
   .sources li { margin-bottom: 4px; }
 
+  /* ── Citation superscripts ── */
+  sup.cite {
+    font-size: 0.75em;
+    line-height: 0;
+    vertical-align: super;
+  }
+  sup.cite a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0 1px;
+    border-bottom: none;
+    transition: opacity 0.15s;
+  }
+  sup.cite a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+  }
+  @media (max-width: 480px) {
+    sup.cite {
+      font-size: 0.8em;
+    }
+  }
+
   /* ── Footer ── */
   footer {
     text-align: center;
@@ -689,7 +714,7 @@
 <!-- INSIGHT: Le framework JTBD est utilisé ici pour structurer la demande, mais aucune interview terrain formelle n'a été conduite. Les insights proviennent de sources secondaires (Reddit, Trustpilot, Park4Night). Des interviews utilisateur (10 vanlifers + 10 propriétaires) seraient nécessaires pour valider. -->
 <!-- INSIGHT: Le chiffre "1-2 heures par jour" pour la recherche de spot est une estimation qualitative basée sur des témoignages, pas une mesure statistique. À valider lors du MVP. -->
 
-<p>Le camping nature en Europe souffre d'un paradoxe&nbsp;: la demande n'a jamais été aussi forte (#vanlife cumule 16M+ posts Instagram, 221&nbsp;000 véhicules de loisirs immatriculés en Europe en 2024), mais l'offre reste fragmentée, opaque et mal outillée.</p>
+<p>Le camping nature en Europe souffre d'un paradoxe&nbsp;: la demande n'a jamais été aussi forte (#vanlife cumule 16M+ posts Instagram<sup class="cite"><a href="https://www.instagram.com/explore/tags/vanlife/" target="_blank" rel="noopener">4</a></sup>, 221&nbsp;000 véhicules de loisirs immatriculés en Europe en 2024<sup class="cite"><a href="https://www.civd.de/en/press/press-release" target="_blank" rel="noopener">3</a></sup>), mais l'offre reste fragmentée, opaque et mal outillée.</p>
 
 <h3>2.1 Côté voyageur — Jobs-to-be-done</h3>
 
@@ -698,7 +723,7 @@
 <p><strong>Frictions actuelles&nbsp;:</strong></p>
 <ul>
   <li><strong>Stress décisionnel quotidien</strong>&nbsp;: chaque soir, le vanlife doit refaire le même parcours — ouvrir 2-3 apps, lire des dizaines d'avis, croiser les doigts</li>
-  <li><strong>Information périmée</strong>&nbsp;: les spots communautaires (Park4Night, iOverlander) sont souvent obsolètes. Un utilisateur Trustpilot&nbsp;: <em>«&nbsp;Half the places I know of to park legally overnight are not even listed.&nbsp;»</em></li>
+  <li><strong>Information périmée</strong>&nbsp;: les spots communautaires (Park4Night, iOverlander) sont souvent obsolètes. Un utilisateur Trustpilot<sup class="cite"><a href="https://fr.trustpilot.com/review/park4night.com" target="_blank" rel="noopener">1</a></sup>&nbsp;: <em>«&nbsp;Half the places I know of to park legally overnight are not even listed.&nbsp;»</em></li>
   <li><strong>Zones grises légales</strong>&nbsp;: le voyageur navigue en permanence dans un flou juridique</li>
   <li><strong>Fatigue de recherche</strong>&nbsp;: en haute saison, les spots gratuits connus sont saturés</li>
 </ul>
@@ -723,7 +748,7 @@
 <!-- INSIGHT: Le chiffre "95% d'abandon" est une estimation narrative, pas une donnée mesurée. Il serait utile de le qualifier comme tel face à des investisseurs rigoureux. -->
 
 <h4>JTBD 6&nbsp;: Revenu sans effort marketing</h4>
-<p>Pour un agriculteur dont le revenu moyen en France est de ~1&nbsp;500&nbsp;€/mois (MSA, 2023), 10-20 nuitées par mois en été à 20-35&nbsp;€/nuit représentent 200-700&nbsp;€ de complément — significatif. Mais ce revenu n'est accessible que si le propriétaire n'a pas à investir en marketing, en tech ou en temps administratif.</p>
+<p>Pour un agriculteur dont le revenu moyen en France est de ~1&nbsp;500&nbsp;€/mois (MSA, 2023)<sup class="cite"><a href="https://www.msa.fr/lfy/web/msa/exploitants/chiffres" target="_blank" rel="noopener">5</a></sup>, 10-20 nuitées par mois en été à 20-35&nbsp;€/nuit représentent 200-700&nbsp;€ de complément — significatif. Mais ce revenu n'est accessible que si le propriétaire n'a pas à investir en marketing, en tech ou en temps administratif.</p>
 
 <h4>JTBD 7&nbsp;: Accueillir en toute sécurité juridique</h4>
 <p>La responsabilité civile du propriétaire est le frein psychologique n°1 à l'ouverture d'un terrain privé. Le propriétaire a besoin d'une assurance, d'un cadre contractuel et d'une médiation — mutualisés par une plateforme.</p>
@@ -789,23 +814,23 @@
 
 <h3>3.1 Politique</h3>
 <ul>
-  <li><strong>Tourisme durable en plein essor&nbsp;:</strong> Green Deal EU, Destination France 2030 (1,9&nbsp;Md€), programme Swisstainable</li>
-  <li><strong>Subventions agricoles&nbsp;:</strong> PAC 2023-2027 encourage la diversification des revenus (LEADER/FEADER)</li>
+  <li><strong>Tourisme durable en plein essor&nbsp;:</strong> Green Deal EU<sup class="cite"><a href="https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/european-green-deal_fr" target="_blank" rel="noopener">4</a></sup>, Destination France 2030 (1,9&nbsp;Md€)<sup class="cite"><a href="https://www.gouvernement.fr/actualite/destination-france-le-gouvernement-presente-son-plan-de-reconquete-touristique" target="_blank" rel="noopener">5</a></sup>, programme Swisstainable<sup class="cite"><a href="https://www.myswitzerland.com/fr-ch/decouvrir-la-suisse/swisstainable/" target="_blank" rel="noopener">6</a></sup></li>
+  <li><strong>Subventions agricoles&nbsp;:</strong> PAC 2023-2027 encourage la diversification des revenus (LEADER/FEADER)<sup class="cite"><a href="https://agriculture.ec.europa.eu/common-agricultural-policy/cap-overview/cap-2023-27_fr" target="_blank" rel="noopener">7</a></sup></li>
   <li><strong>Pression anti-surtourisme&nbsp;:</strong> restrictions croissantes à Barcelone, Amsterdam, Venise → les touristes se reportent vers le rural</li>
 </ul>
 
 <h3>3.2 Économique</h3>
 <ul>
   <li><strong>Arbitrage post-inflation&nbsp;:</strong> après le pic à 10,6&nbsp;% en zone euro (octobre 2022), les ménages ont durablement modifié leurs habitudes. Le camping bénéficie du «&nbsp;trading down&nbsp;»</li>
-  <li><strong>Camping résilient&nbsp;:</strong> +6,8&nbsp;% de nuits en hébergements touristiques en 2023 vs 2022 (Eurostat)</li>
-  <li><strong>Véhicules de loisirs&nbsp;:</strong> 221&nbsp;000 nouvelles immatriculations en 2024 (+5&nbsp;%), 3<sup>e</sup> meilleur résultat historique</li>
+  <li><strong>Camping résilient&nbsp;:</strong> +6,8&nbsp;% de nuits en hébergements touristiques en 2023 vs 2022<sup class="cite"><a href="https://ec.europa.eu/eurostat/statistics-explained/index.php/Tourism_statistics" target="_blank" rel="noopener">1</a></sup></li>
+  <li><strong>Véhicules de loisirs&nbsp;:</strong> 221&nbsp;000 nouvelles immatriculations en 2024 (+5&nbsp;%), 3<sup>e</sup> meilleur résultat historique<sup class="cite"><a href="https://www.civd.de/en/press/press-release" target="_blank" rel="noopener">2</a></sup></li>
   <li><strong>Sweet spot prix&nbsp;:</strong> camping nature 15-35&nbsp;€/nuit vs hôtel 80-150&nbsp;€ vs Airbnb 100-200&nbsp;€</li>
 </ul>
 
 <h3>3.3 Social</h3>
 <ul>
-  <li><strong>Vanlife mainstream&nbsp;:</strong> 16M+ posts Instagram #vanlife, 13Md+ vues TikTok. Le «&nbsp;soft vanlife&nbsp;» s'est démocratisé</li>
-  <li><strong>Quête de nature post-COVID&nbsp;:</strong> 65&nbsp;% des résidents EU ont voyagé en 2023 (Eurostat). Les destinations rurales captent une part croissante</li>
+  <li><strong>Vanlife mainstream&nbsp;:</strong> 16M+ posts Instagram #vanlife<sup class="cite"><a href="https://www.instagram.com/explore/tags/vanlife/" target="_blank" rel="noopener">1</a></sup>, 13Md+ vues TikTok. Le «&nbsp;soft vanlife&nbsp;» s'est démocratisé</li>
+  <li><strong>Quête de nature post-COVID&nbsp;:</strong> 65&nbsp;% des résidents EU ont voyagé en 2023<sup class="cite"><a href="https://ec.europa.eu/eurostat/statistics-explained/index.php/Tourism_statistics" target="_blank" rel="noopener">1</a></sup>. Les destinations rurales captent une part croissante</li>
   <li><strong>Slow tourism&nbsp;:</strong> voyager moins loin, plus longtemps, plus consciemment. Les micro-aventures touchent un public large</li>
 </ul>
 
@@ -813,14 +838,14 @@
 <ul>
   <li><strong>Mobile-first&nbsp;:</strong> 70&nbsp;% des réservations touristiques en Europe se font via mobile</li>
   <li><strong>Paiements numériques&nbsp;:</strong> Apple Pay, Stripe, Twint — le tiers de confiance numérique est une attente standard</li>
-  <li><strong>Cartographie&nbsp;:</strong> Komoot (40M+ utilisateurs EU), Park4Night (6M downloads) ont démontré la viabilité d'un modèle géolocalisé</li>
+  <li><strong>Cartographie&nbsp;:</strong> Komoot (40M+ utilisateurs EU), Park4Night (6M downloads<sup class="cite"><a href="https://play.google.com/store/apps/details?id=net.park4night.app" target="_blank" rel="noopener">8</a></sup>) ont démontré la viabilité d'un modèle géolocalisé</li>
 </ul>
 
 <h3>3.5 Écologique</h3>
 <ul>
   <li><strong>Surtourisme en zones naturelles&nbsp;:</strong> quotas imposés aux Calanques, Cinque Terre, Lofoten. Nomad disperse les flux</li>
   <li><strong>Labels éco-tourisme&nbsp;:</strong> Charte Européenne du Tourisme Durable, Clef Verte — intégrables dans le référencement Nomad</li>
-  <li><strong>Tourisme régénératif&nbsp;:</strong> Campspace revendique 95&nbsp;% de réduction CO₂ vs séjours classiques</li>
+  <li><strong>Tourisme régénératif&nbsp;:</strong> Campspace revendique 95&nbsp;% de réduction CO₂ vs séjours classiques<sup class="cite"><a href="https://campspace.com/en/about-us" target="_blank" rel="noopener">3</a></sup></li>
 </ul>
 
 <h3>3.6 Légal ⚠️ (Dimension critique)</h3>
@@ -885,7 +910,7 @@
 <!-- INSIGHT: L'approche bottom-up (nombre de terrains × nuitées × prix) donne un chiffre de 7,5 Md€ potentiel — significativement supérieur au top-down. L'écart reflète l'incertitude sur le taux d'adoption des propriétaires, qui est l'hypothèse la plus critique du modèle. -->
 
 <h3>4.1 TAM — Marché total du camping en Europe occidentale</h3>
-<p>Le marché mondial du camping est estimé à <strong>~57&nbsp;Md$ en 2025</strong>, avec une projection de ~123&nbsp;Md$ d'ici 2033 (CAGR ~10&nbsp;%). L'Europe occidentale (8 marchés cibles) représente <strong>~28&nbsp;Md€</strong>.</p>
+<p>Le marché mondial du camping est estimé à <strong>~57&nbsp;Md$ en 2025</strong>, avec une projection de ~123&nbsp;Md$ d'ici 2033 (CAGR ~10&nbsp;%)<sup class="cite"><a href="https://www.grandviewresearch.com/industry-analysis/camping-market" target="_blank" rel="noopener">1</a></sup>. L'Europe occidentale (8 marchés cibles) représente <strong>~28&nbsp;Md€</strong>.</p>
 
 <div class="table-wrap">
 <table>
@@ -902,7 +927,7 @@
 </div>
 
 <h3>4.2 SAM — Segment adressable par Nomad</h3>
-<p>Le SAM couvre les réservations de nuitées sur <strong>terrains privés et micro-campings via plateforme digitale</strong>. Ce sous-segment représente 8-12&nbsp;% du TAM.</p>
+<p>Le SAM couvre les réservations de nuitées sur <strong>terrains privés et micro-campings via plateforme digitale</strong>. Ce sous-segment représente 8-12&nbsp;% du TAM<sup class="cite"><a href="https://www.statista.com/outlook/mmo/travel-tourism/camping-glamping/europe" target="_blank" rel="noopener">2</a></sup>.</p>
 
 <div class="table-wrap">
 <table>
@@ -913,7 +938,7 @@
 </table>
 </div>
 
-<p><strong>Validation croisée&nbsp;:</strong> les plateformes existantes captent ~75-115&nbsp;M€ de volume brut, soit seulement <strong>3-5&nbsp;% du SAM</strong>. Le marché est largement sous-pénétré.</p>
+<p><strong>Validation croisée&nbsp;:</strong> les plateformes existantes captent ~75-115&nbsp;M€ de volume brut, soit seulement <strong>3-5&nbsp;% du SAM</strong>. Le marché est largement sous-pénétré<sup class="cite"><a href="https://www.fnhpa.com/actualites/chiffres-cles/" target="_blank" rel="noopener">6</a></sup>.</p>
 
 <h3>4.3 SOM — Part capturable par Nomad (Y1-Y5)</h3>
 
@@ -1006,7 +1031,7 @@
   <p class="chart-title">Positionnement concurrentiel — Curation × Couverture</p>
   <div class="chart-canvas-wrap" style="height:340px;"><canvas id="chart-positioning"></canvas></div>
 </div>
-<p><strong>Le quadrant haut-droite est vide.</strong> C'est exactement là que Nomad se positionne.</p>
+<p><strong>Le quadrant haut-droite est vide.</strong> C'est exactement là que Nomad se positionne.<sup class="cite"><a href="https://www.crunchbase.com/organization/hipcamp" target="_blank" rel="noopener">2</a></sup></p>
 
 <div class="sources">
 <h4>Sources</h4>
@@ -1037,7 +1062,7 @@
 <p>Carte interactive, filtres intelligents (type de terrain, services, prix, véhicule), fiches détaillées avec photos validées, badge de vérification ✓, et avis vérifiés. <strong>Un seul point d'entrée au lieu de 3-5 apps.</strong></p>
 
 <h4>Étape 2 — Réservation (2 min)</h4>
-<p>Sélection des dates, ajout de services optionnels (eau, électricité, panier local), paiement sécurisé (Apple Pay, Stripe), confirmation instantanée avec adresse exacte et messagerie hôte.</p>
+<p>Sélection des dates, ajout de services optionnels (eau, électricité, panier local), paiement sécurisé (Apple Pay, Stripe<sup class="cite"><a href="https://stripe.com/fr/connect" target="_blank" rel="noopener">6</a></sup>), confirmation instantanée avec adresse exacte et messagerie hôte.</p>
 
 <h4>Étape 3 — Séjour</h4>
 <p>Navigation GPS, check-in digital, guide du séjour in-app, messagerie hôte, support Nomad 7j/7, signalement de problème avec médiation.</p>
@@ -1162,7 +1187,7 @@
 <ul>
   <li>10 nuitées/mois à 25&nbsp;€ = 250&nbsp;€ brut → ~240&nbsp;€ net</li>
   <li>20 nuitées/mois à 35&nbsp;€ (haute saison) = 700&nbsp;€ brut → ~670&nbsp;€ net</li>
-  <li>Pour un agriculteur à ~1&nbsp;500&nbsp;€/mois (MSA), c'est <strong>+15 à +45&nbsp;% de revenu complémentaire</strong></li>
+  <li>Pour un agriculteur à ~1&nbsp;500&nbsp;€/mois<sup class="cite"><a href="https://www.msa.fr/lfy/web/msa/exploitants/chiffres" target="_blank" rel="noopener">5</a></sup> (MSA), c'est <strong>+15 à +45&nbsp;% de revenu complémentaire</strong></li>
 </ul>
 
 <h3>7.3 Nomad vs. la concurrence</h3>
@@ -1286,7 +1311,7 @@
 
 <h3>8.5 Quand la plateforme devient rentable</h3>
 <p>Le <strong>seuil de rentabilité se situe à ~3&nbsp;000-5&nbsp;000 terrains actifs</strong> et ~120&nbsp;000-225&nbsp;000 nuitées/an, correspondant à un CA de ~700&nbsp;K€-1,2&nbsp;M€. Atteignable en <strong>Y3 dans le scénario base</strong>.</p>
-<p>Trajectoire <strong>Booking.com</strong> (profitable en Y5 avec ~3,7&nbsp;M€) plutôt qu'Airbnb (10 ans et 6&nbsp;Md$ avant rentabilité).</p>
+<p>Trajectoire <strong>Booking.com</strong> (profitable en Y5 avec ~3,7&nbsp;M€) plutôt qu'Airbnb (10 ans et 6&nbsp;Md$ avant rentabilité)<sup class="cite"><a href="https://www.crunchbase.com/organization/airbnb" target="_blank" rel="noopener">4</a></sup>.</p>
 
 <div class="sources">
 <h4>Sources</h4>
@@ -1310,7 +1335,7 @@
 <!-- INSIGHT: Le plan de démarchage physique (200 terrains en 3 mois) suppose un fondateur à plein temps. Si Johan conserve son emploi chez MAGENTA, ce calendrier est irréaliste — il faut soit un congé, soit un co-fondateur dédié supply. -->
 
 <h3>9.1 L'offre d'abord, la demande ensuite</h3>
-<p>Un voyageur qui arrive sur une plateforme vide ne revient jamais. Le playbook prouvé (Airbnb, Hipcamp, Nomady)&nbsp;: construire l'offre <strong>avant</strong> d'ouvrir la demande. 100-200 terrains dans une zone suffisent pour un catalogue attractif.</p>
+<p>Un voyageur qui arrive sur une plateforme vide ne revient jamais. Le playbook prouvé (Airbnb, Hipcamp, Nomady)&nbsp;: construire l'offre <strong>avant</strong> d'ouvrir la demande<sup class="cite"><a href="https://www.hipcamp.com/en-AU/about" target="_blank" rel="noopener">5</a></sup>. 100-200 terrains dans une zone suffisent pour un catalogue attractif.</p>
 
 <h3>9.2 Géographie — Suisse romande puis France</h3>
 <div class="table-wrap">
@@ -1327,7 +1352,7 @@
 </div>
 
 <p><strong>Pourquoi la Suisse romande d'abord&nbsp;:</strong> marché natif, réglementation favorable, pouvoir d'achat élevé, Nomady absent de la Romandie, taille maîtrisable (~200 terrains).</p>
-<p><strong>Pourquoi la France ensuite&nbsp;:</strong> 1<sup>er</sup> marché camping d'Europe (113M nuitées/an), même langue, cadre légal exploitable (&lt;6 emplacements sans permis), aucun concurrent dominant sur les terrains privés.</p>
+<p><strong>Pourquoi la France ensuite&nbsp;:</strong> 1<sup>er</sup> marché camping d'Europe (113M nuitées/an<sup class="cite"><a href="https://www.insee.fr/fr/statistiques?theme=4&debut=0&recherche=h%C3%B4tellerie+plein+air" target="_blank" rel="noopener">4</a></sup>), même langue, cadre légal exploitable (&lt;6 emplacements sans permis<sup class="cite"><a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006818978" target="_blank" rel="noopener">7</a></sup>), aucun concurrent dominant sur les terrains privés.</p>
 
 <h3>9.3 Acquisition propriétaires — Les 200 premiers</h3>
 <ol>
@@ -1346,7 +1371,7 @@
   <li><strong>Google Ads</strong> (requêtes intentionnistes)&nbsp;: CAC 8-15&nbsp;€</li>
   <li><strong>SEO</strong> (blog, guides de destination)&nbsp;: CAC 2-5&nbsp;€, lent puis puissant</li>
   <li><strong>Parrainage</strong> (10&nbsp;€ offerts)&nbsp;: CAC 5-8&nbsp;€, conversion élevée</li>
-  <li><strong>Levier Park4Night</strong>&nbsp;: 6M+ utilisateurs sont des prospects naturels</li>
+  <li><strong>Levier Park4Night</strong>&nbsp;: 6M+ utilisateurs<sup class="cite"><a href="https://play.google.com/store/apps/details?id=net.park4night.app" target="_blank" rel="noopener">5</a></sup> sont des prospects naturels</li>
 </ul>
 
 <h3>9.5 KPIs de traction</h3>
@@ -1412,7 +1437,7 @@
 </tbody>
 </table>
 </div>
-<p><strong>Meilleure défense&nbsp;:</strong> être incontournable avant qu'ils arrivent. Construire le moat réglementaire. Être une <strong>cible d'acquisition attractive</strong> plutôt qu'un concurrent à éliminer.</p>
+<p><strong>Meilleure défense&nbsp;:</strong> être incontournable avant qu'ils arrivent. Construire le moat réglementaire. Être une <strong>cible d'acquisition attractive</strong> plutôt qu'un concurrent à éliminer<sup class="cite"><a href="https://www.crunchbase.com/organization/hipcamp" target="_blank" rel="noopener">4</a></sup>.</p>
 
 <h3>10.3 Ce qui protège vraiment Nomad</h3>
 <div class="callout callout-info">
@@ -1452,7 +1477,7 @@
     <h4>💪 Forces</h4>
     <ul>
       <li>Positionnement unique&nbsp;: curé + paneuropéen (quadrant vide)</li>
-      <li>Francophone → accès au 1<sup>er</sup> marché camping EU (France, 113M nuitées/an)</li>
+      <li>Francophone → accès au 1<sup>er</sup> marché camping EU (France, 113M nuitées/an<sup class="cite"><a href="https://ec.europa.eu/eurostat/statistics-explained/index.php/Tourism_statistics" target="_blank" rel="noopener">2</a></sup>)</li>
       <li>Infrastructure de confiance = moat défensif réel</li>
       <li>Modèle validé par d'autres (Nomady, Hipcamp, Campspace)</li>
       <li>Capital-efficient&nbsp;: breakeven Y3-Y4 avec ~1&nbsp;M€</li>
@@ -1592,7 +1617,7 @@
 
 <h3>12.3 Phase 2 — Véhicules (Y1-Y3)</h3>
 <p>Condition&nbsp;: &gt;1&nbsp;000 terrains, &gt;5&nbsp;000 réservations, NPS &gt;45, seed bouclé.</p>
-<p>Location de vans P2P intégrée. Commission 10-12&nbsp;%. Panier moyen 80-200&nbsp;€/jour (3-7× supérieur). Parcours intégré spot + van.</p>
+<p>Location de vans P2P intégrée. Commission 10-12&nbsp;%. Panier moyen 80-200&nbsp;€/jour (3-7× supérieur). Parcours intégré spot + van<sup class="cite"><a href="https://www.yescapa.fr/conducto/propietario" target="_blank" rel="noopener">4</a></sup>.</p>
 
 <h3>12.4 Phase 3 — Infrastructure (Y3-Y5+)</h3>
 <p>Devenir l'infrastructure standard du voyage nature en Europe&nbsp;: équipement, expériences, B2B tourisme, API partenaires.</p>
@@ -1705,9 +1730,9 @@
 <h3>13.4 Ce qui n'a PAS besoin d'être validé</h3>
 <div class="callout callout-success">
 <ul>
-  <li>✅ La demande de spots nature existe (6M+ downloads Park4Night)</li>
+  <li>✅ La demande de spots nature existe (6M+ downloads Park4Night<sup class="cite"><a href="https://play.google.com/store/apps/details?id=net.park4night.app" target="_blank" rel="noopener">5</a></sup>)</li>
   <li>✅ Le modèle marketplace terrains privés fonctionne (Nomady, Hipcamp, Campspace)</li>
-  <li>✅ Les gens paient pour du camping (113M nuitées/an en France)</li>
+  <li>✅ Les gens paient pour du camping (113M nuitées/an en France<sup class="cite"><a href="https://ec.europa.eu/eurostat/statistics-explained/index.php/Tourism_statistics" target="_blank" rel="noopener">1</a></sup>)</li>
   <li>✅ La commission ~15&nbsp;% est acceptée (standard du marché)</li>
 </ul>
 <p><strong>Ce qui reste à valider&nbsp;:</strong> est-ce que ÇA fonctionne, ICI, MAINTENANT, avec CETTE exécution.</p>
@@ -1739,13 +1764,13 @@
 <h3>14.1 Les signaux qui disent oui</h3>
 
 <h4>Le marché existe et personne ne le sert correctement</h4>
-<p>Park4Night a 6 millions de téléchargements. Nomady génère des revenus avec 125K CHF de funding. Hipcamp vaut 300M$ aux États-Unis. Le sous-segment terrains privés digitalisés est <strong>pénétré à moins de 5&nbsp;%</strong>. C'est l'équivalent du marché hôtelier en 2008, juste avant Airbnb.</p>
+<p>Park4Night a 6 millions de téléchargements<sup class="cite"><a href="https://play.google.com/store/apps/details?id=net.park4night.app" target="_blank" rel="noopener">1</a></sup>. Nomady génère des revenus avec 125K CHF de funding. Hipcamp vaut 300M$ aux États-Unis<sup class="cite"><a href="https://www.crunchbase.com/organization/hipcamp" target="_blank" rel="noopener">1</a></sup>. Le sous-segment terrains privés digitalisés est <strong>pénétré à moins de 5&nbsp;%</strong>. C'est l'équivalent du marché hôtelier en 2008, juste avant Airbnb.</p>
 
 <h4>Le timing est exceptionnellement favorable</h4>
-<p>Social (vanlife mainstream), économique (arbitrage prix), politique (tourisme durable), technologique (briques matures), concurrentiel (Hipcamp absent, Campspace fragilisé). <strong>Un timing pareil ne se reproduit pas souvent.</strong></p>
+<p>Social (vanlife mainstream<sup class="cite"><a href="https://www.instagram.com/explore/tags/vanlife/" target="_blank" rel="noopener">3</a></sup>), économique (arbitrage prix), politique (tourisme durable), technologique (briques matures), concurrentiel (Hipcamp absent, Campspace fragilisé). <strong>Un timing pareil ne se reproduit pas souvent.</strong></p>
 
 <h4>Le modèle est prouvé et capital-efficient</h4>
-<p>Breakeven Y3-Y4 avec ~1&nbsp;M€. LTV/CAC de 15-23× côté voyageur, 20-56× côté propriétaire. Marge brute ~82&nbsp;%. Trajectoire Booking.com, pas Airbnb.</p>
+<p>Breakeven Y3-Y4 avec ~1&nbsp;M€. LTV/CAC de 15-23× côté voyageur, 20-56× côté propriétaire. Marge brute ~82&nbsp;%<sup class="cite"><a href="https://www.airbnb.com/help/article/1857" target="_blank" rel="noopener">4</a></sup>. Trajectoire Booking.com, pas Airbnb.</p>
 
 <h3>14.2 Les signaux qui inquiètent</h3>
 
