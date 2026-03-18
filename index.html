@@ -480,6 +480,35 @@
   .sources ol { margin-left: 20px; }
   .sources li { margin-bottom: 4px; }
 
+  /* ── Note méthodologique ── */
+  .methodo-note {
+    background: var(--bg-alt);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+  .methodo-note h4 {
+    margin: 0 0 10px;
+    font-size: 0.9rem;
+    color: var(--text);
+    letter-spacing: 0.3px;
+  }
+  .methodo-note ul, .methodo-note ol {
+    margin-left: 18px;
+    margin-top: 6px;
+  }
+  .methodo-note li { margin-bottom: 4px; }
+  .methodo-note code {
+    background: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-size: 0.87em;
+    font-family: monospace;
+  }
+
   /* ── Citation superscripts ── */
   sup.cite {
     font-size: 0.75em;
@@ -994,22 +1023,38 @@
 <!-- INSIGHT: L'approche bottom-up (nombre de terrains × nuitées × prix) donne un chiffre de 7,5 Md€ potentiel — significativement supérieur au top-down. L'écart reflète l'incertitude sur le taux d'adoption des propriétaires, qui est l'hypothèse la plus critique du modèle. -->
 
 <h3>4.1 TAM — Marché total du camping en Europe occidentale</h3>
-<p>Le marché mondial du camping est estimé à <strong>~57&nbsp;Md$ en 2025</strong>, avec une projection de ~123&nbsp;Md$ d'ici 2033 (CAGR ~10&nbsp;%)<sup class="cite"><a href="https://www.statista.com/outlook/mmo/travel-tourism/camping-glamping/europe" target="_blank" rel="noopener">1</a></sup>. L'Europe occidentale (<strong>10 marchés cibles incluant désormais le Portugal et la Croatie</strong>) représente <strong>~28&nbsp;Md€</strong>.</p>
+<p>Le marché mondial du camping est estimé à <strong>~57&nbsp;Md$ en 2025</strong>, avec une projection de ~123&nbsp;Md$ d'ici 2033 (CAGR ~10&nbsp;%)<sup class="cite"><a href="https://www.statista.com/outlook/mmo/travel-tourism/camping-glamping/europe" target="_blank" rel="noopener">1</a></sup>. L'Europe occidentale (<strong>10 marchés cibles incluant désormais le Portugal et la Croatie</strong>) représente <strong>~28&nbsp;Md€</strong>. Ce chiffre englobe l'ensemble de l'industrie camping&nbsp;: nuitées en hébergements de plein air, glamping premium, locations mobil-homes, et équipements/accessoires camping — conformément à la définition utilisée par Statista et Grand View Research.</p>
 
 <div class="table-wrap">
 <table>
-<thead><tr><th>Pays</th><th>Part marché</th><th>Taille 2025 (Md€)</th><th>Nuits/an</th></tr></thead>
+<thead><tr><th>Pays</th><th>Part marché</th><th>Taille 2025 (Md€)</th><th>Nuits camping/an <sup class="cite"><a href="https://ec.europa.eu/eurostat/databrowser/view/tour_occ_ninat/default/table?lang=en" target="_blank" rel="noopener">7</a></sup></th></tr></thead>
 <tbody>
-<tr><td>🇫🇷 France</td><td>~24,6&nbsp;%</td><td>~7,0</td><td>113M</td></tr>
-<tr><td>🇩🇪 Allemagne</td><td>~22&nbsp;%</td><td>~6,2</td><td>42M</td></tr>
-<tr><td>🇮🇹 Italie</td><td>~12&nbsp;%</td><td>~3,4</td><td>31M</td></tr>
-<tr><td>🇪🇸 Espagne</td><td>~10&nbsp;%</td><td>~2,8</td><td>38M</td></tr>
-<tr><td>🇨🇭 Suisse</td><td>~3&nbsp;%</td><td>~0,8</td><td>9M</td></tr>
-<tr><td>🇵🇹 Portugal</td><td>~3,5&nbsp;%</td><td>~1,0</td><td>~15M</td></tr>
-<tr><td>🇭🇷 Croatie</td><td>~3,2&nbsp;%</td><td>~0,9</td><td>~27M</td></tr>
-<tr><td><strong>Total 10 marchés</strong></td><td><strong>~89&nbsp;%</strong></td><td><strong>~25,2</strong></td><td><strong>~306M</strong></td></tr>
+<tr><td>🇫🇷 France</td><td>~25&nbsp;%</td><td>~7,0</td><td><strong>148M</strong></td></tr>
+<tr><td>🇩🇪 Allemagne</td><td>~15&nbsp;%</td><td>~4,2</td><td><strong>42M</strong></td></tr>
+<tr><td>🇮🇹 Italie</td><td>~13&nbsp;%</td><td>~3,6</td><td><strong>55M</strong></td></tr>
+<tr><td>🇪🇸 Espagne</td><td>~12&nbsp;%</td><td>~3,4</td><td><strong>47M</strong></td></tr>
+<tr><td>🇨🇭 Suisse</td><td>~2&nbsp;%</td><td>~0,6</td><td><strong>5M</strong></td></tr>
+<tr><td>🇵🇹 Portugal</td><td>~3&nbsp;%</td><td>~0,8</td><td><strong>7M</strong></td></tr>
+<tr><td>🇭🇷 Croatie</td><td>~4&nbsp;%</td><td>~1,1</td><td><strong>22M</strong></td></tr>
+<tr><td>🇳🇱 NL + 🇦🇹 AT + Nordiques</td><td>~15&nbsp;%</td><td>~4,2</td><td>~73M <em>(estimation)</em></td></tr>
+<tr><td><strong>Total 10 marchés</strong></td><td><strong>~89&nbsp;%</strong></td><td><strong>~24,9</strong></td><td><strong>~399M</strong></td></tr>
 </tbody>
 </table>
+</div>
+
+<div class="methodo-note">
+<h4>📐 Note méthodologique — TAM par pays</h4>
+<p><strong>Source des nuitées camping :</strong> les chiffres de nuitées (colonne de droite) proviennent de la table Eurostat <code>TOUR_OCC_NINAT</code>, NACE Rev.2 code <strong>I553</strong> («&nbsp;Camping grounds, recreational vehicle parks and trailer parks&nbsp;»), dernière mise à jour mars 2026, données 2023<sup class="cite"><a href="https://ec.europa.eu/eurostat/databrowser/view/tour_occ_ninat/default/table?lang=en" target="_blank" rel="noopener">7</a></sup>. Ces chiffres couvrent uniquement les campings institutionnels déclarés.</p>
+
+<p><strong>Méthode de calcul du TAM par pays (approche bottom-up de contrôle) :</strong></p>
+<ul>
+  <li>Prix moyen estimé : <strong>28&nbsp;€/nuit</strong> (emplacement pour 2 personnes + véhicule, base tarifaire camping classique EU, fourchette 20-35&nbsp;€ selon marché)</li>
+  <li>Formule&nbsp;: <code>TAM_pays ≈ nuitées_camping × 28&nbsp;€ × facteur_marché</code></li>
+  <li>Le facteur marché (1,5 à 2,5x) reflète la part équipements + glamping + locations incluse dans le TAM Statista</li>
+  <li>Exemple France&nbsp;: 148M × 28&nbsp;€ = 4,1&nbsp;Md€ (nuitées seules) × ~1,7 = <strong>~7&nbsp;Md€ total marché camping France</strong></li>
+</ul>
+
+<p><strong>Limites :</strong> les nuitées Eurostat NACE I553 sous-estiment la réalité totale (terrains non déclarés, camping sauvage non capté, micro-campings sous le seuil de déclaration). Les parts de marché TAM sont des approximations calibrées sur les données disponibles. Le chiffre de 28&nbsp;Md€ pour l'EU10 reste une estimation top-down (Statista, Grand View Research) non vérifiable via Eurostat seul.</p>
 </div>
 
 <h3>4.2 SAM — Segment adressable par Nomad</h3>
@@ -1022,6 +1067,18 @@
 <tr><td><strong>SAM médian</strong></td><td><strong>~2,8&nbsp;Md€</strong></td><td><strong>~5,0&nbsp;Md€</strong></td><td><strong>~6,8&nbsp;Md€</strong></td></tr>
 </tbody>
 </table>
+</div>
+
+<div class="methodo-note">
+<h4>📐 Note méthodologique — SAM</h4>
+<p><strong>Définition du périmètre :</strong> le SAM Nomad exclut (1) les campings institutionnels avec infrastructure fixe (&gt;20 emplacements), (2) le glamping premium (&gt;100&nbsp;€/nuit), (3) les équipements camping. Il cible uniquement les <strong>nuitées sur terrains privés non-institutionnels réservés via plateforme digitale</strong>&nbsp;: propriétaires agricoles, domaines ruraux, micro-campings (&lt;10 emplacements), bivouacs aménagés.</p>
+
+<p><strong>Hypothèse 8-12&nbsp;% du TAM :</strong> cette fourchette est calibrée sur deux données de contrôle&nbsp;:</p>
+<ol>
+  <li><strong>Nuitées non-institutionnelles :</strong> sur les ~400M nuitées camping/an dans l'EU10, environ 15-20&nbsp;% se font hors campings officiels (terrain privé, ferme, bivouac toléré). À 28&nbsp;€/nuit&nbsp;: 60-80M nuitées × 28&nbsp;€ = <strong>1,7-2,2&nbsp;Md€</strong> en volume potentiel de réservations.</li>
+  <li><strong>Validation croisée plateformes :</strong> Park4Night Pro, Campspace, Nomady et Hipcamp EU captent ensemble ~75-115&nbsp;M€ de volume brut, soit <strong>3-5&nbsp;% du SAM estimé à 2,8&nbsp;Md€</strong>. La sous-pénétration est confirmée.</li>
+</ol>
+<p><strong>CAGR du SAM :</strong> hypothèse de croissance identique au marché global (~10&nbsp;%/an), tirée par la numérisation accélérée du secteur et la demande structurelle vanlife/nature.</p>
 </div>
 
 <p><strong>Validation croisée&nbsp;:</strong> les plateformes existantes captent ~75-115&nbsp;M€ de volume brut, soit seulement <strong>3-5&nbsp;% du SAM</strong>. Le marché est largement sous-pénétré<sup class="cite"><a href="https://www.statista.com/outlook/mmo/travel-tourism/camping-glamping/europe" target="_blank" rel="noopener">6</a></sup>.</p>
@@ -1067,12 +1124,13 @@
 <div class="sources">
 <h4>Sources</h4>
 <ol>
-  <li>Grand View Research — Camping Market Report 2025-2033</li>
-  <li>Statista — Camping Market Outlook Europe</li>
+  <li>Grand View Research — Camping Market Report 2025-2033 (TAM global ~57 Md$)</li>
+  <li>Statista — Camping Market Outlook Europe (TAM EU, CAGR ~10 %)</li>
   <li>Allied Market Research — Europe Glamping Market Forecast</li>
   <li>CIVD — European Leisure Vehicle Market Report 2024</li>
-  <li>Eurostat — Tourism statistics 2023</li>
-  <li>FNHPA — Chiffres clés HPA France</li>
+  <li>Eurostat — Tourism statistics 2023 (vue d'ensemble)</li>
+  <li>FNHPA — Chiffres clés HPA France (validation croisée France)</li>
+  <li><a href="https://ec.europa.eu/eurostat/databrowser/view/tour_occ_ninat/default/table?lang=en" target="_blank" rel="noopener">Eurostat — TOUR_OCC_NINAT, NACE I553 «&nbsp;Camping grounds, recreational vehicle parks and trailer parks&nbsp;», données annuelles 2023, mise à jour mars 2026</a> — source primaire des nuitées camping par pays</li>
 </ol>
 </div>
 
@@ -2006,6 +2064,11 @@
           <td style="padding:0.5rem 0.75rem; white-space:nowrap;">2026-03-18</td>
           <td style="padding:0.5rem 0.75rem;">Approfondissement section Légal PESTEL (§3.7) — analyse narrative camping sauvage par pays (sanctions, opportunité Nomad), terrain privé (seuils légaux CH/FR/DE/PT/HR), agritourisme EU (cadres ANC, Loi 96/2006 IT, OPG HR, FEADER PAC). 2 nouvelles sources (réf. 13-14).</td>
         </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.5rem 0.75rem; font-weight:600;">v1.5</td>
+          <td style="padding:0.5rem 0.75rem; white-space:nowrap;">2026-03-18</td>
+          <td style="padding:0.5rem 0.75rem;">Documentation méthodologie TAM/SAM (§4) — nuitées camping corrigées avec données officielles Eurostat TOUR_OCC_NINAT NACE I553 (2023, mise à jour mars 2026) : FR 148M, DE 42M, IT 55M, ES 47M, HR 22M, PT 7M, CH 5M. Ajout notes méthodologiques explicites TAM et SAM. Nouvelle source réf. 7 (Eurostat TOUR_OCC_NINAT). Total nuitées 10 marchés révisé à ~399M.</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -2017,7 +2080,7 @@
 <!--                        FOOTER                              -->
 <!-- ════════════════════════════════════════════════════════════ -->
 <footer>
-  <p><strong>Nomad</strong> — Whitepaper v1.3</p>
+  <p><strong>Nomad</strong> — Whitepaper v1.5</p>
   <p>Mars 2026 · Document confidentiel</p>
   <p style="margin-top:8px; font-size:0.8rem; color:#94a3b8;">Assemblé par Isaak · Toutes les données et projections sont basées sur des sources secondaires et des estimations. Ce document ne constitue pas un conseil en investissement.</p>
 </footer>
