@@ -51,20 +51,21 @@ Le quadrant **curé + paneuropéen** est vide. C'est exactement là que Nomad se
 ## Le modèle économique
 
 - **Commission de 15 %** sur chaque réservation (10 % voyageur + 5 % hôte), alignée sur le standard du marché
-- **Services additionnels** (~24 % du panier) : eau, électricité, produits locaux
-- **Forfaits Premium** et mise en avant payante (à partir de Y2)
+- **Pricing positionné sous le camping classique** : 15-30 €/nuit, par emplacement (pas par personne) — en dessous du camping 2-3 étoiles (~25-40 €), à parité avec les aires de service camping-car
+- **Services additionnels** (~22 % du panier) : eau, électricité, produits locaux — positionnés à parité avec les aires de service, pas comme levier premium
+- **Mise en avant payante** (à partir de Y2)
 - **Phase 2 — véhicules** : location de vans P2P, panier moyen 3-7× supérieur
 
-**Projections (scénario base) :**
+**Projections (scénario base, panier moyen révisé ~55 €/réservation brut) :**
 
 | | Y1 | Y3 | Y5 |
 |---|---|---|---|
 | Terrains actifs | 200 | 4 000 | 15 000 |
-| Volume brut (M€) | 0,15 | 5,04 | 24,75 |
-| CA Nomad (M€) | 0,03 | 1,11 | 5,55 |
-| Marge opérationnelle | -603 % | -26 % | **+28 %** |
+| Volume brut (M€) | 0,11 | 3,96 | 19,80 |
+| CA Nomad (M€) | 0,022 | 0,87 | 4,46 |
+| Marge opérationnelle | — | -50 % | **+18 %** |
 
-**Breakeven opérationnel en Y3-Y4 avec ~1 M€ de funding cumulé.** Trajectoire capital-efficient, type Booking.com, pas Airbnb.
+**Breakeven opérationnel en Y4-Y5 avec ~1,1 M€ de funding cumulé.** Trajectoire capital-efficient, type Booking.com, pas Airbnb. Estimation conservatrice basée sur des prix de marché observés (vs hypothèse précédente non sourcée).
 
 ---
 
