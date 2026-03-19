@@ -575,6 +575,133 @@
     pre { white-space: pre-wrap; word-break: break-all; }
     a[href]::after { content: " (" attr(href) ")"; font-size: 0.75em; color: #888; }
     a.back-top::after, nav a::after { content: none; }
+    .chapnav-fab, .chapnav-overlay, .chapnav-panel { display: none !important; }
+  }
+
+  /* ── Chapter Navigation Panel ── */
+  .chapnav-fab {
+    position: fixed;
+    z-index: 1000;
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .chapnav-fab:hover { transform: scale(1.08); box-shadow: 0 6px 24px rgba(0,0,0,0.25); }
+  .chapnav-fab[aria-expanded="true"] { background: var(--text); }
+
+  .chapnav-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.35);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s, visibility 0.25s;
+  }
+  .chapnav-overlay.open { opacity: 1; visibility: visible; }
+
+  .chapnav-panel {
+    position: fixed;
+    z-index: 1001;
+    background: var(--bg);
+    overflow-y: auto;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Desktop: right-side drawer */
+  @media (min-width: 641px) {
+    .chapnav-panel {
+      top: 0; right: 0;
+      width: 320px;
+      height: 100vh;
+      border-left: 1px solid var(--border);
+      box-shadow: -4px 0 24px rgba(0,0,0,0.12);
+      transform: translateX(100%);
+      padding: 28px 24px 40px;
+    }
+    .chapnav-panel.open { transform: translateX(0); }
+  }
+
+  /* Mobile: bottom sheet */
+  @media (max-width: 640px) {
+    .chapnav-panel {
+      bottom: 0; left: 0; right: 0;
+      max-height: 65vh;
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 -4px 24px rgba(0,0,0,0.15);
+      transform: translateY(100%);
+      padding: 20px 20px 32px;
+    }
+    .chapnav-panel.open { transform: translateY(0); }
+    .chapnav-panel::before {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--border-dark);
+      margin: 0 auto 16px;
+    }
+  }
+
+  .chapnav-panel .chapnav-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+
+  .chapnav-panel ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: chapnav;
+  }
+  .chapnav-panel ol li {
+    counter-increment: chapnav;
+  }
+  .chapnav-panel ol li a {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+  }
+  .chapnav-panel ol li a::before {
+    content: counter(chapnav, decimal-leading-zero);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    min-width: 20px;
+    flex-shrink: 0;
+  }
+  .chapnav-panel ol li a:hover {
+    background: var(--bg-alt);
+    color: var(--accent);
+  }
+  .chapnav-panel ol li a.active {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 600;
   }
 </style>
 </head>
@@ -586,7 +713,7 @@
 <header class="hero" id="top">
   <h1>Nomad</h1>
   <p class="subtitle">Le Airbnb du camping nature&nbsp;: une marketplace multinationale pour les terrains privés et les micro-campings.</p>
-  <p class="meta">Whitepaper v2.1 — Mars 2026</p>
+  <p class="meta">Whitepaper v2.4 — Mars 2026</p>
 </header>
 
 <!-- ════════════════════════════════════════════════════════════ -->
@@ -604,7 +731,7 @@
     <li><a href="#s7">Proposition de valeur &amp; différenciation</a></li>
     <li><a href="#s8">Modèle économique &amp; logique financière</a></li>
     <li><a href="#s9">Stratégie de mise sur le marché (GTM)</a></li>
-    <li><a href="#s10">Stratégie de défense concurrentielle</a></li>
+    <li><a href="#s10">Stratégie de défense concurrentielle</a> <span style="font-size:0.85em; color:var(--text-muted);">— incl. <a href="#s10-5">§10.5 Nomady : 4 scénarios d'alliance</a></span></li>
     <li><a href="#s11">Analyse SWOT</a></li>
     <li><a href="#s12">Roadmap stratégique</a></li>
     <li><a href="#s13">Stratégie de validation terrain</a></li>
@@ -1334,18 +1461,24 @@
 
 <h3>7.3 Nomad vs. la concurrence</h3>
 
-<h4>Nomad vs. Nomady</h4>
+<h4>Nomad vs. Nomady — Concurrent ET partenaire potentiel</h4>
+<p style="margin-bottom:1rem;">La relation avec Nomady est <strong>binaire dans aucun sens</strong> : ce n'est pas simplement un concurrent à neutraliser ni une acquisition à exécuter. C'est avant tout une entreprise avec laquelle une complémentarité géographique et stratégique est structurellement évidente — et dont les signaux récents indiquent une ouverture réelle aux partenariats (cf. §10.5 pour l'analyse des 4 scénarios).</p>
 <div class="table-wrap">
 <table>
 <thead><tr><th>Critère</th><th>Nomady</th><th>Nomad</th></tr></thead>
 <tbody>
-<tr><td>Géographie</td><td>DACH uniquement</td><td>CH · FR · ES · IT · PT · HR — lancement CH+FR</td></tr>
-<tr><td>Catalogue</td><td>~1&nbsp;600 spots</td><td>Terrains privés <strong>ET</strong> campings classiques</td></tr>
+<tr><td>Géographie</td><td>DACH (CH+DE+AT) — consolidé via fusion like2camp déc. 2025</td><td>CH romande · FR · ES · IT · PT · HR — lancement CH+FR</td></tr>
+<tr><td>Catalogue</td><td>~1&nbsp;600 spots DACH</td><td>Terrains privés <strong>ET</strong> campings classiques, marchés latins</td></tr>
 <tr><td>Pricing</td><td>Souvent &gt;40 CHF/nuit</td><td>Gamme large&nbsp;: 15-40&nbsp;€/nuit</td></tr>
-<tr><td>Funding</td><td>Non public (Venture Kick portfolio)</td><td>Ambition alignée avec l'échelle</td></tr>
-<tr><td>Langue</td><td>Germanophone d'abord</td><td>Francophone d'abord → 1<sup>er</sup> marché camping EU</td></tr>
+<tr><td>Funding</td><td>Non public (Venture Kick portfolio) — équipe 2-10 personnes</td><td>1 M CHF disponible — ambition marchés francophones</td></tr>
+<tr><td>Langue</td><td>100&nbsp;% germanophone — aucune initiative francophone visible</td><td>Francophone d'abord → 1<sup>er</sup> marché camping EU (FR)</td></tr>
+<tr><td>Mode actuel</td><td>Intégration like2camp + partenariats actifs (Malibu camper vans, mars 2026)</td><td>Pré-lancement — validation terrain en cours</td></tr>
+<tr><td>Zones de friction</td><td>Marchés latins : absence totale</td><td>DACH : entrée volontairement reportée à Y5</td></tr>
 </tbody>
 </table>
+</div>
+<div class="callout callout-info" style="margin-top:1rem;">
+<p><strong>💡 Intelligence terrain (mars 2026) :</strong> Nomady vient de fusionner avec like2camp (Autriche, déc. 2025) — consolidant le DACH — et a signé un partenariat commercial avec Malibu Campervans (mars 2026). Équipe de 2-10 personnes, HQ Einsiedeln (Schwyz, CH). CEO Jannis Hiller joignable à <em>jannis@nomady.camp</em>. Ces signaux indiquent un acteur en mode croissance partenariale, pas en mode forteresse. La complémentarité géographique (Nomady = DACH, Nomad = latins) est structurellement évidente — voir §10.5 pour les 4 scénarios d'alliance possibles.</p>
 </div>
 
 <h3>7.4 La proposition en 3 phrases</h3>
@@ -1670,42 +1803,166 @@
 </ol>
 </div>
 
-<h3>10.4 Scénario d'expansion — Organique vs Acquisition</h3>
-<!-- INSIGHT: Ces deux scénarios ne sont pas mutuellement exclusifs — l'acquisition peut intervenir à n'importe quel moment pour accélérer un marché spécifique. La flexibilité stratégique est un atout. -->
-<p>La stratégie d'expansion géographique peut suivre deux trajectoires distinctes, avec des implications différentes sur le capital requis, la vitesse et le risque.</p>
+<h3>10.4 Scénario d'expansion — Organique (référence)</h3>
+<!-- INSIGHT: Ces deux scénarios ne sont pas mutuellement exclusifs — l'acquisition ou le partenariat peuvent intervenir à n'importe quel moment pour accélérer un marché spécifique. La flexibilité stratégique est un atout. -->
+<p>Le scénario de référence reste le lancement organique latin-first. Il est couvert en détail dans §9 (GTM) et §12 (Roadmap). Résumé :</p>
+<div class="callout callout-info">
+<ul>
+  <li><strong>Capital :</strong> 1 M CHF pré-seed + seed — suffisant pour valider CH+FR+ES/IT</li>
+  <li><strong>Vitesse :</strong> Y1 CH romande → Y2 France → Y3 ES+IT → Y4 PT+HR → Y5+ DACH</li>
+  <li><strong>Risque principal :</strong> cold-start lent, fenêtre concurrentielle (Hipcamp, Nomady)</li>
+  <li><strong>Moat :</strong> construit progressivement — expertise légale multi-pays, réseau hôtes fidèles, marque francophone</li>
+</ul>
+</div>
 
+<h3 id="s10-5">10.5 Stratégie vis-à-vis de Nomady — 4 scénarios</h3>
+<!-- INSIGHT: La relation avec Nomady est plus complexe qu'une simple relation concurrentielle. La complémentarité géographique est structurellement évidente. Les signaux de mars 2026 (fusion like2camp, partenariat Malibu) indiquent une fenêtre d'opportunité réelle. -->
+<p>Nomady n'est pas seulement un concurrent : c'est une entreprise avec laquelle la complémentarité est structurelle. Nomady est fort sur le DACH (1&nbsp;600+ terrains, app native, communauté germanophone). Nomad vise les marchés latins francophones. Il n'y a pas de chevauchement géographique naturel — et les deux acteurs ont des assets complémentaires. Quatre scénarios sont analysés ci-dessous.</p>
+
+<div class="callout callout-warn" style="margin-bottom:1.5rem;">
+<p><strong>🔍 Intelligence terrain (mars 2026) :</strong> Nomady vient de fusionner avec like2camp (Autriche, déc. 2025), consolidant tout le DACH. Ils ont signé un partenariat commercial avec Malibu Campervans (mars 2026). L'équipe est de 2-10 personnes (Einsiedeln, Schwyz, CH). CEO : Jannis Hiller (<em>jannis@nomady.camp</em>), issu de l'équipe depuis 4 ans — pragmatique, orienté partenariats. Venture Kick portfolio (montant non public). Aucun signe d'ambition francophone dans leurs communications. <strong>Ces signaux indiquent une ouverture réelle aux discussions business.</strong></p>
+</div>
+
+<h4>Tableau comparatif des 4 scénarios</h4>
 <div class="table-wrap">
 <table>
-<thead><tr><th>Critère</th><th>🌱 Scénario A — Organique</th><th>🤝 Scénario B — Acquisition (ex. Nomady)</th></tr></thead>
+<thead><tr><th>Scénario</th><th>Coût / Effort Y1</th><th>Time-to-market</th><th>Contrôle Nomad</th><th>Recommandation</th></tr></thead>
 <tbody>
-<tr><td><strong>Vitesse</strong></td><td>Progression marché par marché (Y1→Y4)</td><td>Gain estimé 12-24 mois sur CH+FR/DACH</td></tr>
-<tr><td><strong>Capital requis</strong></td><td>1&nbsp;M&nbsp;CHF initial (pre-seed + seed)</td><td>+200-500&nbsp;K€ pour acquisition (à négocier) + intégration</td></tr>
-<tr><td><strong>Marchés couverts</strong></td><td>Construit de zéro sur chaque marché</td><td>Base CH+DACH existante (Nomady) immédiatement opérationnelle</td></tr>
-<tr><td><strong>Communauté</strong></td><td>À construire (cold-start sur chaque marché)</td><td>~1&nbsp;600 terrains + communauté hôtes/voyageurs actifs</td></tr>
-<tr><td><strong>Risques</strong></td><td>Cold-start lent, fenêtre concurrentielle</td><td>Intégration technique, dette organisationnelle, culture d'entreprise</td></tr>
-<tr><td><strong>Contrôle</strong></td><td>Total — produit construit selon la vision Nomad</td><td>Partiel — dépendance de la stack existante pendant transition</td></tr>
-<tr><td><strong>Moat</strong></td><td>Construit progressivement, solidement</td><td>Hérité + potentiellement plus fort si communauté bien intégrée</td></tr>
+<tr>
+  <td><strong>A — Organique</strong><br><small>Lancement indépendant, pas d'interaction avec Nomady</small></td>
+  <td>1 M CHF (plan de base)</td>
+  <td>Y1-Y4 progressif</td>
+  <td>Total</td>
+  <td>Scénario par défaut — valide si pas d'accord Nomady possible</td>
+</tr>
+<tr>
+  <td><strong>B — Acquisition</strong><br><small>Johan rachète Nomady</small></td>
+  <td>+200-500 K€ sur le 1 M CHF (à négocier)</td>
+  <td>Gain 12-24 mois DACH</td>
+  <td>Total (après intégration)</td>
+  <td>Si Nomady montre des signaux d'exit (Y2-Y3) et valorisation attractive</td>
+</tr>
+<tr style="background: var(--accent-light);">
+  <td><strong>C — Partenariat commercial</strong><br><small>Indépendants, accord commercial</small></td>
+  <td>Quasi nul (négociation, contrat)</td>
+  <td>Immédiat dès accord</td>
+  <td>Élevé (rôle limité de Nomady)</td>
+  <td><strong>Quick win tactique — à initier dès Y1</strong></td>
+</tr>
+<tr style="background: var(--accent-light);">
+  <td><strong>D — Association capitalistique</strong><br><small>Johan entre au capital de Nomady</small></td>
+  <td>Partie du 1 M CHF (à définir)</td>
+  <td>3-6 mois (négociation + closing)</td>
+  <td>Partagé (minoritaire)</td>
+  <td><strong>Option à explorer en priorité — asymétrie favorable</strong></td>
+</tr>
 </tbody>
 </table>
 </div>
 
-<div class="callout callout-warn">
-<h4>🧭 Analyse stratégique — Nomady comme cible potentielle</h4>
-<p>Nomady (CH, ~1&nbsp;600 terrains DACH, funding non public) est le concurrent le plus proche en termes de modèle. Une acquisition présenterait des avantages concrets&nbsp;:</p>
-<ul>
-  <li><strong>Base immédiate</strong>&nbsp;: 1&nbsp;600 terrains actifs, communauté établie, track record de paiements</li>
-  <li><strong>Contournement du cold-start DACH</strong>&nbsp;: Nomady absent du francophone, mais leur base DACH est solide</li>
-  <li><strong>Signal marché fort</strong>&nbsp;: une acquisition bien menée valide la thèse devant les investisseurs</li>
-  <li><strong>Valorisation estimée</strong>&nbsp;: funding non public (Venture Kick portfolio) → valorisation à négocier, probablement 200-500K€ selon traction réelle et EBITDA</li>
-</ul>
-<p>À noter&nbsp;: Nomad priorise les marchés latins (CH romande → FR → ES+IT → PT+HR), non DACH. Une acquisition de Nomady serait donc principalement utile pour sa base communautaire et technologique, non pour la couverture géographique immédiate. Le bénéfice est avant tout <strong>défensif</strong> (neutraliser un concurrent potentiel) et <strong>accélérateur de crédibilité</strong>.</p>
+<h4>Scénario B — Acquisition</h4>
+<p>Johan rachète Nomady — contrôle total, base DACH immédiate (~1&nbsp;600 terrains, app native, communauté établie).</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th></th><th>Détail</th></tr></thead>
+<tbody>
+<tr><td><strong>Avantages</strong></td><td>Contrôle total · Catalogue DACH immédiat · Stack tech opérationnelle · Crédibilité investisseurs · Neutralisation concurrente</td></tr>
+<tr><td><strong>Inconvénients</strong></td><td>Coût acquisition inconnu (Venture Kick → valorisation probablement 300-800 K€) · Intégration complexe (équipe, culture, tech) · Distraction from core latin markets · Risque dette technique</td></tr>
+<tr><td><strong>Timing optimal</strong></td><td>Y2-Y3 — seulement si Nomad a validé le modèle sur CH+FR (1 000+ terrains actifs) et si Nomady montre des signaux d'exit</td></tr>
+<tr><td><strong>Budget estimé</strong></td><td>200-500 K€ acquisition + 100-200 K€ intégration = 300-700 K€ sur le 1 M CHF disponible</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>Scénario C — Partenariat commercial</h4>
+<p>Nomad et Nomady restent entièrement indépendants mais signent un accord de collaboration mutuellement bénéfique.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th></th><th>Détail</th></tr></thead>
+<tbody>
+<tr><td><strong>Structure possible</strong></td><td>
+  <ul style="padding-left:1.2rem; margin:0;">
+    <li><strong>Segmentation géographique</strong> : Nomady = DACH exclusif, Nomad = marchés latins exclusif — pas de concurrence frontale</li>
+    <li><strong>Partage de catalogue</strong> : spots Nomady visibles depuis Nomad pour les voyageurs francophones en transit DACH (et vice-versa)</li>
+    <li><strong>Cross-promotion</strong> : Nomady dirige ses utilisateurs francophones vers Nomad ; Nomad dirige ses communautés DACH vers Nomady</li>
+    <li><strong>Échange de données</strong> : signaux de demande par marché pour guider l'expansion respective</li>
+  </ul>
+</td></tr>
+<tr><td><strong>Avantages</strong></td><td>Coût quasi nul · Time-to-market immédiat · Catalogue élargi dès Y1 · Signal fort pour les hôtes et investisseurs · Nomady déjà en mode partenariats actifs (Malibu, like2camp)</td></tr>
+<tr><td><strong>Inconvénients</strong></td><td>Dépendance à un tiers · Pas de contrôle sur la qualité Nomady · Risque de pivotement si Nomady lève un round et vise le francophone · Accord non exclusif — Nomady peut faire pareil avec d'autres</td></tr>
+<tr><td><strong>Mitigation</strong></td><td>Clause de non-concurrence géographique · Durée limitée (2 ans renouvelables) · Clause de préférence si Nomady envisage une expansion francophone</td></tr>
+<tr><td><strong>Contact</strong></td><td>jannis@nomady.camp — approche directe recommandée (CEO accessible, culture startup)</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>Scénario D — Association capitalistique (option à explorer en priorité)</h4>
+<p>Johan entre au capital de Nomady en tant qu'investisseur minoritaire ou co-fondateur Business Development pour les marchés latins. C'est la voie la plus intéressante structurellement car elle combine les avantages des scénarios B et C sans leurs inconvénients majeurs.</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th></th><th>Détail</th></tr></thead>
+<tbody>
+<tr><td><strong>Structure possible</strong></td><td>
+  <ul style="padding-left:1.2rem; margin:0;">
+    <li><strong>Johan = investisseur minoritaire</strong> (10-25 % du capital) + rôle opérationnel (Business Development Director — marchés latins)</li>
+    <li><strong>Apport Johan</strong> : capital (tranche du 1 M CHF, ex. 150-300 K€), expertise marché francophone, réseau CH romande + France, capacité execution GTM latin</li>
+    <li><strong>Apport Nomady</strong> : plateforme opérationnelle, app native, catalogue DACH (1 600+ terrains), équipe tech (Michael Hendlich CTO), marque établie, expérience opérationnelle 5 ans</li>
+    <li><strong>Nomad devient</strong> la vertical ou marque latine de Nomady (co-brand), ou Nomady devient l'infrastructure tech derrière Nomad</li>
+  </ul>
+</td></tr>
+<tr><td><strong>Avantages</strong></td><td>
+  <ul style="padding-left:1.2rem; margin:0;">
+    <li>Mutualisation des coûts tech — pas besoin de reconstruire une app from scratch (économie estimée : 200-400 K€ et 12-18 mois)</li>
+    <li>Synergies immédiates : catalogue, équipe, infrastructure de paiement, assurance, onboarding hôtes</li>
+    <li>Équipe plus forte — Johan + Jannis = complémentarité géographique, linguistique et réseau</li>
+    <li>Crédibilité investisseurs supérieure : "deux marchés, une plateforme, un track record"</li>
+    <li>Nomady déjà en mode intégration (like2camp) — ils savent absorber des partenaires</li>
+    <li>Signal de marché fort : un investisseur externe qui croit dans le modèle</li>
+  </ul>
+</td></tr>
+<tr><td><strong>Inconvénients</strong></td><td>
+  <ul style="padding-left:1.2rem; margin:0;">
+    <li>Perte de contrôle partielle — décisions stratégiques co-pilotées</li>
+    <li>Dépendance à la relation personnelle avec Jannis Hiller et l'équipe fondatrice</li>
+    <li>Dilution : Johan n'est pas seul maître du destin de Nomad</li>
+    <li>Due diligence nécessaire (dette technique, situation financière, cap table Nomady)</li>
+    <li>Risque d'alignement culturel (germanophone vs francophone)</li>
+  </ul>
+</td></tr>
+<tr><td><strong>Conditions préalables</strong></td><td>
+  <ul style="padding-left:1.2rem; margin:0;">
+    <li>Audit tech de la stack Nomady (app native, backend, scalabilité multi-langue)</li>
+    <li>Accès aux métriques clés : GMV, taux d'occupation moyen, churn hôtes/voyageurs, EBITDA</li>
+    <li>Alignment sur la vision : Nomady comme plateforme pan-européenne ou Nomad-latin comme vertical distinct ?</li>
+    <li>Term sheet incluant : droit de préemption, anti-dilution, clause de sortie</li>
+  </ul>
+</td></tr>
+<tr><td><strong>Budget estimé</strong></td><td>150-300 K€ apport capital (soit 15-30 % du 1 M CHF) + rôle opérationnel → préserve 700-850 K€ pour le GTM latin</td></tr>
+<tr><td><strong>Timing</strong></td><td>Approche à initier dès validation MVP (100 nuits) — avant de lever un round complet. La fenêtre : Nomady est en intégration like2camp, financement non public, équipe réduite → potentiellement ouverts à un apport stratégique francophone.</td></tr>
+</tbody>
+</table>
 </div>
 
 <div class="callout callout-info">
-<h4>📌 Recommandation</h4>
-<p><strong>Phase 1 (Y1-Y2) : Organique avant tout.</strong> Le 1&nbsp;M&nbsp;CHF disponible est suffisant pour valider le modèle sur CH+FR sans acquisition. La priorité absolue est le product-market fit francophone.</p>
-<p><strong>Phase 2 (Y2-Y3) : Envisager l'acquisition sélectivement.</strong> Si Nomad atteint 1&nbsp;000+ terrains actifs et que Nomady montre des signaux de vulnérabilité (manque de funding, fondateurs en exit mode), une acquisition à prix raisonnable peut accélérer l'expansion DACH et renforcer la position défensive avant l'arrivée d'Hipcamp.</p>
-<p>Les deux scénarios ne sont pas mutuellement exclusifs. La flexibilité stratégique — rester ouvert à l'acquisition sans en dépendre — est le positionnement optimal.</p>
+<h4>📌 Recommandation stratégique</h4>
+<p><strong>Court terme (maintenant → M3) :</strong> Initier un premier contact exploratoire avec Jannis Hiller (<em>jannis@nomady.camp</em>). Angle d'approche : partager la vision Nomad pour les marchés latins, explorer l'intérêt pour un partenariat commercial de segmentation géographique (Scénario C). Pas de proposition capitalistique immédiate — tester d'abord l'alignement.</p>
+<p><strong>Moyen terme (M3-M12) :</strong> Si l'alignement est confirmé et que Nomady est réceptif à un apport stratégique, engager le Scénario D (association capitalistique). Mandater un conseil juridique CH pour structurer l'entrée au capital. Réserver 150-300 K€ du 1 M CHF pour cet usage.</p>
+<p><strong>Phase 2 (Y2-Y3) :</strong> Scénario B (acquisition complète) reste ouvert si Nomady traverse une période difficile ou si les fondateurs signalent un désir d'exit. Ce serait alors une consolidation naturelle après une relation partenariale établie.</p>
+<p><strong>Default :</strong> En l'absence de réponse ou d'alignement Nomady, le Scénario A (organique latin-first) reste solide et autosuffisant. Nomady n'est pas un prérequis au succès de Nomad — c'est un accélérateur optionnel.</p>
+</div>
+
+<h4>Risques liés au scénario Nomady (ajout §10 Risques)</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Risque</th><th>Probabilité</th><th>Impact</th><th>Mitigation</th></tr></thead>
+<tbody>
+<tr><td>Nomady refuse tout dialogue</td><td>Faible (culture startup, CEO accessible)</td><td>Faible (Scénario A reste viable)</td><td>Approche directe + valeur claire pour Nomady (accès marché FR sans investissement)</td></tr>
+<tr><td>Nomady lève un round et vise le francophone</td><td>Faible à court terme (aucun signal)</td><td>Élevé (concurrent direct)</td><td>Vitesse d'exécution Y1 sur CH+FR ; lock-in hôtes avant leur arrivée</td></tr>
+<tr><td>Désalignement post-association</td><td>Moyenne (équipes, cultures, priorités différentes)</td><td>Élevé (perte de capital + distraction)</td><td>Due diligence approfondie · Gouvernance claire · Jalons contractuels · Clause de sortie</td></tr>
+<tr><td>Dette technique Nomady non compatible</td><td>Moyenne (stack non auditée)</td><td>Élevé (Scénario D dépend de la tech)</td><td>Audit technique obligatoire avant toute discussion capitalistique</td></tr>
+</tbody>
+</table>
 </div>
 
 <div class="sources">
@@ -1713,11 +1970,13 @@
 <ol>
   <li>Section 5 du whitepaper — analyse concurrentielle (funding, faiblesses, moats)</li>
   <li>Section 8 du whitepaper — projections terrains, CAC, LTV</li>
-  <li>Section 3 du whitepaper (PESTEL) — cadre légal multi-pays</li>
+  <li>Section 9 du whitepaper (GTM) — séquencement géographique latin-first</li>
   <li>Hipcamp — profil Crunchbase (~75M$ funding), présence UK depuis 2022</li>
   <li>Digital Markets Act (EU Regulation 2022/1925) — restrictions exclusivité</li>
   <li>NFX — «&nbsp;The Network Effects Manual&nbsp;» (nfx.com/post/network-effects-manual)</li>
-  <li>Nomady.camp — site officiel, profil LinkedIn fondateurs (mars 2026)</li>
+  <li>Nomady.camp — site officiel, page About Us (nomady.camp/en/about-us, mars 2026) — équipe, fondateurs</li>
+  <li>Nomady LinkedIn (linkedin.com/company/nomadycamp, mars 2026) — fusion like2camp (déc. 2025), partenariat Malibu (mars 2026), recrutement, CEO Jannis Hiller</li>
+  <li>Venture Kick — portfolio Nomady (venturekick.ch/nomady) — montant non public</li>
 </ol>
 </div>
 
@@ -1765,6 +2024,7 @@
       <li>Cadre légal FR/CH favorable (&lt;6 empl. sans permis)</li>
       <li>Phase 2 véhicules&nbsp;: panier ×3-7</li>
       <li>Partenariats&nbsp;: Indie Campers, Yescapa, offices du tourisme</li>
+      <li><strong>Alliance Nomady</strong>&nbsp;: complémentarité DACH/latins → partenariat ou association capitalistique (cf. §10.5)</li>
       <li>IA comme différenciateur tech</li>
     </ul>
   </div>
@@ -1772,7 +2032,7 @@
     <h4>🔴 Menaces</h4>
     <ul>
       <li>Hipcamp acquiert un acteur européen (2-4 ans)</li>
-      <li>Nomady lève et vise le francophone</li>
+      <li>Nomady lève et vise le francophone (aucun signal mars 2026 — mais possible)</li>
       <li>Campspace pivote vers la curation</li>
       <li>Booking.com/Google lance une verticale camping</li>
       <li>Durcissement réglementaire</li>
@@ -2039,7 +2299,7 @@
 <ul>
   <li><strong>L'exécution est à zéro.</strong> Zéro réservation, zéro hôte, zéro code.</li>
   <li><strong>Le fondateur est seul.</strong> Red flag classique des investisseurs.</li>
-  <li><strong>Nomady a 5 ans d'avance.</strong> Rien ne les empêche de viser le francophone.</li>
+  <li><strong>Nomady a 5 ans d'avance.</strong> Rien ne les empêche de viser le francophone — mais aucun signal dans ce sens (mars 2026). Un partenariat pourrait transformer ce risque en avantage (cf. §10.5).</li>
   <li><strong>Saisonnalité brutale.</strong> 70-80&nbsp;% du CA sur 4-5 mois.</li>
   <li><strong>L'assurance collective est non triviale.</strong> Les assureurs veulent des données que Nomad n'a pas.</li>
 </ul>
@@ -2195,10 +2455,15 @@
           <td style="padding:0.5rem 0.75rem; white-space:nowrap;">2026-03-18</td>
           <td style="padding:0.5rem 0.75rem;">Matrice positionnement refonte axes + tableau concurrence 2 nouvelles colonnes (TASK-082) — (1) Axe X matrice §5.3 remplacé : "Local ↔ Multi-marchés" → "Camping officiel / Sauvage ↔ Terrain privé" (lecture directe du positionnement Nomad vs concurrents). (2) Axe Y mis à jour : "Non-curé ↔ Curé/Premium" → "Non-transactionnel ↔ Transactionnel". (3) Coordonnées Chart.js recalculées pour 6 concurrents + Nomad selon le nouveau référentiel. (4) Rayons bulles en log scale normalisé (Park4Night r=14, Hipcamp r=13, Campspace r=12, PiNCAMP/AlpacaCamping r=7, Nomady r=5, Nomad r=5 — honnêteté sur la taille Y1). (5) Hipcamp ajouté au graphique (absent auparavant). (6) Titre graphique mis à jour : "Type de spots × Modèle transactionnel". (7) Tableau §5.1 : 2 nouvelles colonnes — "Positionnement spots" (Terrain privé / Camping officiel / Sauvage communautaire / Mix) et "Downloads iOS / Android" extraits des données collectées TASK-079.</td>
         </tr>
-        <tr>
+        <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:0.5rem 0.75rem; font-weight:600;">v2.3</td>
           <td style="padding:0.5rem 0.75rem; white-space:nowrap;">2026-03-18</td>
           <td style="padding:0.5rem 0.75rem;">Refonte modèle économique — pricing, positionnement vs substituts, CAC/LTV (TASK-081) — (1) Suppression Flux 4 (forfait Premium propriétaire) : trop tôt, distraction par rapport au MVP. (2) Grille de substituts §8.2 enrichie : colonne Source ajoutée avec URLs vérifiées (CampingCard ACSI, Park4Night, Hipcamp), ligne Nomad (15-30€/nuit) ajoutée. (3) Prix cible Nomad : 15-30€/nuit par emplacement (pas par personne). (4) Panier moyen révisé : 22€/nuit × 2 nuits + 10€ services = ~55€ brut (vs 93€ précédent). (5) Projections financières sur base révisée : CA Y5 4,46 M€, marge +18%, breakeven Y4-Y5. (6) Définitions CAC et LTV avec exemples chiffrés multiples (55€×15% et 40€×22% fourchettes). (7) CAC fourchette par canal : organique/referral 5-10€, social ads 15-20€, mix pondéré ~7€. (8) LTV/CAC fourchette 5-21× selon canal (mix 9-12×) — vs 15-23× précédent. (9) Services additionnels : parité prix aires de service. (10) Note méthodologique panier moyen révisé. (11) Executive Summary §14 mis à jour : breakeven Y4-Y5, LTV/CAC 5-21×.</td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem 0.75rem; font-weight:600;">v2.4</td>
+          <td style="padding:0.5rem 0.75rem; white-space:nowrap;">2026-03-19</td>
+          <td style="padding:0.5rem 0.75rem;">Stratégie Nomady — 4 scénarios d'alliance (TASK-090) — (1) §7.3 "Nomad vs Nomady" enrichi : Nomady repositionné comme concurrent ET partenaire potentiel. Intelligence terrain ajoutée : fusion like2camp (déc. 2025), partenariat Malibu (mars 2026), équipe 2-10 personnes, HQ Einsiedeln Schwyz (CH), CEO Jannis Hiller (jannis@nomady.camp). (2) §10.4 restructuré : scénario Organique recentré comme référence. (3) Nouvelle section §10.5 "Stratégie vis-à-vis de Nomady — 4 scénarios" : tableau comparatif (Organique / Acquisition / Partenariat commercial / Association capitalistique) avec développement détaillé de chaque scénario — coûts, avantages, inconvénients, mitigations, timing. Scénario D (Association capitalistique) développé en profondeur : structure (Johan minoritaire + BD Director latins), apports croisés, conditions préalables, budget (150-300 K€ sur 1 M CHF). (4) Tableau risques partenariat Nomady ajouté. (5) Sources Nomady mises à jour avec page About Us et LinkedIn (mars 2026).</td>
         </tr>
       </tbody>
     </table>
@@ -2211,7 +2476,7 @@
 <!--                        FOOTER                              -->
 <!-- ════════════════════════════════════════════════════════════ -->
 <footer>
-  <p><strong>Nomad</strong> — Whitepaper v2.3</p>
+  <p><strong>Nomad</strong> — Whitepaper v2.4</p>
   <p>Mars 2026 · Document confidentiel</p>
   <p style="margin-top:8px; font-size:0.8rem; color:#94a3b8;">Assemblé par Isaak · Toutes les données et projections sont basées sur des sources secondaires et des estimations. Ce document ne constitue pas un conseil en investissement.</p>
 </footer>
@@ -2493,6 +2758,94 @@ const datalabelsPlugin = ChartDataLabels;
 })();
 </script>
 
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--              CHAPTER NAVIGATION (floating)                 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="chapnav-overlay" id="chapnav-overlay"></div>
+<nav class="chapnav-panel" id="chapnav-panel" aria-label="Navigation rapide">
+  <div class="chapnav-title">Chapitres</div>
+  <ol id="chapnav-list"></ol>
+</nav>
+<button class="chapnav-fab" id="chapnav-fab" aria-label="Naviguer entre chapitres" aria-expanded="false" title="Chapitres">☰</button>
+
+<script>
+(function() {
+  var fab = document.getElementById('chapnav-fab');
+  var panel = document.getElementById('chapnav-panel');
+  var overlay = document.getElementById('chapnav-overlay');
+  var list = document.getElementById('chapnav-list');
+
+  // Build chapter list from sections
+  var sections = document.querySelectorAll('section[id^="s"]');
+  var entries = [];
+  sections.forEach(function(sec) {
+    var h2 = sec.querySelector('h2.section-title');
+    if (!h2) return;
+    var text = h2.textContent.replace(/^\d+\s*/, '').trim();
+    entries.push({ id: sec.id, text: text });
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.href = '#' + sec.id;
+    a.textContent = text;
+    a.dataset.target = sec.id;
+    a.addEventListener('click', function() { closeNav(); });
+    li.appendChild(a);
+    list.appendChild(li);
+  });
+
+  function openNav() {
+    panel.classList.add('open');
+    overlay.classList.add('open');
+    fab.setAttribute('aria-expanded', 'true');
+    fab.textContent = '✕';
+    updateActive();
+  }
+
+  function closeNav() {
+    panel.classList.remove('open');
+    overlay.classList.remove('open');
+    fab.setAttribute('aria-expanded', 'false');
+    fab.textContent = '☰';
+  }
+
+  function toggleNav() {
+    panel.classList.contains('open') ? closeNav() : openNav();
+  }
+
+  fab.addEventListener('click', toggleNav);
+  overlay.addEventListener('click', closeNav);
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && panel.classList.contains('open')) closeNav();
+  });
+
+  // Highlight current chapter
+  function updateActive() {
+    var scrollY = window.scrollY || window.pageYOffset;
+    var current = null;
+    sections.forEach(function(sec) {
+      if (sec.offsetTop - 120 <= scrollY) current = sec.id;
+    });
+    list.querySelectorAll('a').forEach(function(a) {
+      a.classList.toggle('active', a.dataset.target === current);
+    });
+  }
+
+  // Update active state on scroll (throttled)
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        if (panel.classList.contains('open')) updateActive();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
