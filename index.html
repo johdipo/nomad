@@ -703,6 +703,60 @@
     color: var(--accent);
     font-weight: 600;
   }
+
+  /* ── Screenshot gallery ── */
+  #s5-screenshots {
+    margin: 2rem 0;
+  }
+  #s5-screenshots h3 {
+    margin-bottom: 0.5rem;
+  }
+  .screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 640px) {
+    .screenshot-grid { grid-template-columns: 1fr; }
+  }
+  .screenshot-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--surface, #fff);
+    border-radius: 14px;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  }
+  .screenshot-card img {
+    width: 100%;
+    max-width: 220px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: block;
+    margin: 0 auto;
+  }
+  .screenshot-card figcaption {
+    text-align: center;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .screenshot-card figcaption strong {
+    font-size: 1rem;
+  }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
+  .badge-sauvage { background: #e8f4e8; color: #2d6a2d; }
+  .badge-prive { background: #e8f0fb; color: #1a4a8a; }
+  .badge-mix { background: #fef3e2; color: #7a4a00; }
+  .screenshot-card figcaption .sc-meta {
+    font-size: 0.78rem;
+    color: var(--muted, #666);
+  }
 </style>
 </head>
 <body>
@@ -1286,7 +1340,47 @@
 </table>
 </div>
 
-<h3>5.2 Limites structurelles communes</h3>
+<section id="s5-screenshots">
+  <h3>5.2 Aperçu des interfaces concurrentes</h3>
+  <p class="section-intro">Le marché actuel est fragmenté entre apps communautaires non-transactionnelles et marketplaces transactionnelles à UX variable. Nomad adresse ce vide avec une expérience unifiée et transactionnelle sur le segment terrain privé.</p>
+  <div class="screenshot-grid">
+    <figure class="screenshot-card">
+      <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/6d/db/bb/6ddbbb0d-aec4-f891-dd56-bedfba2b2030/e6e07306-93ae-4ce0-ad86-df519fa19f70_EN1_1242x2208.png/392x696bb.png" alt="Park4Night — carte communautaire" loading="lazy">
+      <figcaption>
+        <strong>Park4Night</strong>
+        <span class="badge badge-sauvage">Sauvage communautaire</span>
+        <span class="sc-meta">Non transactionnel · ~9M utilisateurs</span>
+      </figcaption>
+    </figure>
+    <figure class="screenshot-card">
+      <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/77/73/ed/7773ed73-c742-0dda-d0ea-2f78bec18371/01b-ASA-COMP-6-9-INCH-APP-STORE-PDP.png/392x696bb.jpg" alt="Hipcamp — marketplace terrain privé US" loading="lazy">
+      <figcaption>
+        <strong>Hipcamp</strong>
+        <span class="badge badge-prive">Terrain privé</span>
+        <span class="sc-meta">Transactionnel · ~75M$ levés · 140K+ spots (US)</span>
+      </figcaption>
+    </figure>
+    <figure class="screenshot-card">
+      <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/73/ba/8b/73ba8bd9-e910-a0a9-554e-0e187b6a9660/AppStore_5_U002c5Zoll_1.jpg/392x696bb.jpg" alt="Nomady — marketplace terrain privé DACH" loading="lazy">
+      <figcaption>
+        <strong>Nomady</strong>
+        <span class="badge badge-prive">Terrain privé</span>
+        <span class="sc-meta">Transactionnel · DACH · 50K+ téléch. Android</span>
+      </figcaption>
+    </figure>
+    <figure class="screenshot-card">
+      <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/30/b9/1b/30b91b31-b5ca-55b4-c3d3-300940bad47a/iOS_Phones__6.9-01.png/392x696bb.jpg" alt="HomeCamper — marketplace terrain privé EU" loading="lazy">
+      <figcaption>
+        <strong>HomeCamper / Campspace</strong>
+        <span class="badge badge-mix">Mix</span>
+        <span class="sc-meta">Transactionnel · EU · 1M+ membres communauté</span>
+      </figcaption>
+    </figure>
+  </div>
+  <p class="source-note" style="font-size:0.8rem;color:var(--muted,#666);margin-top:-0.5rem;">Sources captures : App Store iOS — Park4Night (id430946556), Hipcamp (id1440066037), Nomady (id1622555256), HomeCamper (id6741168246) — mars 2026.</p>
+</section>
+
+<h3>5.3 Limites structurelles communes</h3>
 <ol>
   <li><strong>Fragmentation géographique</strong>&nbsp;: aucun acteur ne couvre toute l'Europe occidentale efficacement</li>
   <li><strong>Absence de curation qualitative à grande échelle</strong></li>
@@ -1295,7 +1389,7 @@
   <li><strong>Expertise légale absente</strong>&nbsp;: la conformité multi-pays est le vrai moat, personne ne l'a construit</li>
 </ol>
 
-<h3>5.3 Matrice de positionnement</h3>
+<h3>5.4 Matrice de positionnement</h3>
 <div class="chart-wrap">
   <p class="chart-title">Positionnement concurrentiel — Type de spots × Modèle transactionnel</p>
   <div class="chart-canvas-wrap" style="height:340px;"><canvas id="chart-positioning"></canvas></div>
@@ -2461,6 +2555,11 @@
           <td style="padding:0.5rem 0.75rem;">Refonte modèle économique — pricing, positionnement vs substituts, CAC/LTV (TASK-081) — (1) Suppression Flux 4 (forfait Premium propriétaire) : trop tôt, distraction par rapport au MVP. (2) Grille de substituts §8.2 enrichie : colonne Source ajoutée avec URLs vérifiées (CampingCard ACSI, Park4Night, Hipcamp), ligne Nomad (15-30€/nuit) ajoutée. (3) Prix cible Nomad : 15-30€/nuit par emplacement (pas par personne). (4) Panier moyen révisé : 22€/nuit × 2 nuits + 10€ services = ~55€ brut (vs 93€ précédent). (5) Projections financières sur base révisée : CA Y5 4,46 M€, marge +18%, breakeven Y4-Y5. (6) Définitions CAC et LTV avec exemples chiffrés multiples (55€×15% et 40€×22% fourchettes). (7) CAC fourchette par canal : organique/referral 5-10€, social ads 15-20€, mix pondéré ~7€. (8) LTV/CAC fourchette 5-21× selon canal (mix 9-12×) — vs 15-23× précédent. (9) Services additionnels : parité prix aires de service. (10) Note méthodologique panier moyen révisé. (11) Executive Summary §14 mis à jour : breakeven Y4-Y5, LTV/CAC 5-21×.</td>
         </tr>
         <tr>
+          <td style="padding:0.5rem 0.75rem; font-weight:600;">v2.5</td>
+          <td style="padding:0.5rem 0.75rem; white-space:nowrap;">2026-03-19</td>
+          <td style="padding:0.5rem 0.75rem;">Galerie screenshots apps concurrentes (TASK-083) — Ajout §5.2 "Aperçu des interfaces concurrentes" : grille 2×2 responsive avec captures App Store iOS de Park4Night, Hipcamp, Nomady et HomeCamper/Campspace. Images via URLs publiques mzstatic.com vérifiées (HTTP 200). CSS dédié .screenshot-grid + .screenshot-card + badges de positionnement (Sauvage / Privé / Mix). Renommage ancien §5.2→5.3 (Limites), ancien §5.3→5.4 (Matrice). Chargement lazy pour performance. Sources citées en note de bas de section.</td>
+        </tr>
+        <tr>
           <td style="padding:0.5rem 0.75rem; font-weight:600;">v2.4</td>
           <td style="padding:0.5rem 0.75rem; white-space:nowrap;">2026-03-19</td>
           <td style="padding:0.5rem 0.75rem;">Stratégie Nomady — 4 scénarios d'alliance (TASK-090) — (1) §7.3 "Nomad vs Nomady" enrichi : Nomady repositionné comme concurrent ET partenaire potentiel. Intelligence terrain ajoutée : fusion like2camp (déc. 2025), partenariat Malibu (mars 2026), équipe 2-10 personnes, HQ Einsiedeln Schwyz (CH), CEO Jannis Hiller (jannis@nomady.camp). (2) §10.4 restructuré : scénario Organique recentré comme référence. (3) Nouvelle section §10.5 "Stratégie vis-à-vis de Nomady — 4 scénarios" : tableau comparatif (Organique / Acquisition / Partenariat commercial / Association capitalistique) avec développement détaillé de chaque scénario — coûts, avantages, inconvénients, mitigations, timing. Scénario D (Association capitalistique) développé en profondeur : structure (Johan minoritaire + BD Director latins), apports croisés, conditions préalables, budget (150-300 K€ sur 1 M CHF). (4) Tableau risques partenariat Nomady ajouté. (5) Sources Nomady mises à jour avec page About Us et LinkedIn (mars 2026).</td>
@@ -2476,7 +2575,7 @@
 <!--                        FOOTER                              -->
 <!-- ════════════════════════════════════════════════════════════ -->
 <footer>
-  <p><strong>Nomad</strong> — Whitepaper v2.4</p>
+  <p><strong>Nomad</strong> — Whitepaper v2.5</p>
   <p>Mars 2026 · Document confidentiel</p>
   <p style="margin-top:8px; font-size:0.8rem; color:#94a3b8;">Assemblé par Isaak · Toutes les données et projections sont basées sur des sources secondaires et des estimations. Ce document ne constitue pas un conseil en investissement.</p>
 </footer>
