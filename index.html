@@ -790,6 +790,7 @@
     <li><a href="#s12">Roadmap stratégique</a></li>
     <li><a href="#s13">Stratégie de validation terrain</a></li>
     <li><a href="#s14">Pourquoi ce projet peut gagner</a></li>
+    <li><a href="#s15">Critiques — Autocritique du document &amp; du modèle</a></li>
   </ol>
 </nav>
 
@@ -2645,6 +2646,131 @@ Revenu Nomad = Volume brut × taux de commission moyen (~22&nbsp;% = commission 
 <a href="#top" class="back-top">↑ Retour en haut</a>
 </section>
 
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 15 — CRITIQUES
+     ════════════════════════════════════════════════════════════ -->
+<section id="s15">
+<h2 class="section-title"><span class="num">15</span> Critiques — Autocritique du document &amp; du modèle</h2>
+
+<!-- INSIGHT: Ce chapitre est intentionnellement honnête. Un fondateur qui anticipe les objections inspire plus confiance qu'un fondateur qui les ignore. La lucidité sur les failles d'un projet est un signal de maturité, pas de faiblesse. -->
+
+<p>Un whitepaper qui ne reconnaît pas ses propres limites n'est pas un document stratégique — c'est une brochure marketing. Cette section anticipe les objections d'un investisseur, d'un juriste ou d'un concurrent, et y répond avec franchise.</p>
+
+<h3 id="s15-1">15.1 — Critiques du whitepaper lui-même</h3>
+
+<p>Avant de critiquer le modèle, il faut critiquer le document. Ce whitepaper a des angles morts assumés.</p>
+
+<h4>Données quantitatives partiellement estimées</h4>
+<p>Plusieurs chiffres clés — TAM, SAM, LTV/CAC, projections Y1-Y5 — reposent sur des hypothèses documentées mais non mesurées en conditions réelles. Le SAM en particulier a été reconstruit par voie bottom-up (plateformes existantes) faute de données primaires publiées sur ce sous-segment. Un investisseur sérieux demandera un modèle Excel détaillé avec des <strong>données primaires terrain</strong> : interviews propriétaires, tests de prix, données de conversion réelles.</p>
+
+<h4>Absence d'interviews utilisateurs formelles</h4>
+<p>Les Jobs-to-be-done (§2) ont été construits à partir de sources secondaires — Reddit, Trustpilot, forums vanlife. <strong>Aucune interview terrain formelle n'a été conduite.</strong> La validation qualitative reste à faire. C'est le premier chantier post-whitepaper, avant toute ligne de code.</p>
+
+<h4>Projections financières optimistes</h4>
+<p>Le taux d'occupation (25 nuitées/terrain/an en Y1, 55/an en Y5) est ambitieux pour des terrains nature non-professionnels gérés par des propriétaires non-digitalisés. La saisonnalité (70-80&nbsp;% du CA sur 4-5 mois) comprime davantage ce chiffre. <strong>Un test MVP sur 50-100 nuits est la seule façon de calibrer ces hypothèses.</strong></p>
+
+<h4>Analyse concurrence incomplète</h4>
+<p>Certains acteurs locaux — plateformes espagnoles, italiennes, et les agriturismes numériques — n'ont pas été couverts faute de données publiques accessibles. Le marché est peut-être plus fragmenté qu'il n'y paraît, avec des acteurs locaux solides sur leur territoire qui rendraient l'entrée plus coûteuse que prévu.</p>
+
+<h4>Pas de validation des hypothèses légales</h4>
+<p>La section légale (§3.7) décrit les cadres réglementaires par pays mais n'a pas été revue par des avocats locaux. Les nuances communales (particulièrement en France et en Italie) peuvent invalider des terrains individuels. <strong>Ce whitepaper ne remplace pas une due diligence juridique.</strong></p>
+
+<h3 id="s15-2">15.2 — Critiques du modèle Nomad</h3>
+
+<p>Sept objections qu'un investisseur averti ou un concurrent posera — avec une réponse honnête pour chacune.</p>
+
+<div class="callout callout-warning" style="margin-bottom: 2rem;">
+<p><strong>Note de lecture :</strong> Ces objections ne sont pas des dealbreakers — ce sont des risques à gérer. La plupart trouveront une réponse dans la validation terrain. L'objectif est d'aller dans la pièce avec les yeux ouverts.</p>
+</div>
+
+<h4>Objection 1 — Le cold-start problem est sous-estimé</h4>
+<p>Un marketplace sans offre n'attire pas de demande, et sans demande les propriétaires ne s'inscrivent pas. Ce cercle vicieux tue la plupart des marketplaces avant le lancement.</p>
+<p><strong>Réponse :</strong> Séquencement géographique hyper-concentré (Suisse romande d'abord, 5 cantons), ambassadeurs supply recrutés avant le lancement, et utilisation de Park4Night comme canal d'acquisition voyageurs en phase 0. L'objectif Y1 est 200 terrains — un niveau atteignable avec 2-3 mois de prospection active avant ouverture.</p>
+
+<h4>Objection 2 — Les propriétaires ne sont pas prêts</h4>
+<p>La plupart des propriétaires ruraux ne sont pas digitalisés, méfient la complexité administrative, et abandonnent vite face à un onboarding technique.</p>
+<p><strong>Réponse :</strong> L'onboarding propriétaire doit tenir en 5 minutes maximum, sans jargon technique. Nomad gère l'assurance et les paiements — le propriétaire ne voit qu'une notification de réservation et un virement. Les organisations agricoles (AgriGenève, Prométerre, FNSEA) servent de relais de confiance pour légitimer la démarche. <em>Cette hypothèse reste à valider lors du MVP.</em></p>
+
+<h4>Objection 3 — Le cadre légal est trop complexe et variable</h4>
+<p>La réglementation camping varie par pays, région, voire commune. Un terrain "légal" en Suisse peut être formellement interdit en France dans la même configuration géographique.</p>
+<p><strong>Réponse :</strong> Nomad ne garantit pas la légalité de chaque terrain — il fournit un cadre contractuel clair (responsabilité définie par contrat, assurance incluse, conditions d'utilisation explicites). La conformité locale reste à la charge du propriétaire, avec une guidance pratique fournie par Nomad par pays. Ce positionnement est celui de Airbnb vis-à-vis des règles locales de location. Il comporte un risque légal résiduel à documenter avec un avocat.</p>
+
+<h4>Objection 4 — Hipcamp peut entrer en Europe demain</h4>
+<p>Si Hipcamp (75M$ levés, tech mature, modèle éprouvé sur 4 marchés anglophones) décide d'entrer en Europe continentale, Nomad n'a pas les ressources pour résister frontalement.</p>
+<p><strong>Réponse :</strong> La fenêtre estimée est 24-48 mois (aucun signal d'entrée EU continentale à mars 2026). L'avantage local est réel : langue, réglementation, réseau propriétaires, culture. Un acteur US entrant en EU francophone commencerait de zéro sur ces axes. Par ailleurs, <strong>être une cible d'acquisition est aussi une stratégie de sortie valide</strong> — Hipcamp a déjà acquis des concurrents pour accélérer son expansion.</p>
+
+<h4>Objection 5 — Le marché adressable est peut-être trop petit pour un VC</h4>
+<p>Le SAM de ~50-130 M€ est modeste. Pour justifier une levée de fonds sérieuse (Série A, 5M€+), il faut démontrer un potentiel de marché de 500M€+ à horizon 10 ans.</p>
+<p><strong>Réponse :</strong> L'argument "Nomad crée le marché" est central : la demande latente existe (Park4Night, communautés vanlife) mais n'est pas encore capturée par des acteurs transactionnels. Le SAM observable sous-estime le potentiel si l'offre est structurée. Cela dit, <strong>ce projet est dimensionné pour un bootstrapping ou un pre-seed (200-300 K€), pas pour un VC fond de conviction.</strong> La sortie naturelle est une acquisition (Hipcamp, TUI, Airbnb Experiences), pas une IPO.</p>
+
+<h4>Objection 6 — La commission 22&nbsp;% est trop élevée</h4>
+<p>Les propriétaires habitués aux places de marché (Booking : 15&nbsp;%, Airbnb : 14-16&nbsp;% hôte) peuvent trouver 22&nbsp;% rédhibitoire, surtout pour des revenus modestes (300-600&nbsp;€/an).</p>
+<p><strong>Réponse :</strong> La commission inclut l'assurance, la gestion des paiements et le support voyageur — des services que Booking et Airbnb ne fournissent pas pour les nuitées camping. Mais <strong>c'est une hypothèse à valider lors du MVP.</strong> Si la friction est forte, le modèle peut s'ajuster à 15-18&nbsp;% avec suppression de certains services additionnels du calcul. La commission est un levier, pas un dogme.</p>
+
+<h4>Objection 7 — Le revenu propriétaire ne justifie pas l'effort</h4>
+<p>Un propriétaire qui génère 300-600&nbsp;€/an (20-25 nuitées × 15-22&nbsp;€ net) peut trouver que le rapport effort/revenu ne vaut pas l'inscription, la gestion des réservations et l'accueil de voyageurs inconnus.</p>
+<p><strong>Réponse :</strong> L'effort propriétaire doit être rendu minimal — Nomad gère les paiements, l'assurance, la communication voyageur. Le revenu est un bonus passif, pas un revenu principal. La cible prioritaire est le propriétaire déjà curieux ou ouvert à la vanlife (propriétaires qui laissent déjà des emplacements informels), pas l'agriculteur professionnel qui calcule un ROI serré. Cela restreint le pool initial — mais c'est le bon pool pour commencer.</p>
+
+<h3 id="s15-3">15.3 — Ce que ce whitepaper ne couvre pas</h3>
+
+<p>La transparence sur les angles morts est une marque de sérieux. Voici ce que ce document n'aborde pas — par choix ou par contrainte — et qui sera nécessaire pour passer à l'étape suivante.</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+  <tr>
+    <th>Ce qui manque</th>
+    <th>Pourquoi c'est absent</th>
+    <th>Prochaine étape</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><strong>Business plan détaillé</strong> — P&L complet, bilan, flux de trésorerie</td>
+    <td>Hors scope whitepaper. Les hypothèses ne sont pas encore validées.</td>
+    <td>Construire après validation terrain (M6-M9)</td>
+  </tr>
+  <tr>
+    <td><strong>Analyse juridique par pays</strong> — avis d'avocats locaux</td>
+    <td>Nécessite des honoraires professionnels. Non réalisable en phase de recherche.</td>
+    <td>Mandater 2-3 avocats (CH, FR, ES) avant le lancement officiel</td>
+  </tr>
+  <tr>
+    <td><strong>Plan technique</strong> — architecture, stack, coûts de développement</td>
+    <td>Nécessite un co-fondateur technique. Absent pour l'instant.</td>
+    <td>Conditionné au recrutement d'un CTO ou d'un dev lead</td>
+  </tr>
+  <tr>
+    <td><strong>Plan RH</strong> — qui recrute quoi, quand, à quel coût</td>
+    <td>Dépend des résultats du MVP et du financement obtenu.</td>
+    <td>Définir après pré-seed (M8-M12)</td>
+  </tr>
+  <tr>
+    <td><strong>Stratégie de sortie formalisée</strong> — acquisition, autofinancement</td>
+    <td>Trop tôt pour formaliser. Les scénarios sont esquissés en §10.5 et §14.4.</td>
+    <td>Formaliser à partir de la Série A ou d'une approche d'acquéreur</td>
+  </tr>
+  <tr>
+    <td><strong>Interviews utilisateurs primaires</strong> — propriétaires et voyageurs</td>
+    <td>Non conduites à ce stade. Le whitepaper repose sur des sources secondaires.</td>
+    <td>20 interviews propriétaires + 20 voyageurs avant tout développement</td>
+  </tr>
+  <tr>
+    <td><strong>Modèle d'assurance détaillé</strong> — couverture, prime, assureur partenaire</td>
+    <td>Complexité réglementaire non documentée. Sujet identifié comme risque critique.</td>
+    <td>Consultation avec un courtier spécialisé (agritourisme / événementiel)</td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout callout-info" style="margin-top: 2rem;">
+<p><strong>Ce chapitre existe pour une raison.</strong> Un investisseur ou partenaire qui lit ce whitepaper doit savoir que Johan a réfléchi aux failles — pas seulement aux opportunités. La naïveté est le premier dealbreaker. La lucidité, même inconfortable, est un signal de fondateur sérieux.</p>
+</div>
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
 <!-- ═══════════════════════════════════════════════════════════════
      SECTION : RÉVISIONS
      ═══════════════════════════════════════════════════════════════ -->
@@ -2745,10 +2871,15 @@ Revenu Nomad = Volume brut × taux de commission moyen (~22&nbsp;% = commission 
           <td style="padding:0.5rem 0.75rem; white-space:nowrap;">2026-03-19</td>
           <td style="padding:0.5rem 0.75rem;">Stratégie acquisition GTM refondue (TASK-086) — §9 entièrement restructuré en 5 blocs : (1) §9.3 Philosophie "Organique d'abord" — principe directeur : budget marketing Y1 &lt;20 K€, NPS &gt;50 comme seuil flywheel, zéro paid avant validation MVP. (2) §9.4 Acquisition propriétaires — 3 leviers : ambassadeurs vanlifers (commission 5% volume brut Y1, modèle affiliate supply, CAC ~20-40€), partenariats organisations agricoles CH/FR/IT/ES (AgriGenève, Agora Vaud, Prométerre, Chambres d'Agriculture, FNSEA — CAC quasi nul), social ads ciblées propriétaires ruraux 35-65 ans (Facebook/Instagram geo-targeting, &lt;5 K€ Y1). (3) §9.5 Acquisition voyageurs (growth hacking) — 8 leviers : SEO local long-tail (CAC 2-5€), communautés organiques Reddit/Facebook, referral voyageur "1 nuit offerte" (CAC 5-8€), UGC #NomadSpot (CAC 0-2€), micro-influenceurs vanlife (CAC 5-12€), Park4Night Pro crossover, contenu Instagram/TikTok, Google Ads post-validation. (4) §9.6 Flywheel supply/demand — cycle vertueux en 5 étapes visualisé (terrains → expérience → NPS → réservations → revenus propriétaires → recommandations → terrains). (5) §9.7 KPIs de traction enrichis : ajout ambassadeurs actifs, budget marketing cumulé, ratio organique/payant.</td>
         </tr>
-        <tr>
+        <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:0.5rem 0.75rem; font-weight:600;">v2.7</td>
           <td style="padding:0.5rem 0.75rem; white-space:nowrap;">2026-03-19</td>
           <td style="padding:0.5rem 0.75rem;">Projections financières — hypothèses explicites, cohérence SOM, nettoyage références rentabilité (TASK-085) — (1) §4.3 SOM : encadré methodo-note ajouté avec tableau complet Y1-Y5 (terrains × nuitées/terrain/an × prix/nuit = volume brut, + CA Nomad), hypothèses documentées explicitement (prix 22-24€/nuit, nuitées/terrain 25→55/an, commission ~22%). (2) §8.4 Projections : encadré "Vérification de cohérence interne" remplacé par table complète Y1-Y5 avec nuitées/terrain/an pour chaque année + vérification croisée ✅ — cohérence SOM ↔ Projections garantie. (3) SWOT Forces : "breakeven Y4-Y5" remplacé par formulation neutre ("~1,1 M€ pour atteindre l'autonomie opérationnelle — rentabilité détaillée dans le business plan"). (4) §14.4 Scénario A : "breakeven" remplacé par "autonomie financière atteinte". (5) Toutes les projections financières complètes (coûts, rentabilité) explicitement renvoyées au business plan Nomad — hors scope whitepaper.</td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem 0.75rem; font-weight:600;">v2.8</td>
+          <td style="padding:0.5rem 0.75rem; white-space:nowrap;">2026-03-19</td>
+          <td style="padding:0.5rem 0.75rem;">Ajout §15 "Critiques" (TASK-088) — Nouveau chapitre en 3 parties : (1) §15.1 Autocritique du document : données estimées, absence d'interviews terrain, projections optimistes, couverture concurrence incomplète, absence de validation juridique. (2) §15.2 Critiques du modèle Nomad : 7 objections documentées avec réponse honnête — cold-start problem, propriétaires non prêts, cadre légal variable, risque Hipcamp, marché modeste pour VC, commission 22&nbsp;%, revenu propriétaire faible. (3) §15.3 Angles morts explicites : tableau des 7 éléments absents du whitepaper (business plan, juridique, plan technique, RH, sortie, interviews, assurance) avec justification et prochaine étape. §15 ajouté au sommaire. Footer mis à jour v2.8.</td>
         </tr>
       </tbody>
     </table>
@@ -2761,7 +2892,7 @@ Revenu Nomad = Volume brut × taux de commission moyen (~22&nbsp;% = commission 
 <!--                        FOOTER                              -->
 <!-- ════════════════════════════════════════════════════════════ -->
 <footer>
-  <p><strong>Nomad</strong> — Whitepaper v2.7</p>
+  <p><strong>Nomad</strong> — Whitepaper v2.8</p>
   <p>Mars 2026 · Document confidentiel</p>
   <p style="margin-top:8px; font-size:0.8rem; color:#94a3b8;">Assemblé par Isaak · Toutes les données et projections sont basées sur des sources secondaires et des estimations. Ce document ne constitue pas un conseil en investissement.</p>
 </footer>
