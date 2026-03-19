@@ -26,7 +26,7 @@ Un timing pareil ne se reproduit pas souvent. Dans 2-3 ans, la fenêtre sera peu
 
 ### Le modèle est prouvé et capital-efficient
 
-Nomad ne propose pas un modèle inconnu. La commission marketplace à 15 % fonctionne chez Airbnb, Booking, Nomady, Hipcamp. Le breakeven est atteignable en Y3-Y4 avec environ 1 M€ de funding cumulé et ~3 000-5 000 terrains actifs. Ce n'est pas un pari à la Silicon Valley qui nécessite 50 M€ avant de voir un euro de profit. C'est un modèle à la Booking.com : lean, discipliné, profitable relativement tôt.
+Nomad ne propose pas un modèle inconnu. La commission marketplace à 15 % fonctionne chez Airbnb, Booking, Nomady, Hipcamp. Le modèle est capital-efficient : ~1,1 M€ de funding cumulé (pre-seed + seed) couvre les phases de validation et d'expansion initiale avec ~3 000-5 000 terrains actifs. Ce n'est pas un pari à la Silicon Valley qui nécessite 50 M€ avant de voir un euro de profit. La rentabilité détaillée est traitée dans le business plan Nomad.
 
 Les unit economics sont sains : LTV/CAC voyageur de 15-23×, LTV/CAC propriétaire de 20-56×. La marge brute par transaction est de ~82 %. Ce sont des fondamentaux solides.
 
@@ -90,7 +90,7 @@ La saison camping 2026 commence en mai. C'est la prochaine fenêtre de test rée
 
 ### Scénario A — Succès (probabilité : 25-30 %)
 
-Le co-fondateur technique est recruté avant l'été 2026. La validation terrain confirme les hypothèses. Le MVP est live pour la haute saison. 200+ terrains recrutés en Romandie. Le pre-seed est bouclé fin 2026. L'expansion France démarre en 2027. En 2029, Nomad opère 5 000+ terrains sur CH+FR+DE et atteint le breakeven avec ~1,1 M€ de CA. Hipcamp frappe à la porte pour acquérir — ou Nomad continue en indépendant.
+Le co-fondateur technique est recruté avant l'été 2026. La validation terrain confirme les hypothèses. Le MVP est live pour la haute saison. 200+ terrains recrutés en Romandie. Le pre-seed est bouclé fin 2026. L'expansion France démarre en 2027. En 2029, Nomad opère 5 000+ terrains sur CH+FR+DE avec ~1,1 M€ de CA et un modèle capital-efficient prouvé. Hipcamp frappe à la porte pour acquérir — ou Nomad continue en indépendant.
 
 ### Scénario B — Pivot (probabilité : 30-35 %)
 

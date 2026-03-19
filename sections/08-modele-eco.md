@@ -320,34 +320,9 @@ La Phase 2 (intégration véhicules) est le levier de croissance le plus importa
 
 ---
 
-## 8.6 Quand la plateforme devient-elle rentable ?
+## 8.6 Risques et sensibilités
 
-### 8.6.1 Breakeven opérationnel
-
-| Scénario | Terrains | Nuitées/an | Volume brut | CA Nomad | Breakeven |
-|---|---|---|---|---|---|
-| **Conservateur** (CH+FR seuls) | 3 000 | 120K | 2,6 M€ | 540 K€ | ~Y4 (mois 40-48) |
-| **Base** (CH+FR+DE) | 5 000 | 225K | 4,9 M€ | 980 K€ | ~Y4-Y5 (mois 42-54) |
-| **Accéléré** (8 marchés) | 8 000+ | 400K+ | 8,8 M€+ | 1,9 M€+ | ~Y4 (mois 36-44) |
-
-**Le seuil de rentabilité se situe à environ 3 000-5 000 terrains actifs** et **120 000-225 000 nuitées/an**, correspondant à un CA de ~540 K€ - 1 M€. Ce seuil est atteignable en Y4 dans le scénario base, Y4-Y5 dans le scénario conservateur.
-
-### 8.6.2 Comparaison avec les pairs
-
-| Plateforme | Année de rentabilité | Volume au breakeven | Funding avant breakeven |
-|---|---|---|---|
-| **Nomady** | Non rentable (estimé) | ~1 600 terrains (insuffisant) | ~125 K CHF |
-| **Airbnb** | Y10+ (2022, IPO 2020) | >6 M listings | ~6 Md$ |
-| **Booking.com** | Y5 (profitable dès 2001) | ~50 000 hôtels | ~3,7 M€ (IPO 2004) |
-| **Nomad (cible)** | Y4-Y5 | 3 000-5 000 terrains | ~1,1-1,5 M€ |
-
-Nomad vise une trajectoire plus proche de **Booking.com** (breakeven rapide, capital-efficient) que d'**Airbnb** (hypercroissance financée par le VC). C'est un choix stratégique : la profitabilité rapide offre de l'indépendance et réduit la dilution.
-
----
-
-## 8.7 Risques et sensibilités
-
-### 8.7.1 Sensibilité aux hypothèses clés
+### 8.6.1 Sensibilité aux hypothèses clés
 
 | Variable | Hypothèse base | Variation -20 % | Impact sur CA Y5 |
 |---|---|---|---|
@@ -358,7 +333,7 @@ Nomad vise une trajectoire plus proche de **Booking.com** (breakeven rapide, cap
 
 Le modèle est linéairement sensible à chacune de ces variables. Le risque principal est le **recrutement de terrains** : si l'acquisition d'offre est plus lente que prévu, tout le modèle ralentit proportionnellement.
 
-### 8.7.2 Risque de désintermédiation
+### 8.6.2 Risque de désintermédiation
 
 Le risque classique des marketplaces : après une première réservation via Nomad, le voyageur et le propriétaire se contactent directement et contournent la plateforme.
 
@@ -368,7 +343,7 @@ Le risque classique des marketplaces : après une première réservation via Nom
 - **Découverte** : un voyageur visite 3-5 spots différents par an → la valeur de la plateforme est dans le catalogue, pas dans un spot unique
 - **Benchmark** : Airbnb a montré que la désintermédiation reste marginale (~5-10 %) quand la plateforme apporte une vraie valeur (assurance, support, trust)
 
-### 8.7.3 Guerre des prix
+### 8.6.3 Guerre des prix
 
 Si Campspace ou un nouvel entrant baisse ses commissions à 10 % ou moins :
 - **Réponse :** la différenciation de Nomad repose sur la qualité (curation, confiance, assurance), pas sur le prix. Les propriétaires paient pour la tranquillité, pas pour le taux le plus bas.
@@ -376,7 +351,7 @@ Si Campspace ou un nouvel entrant baisse ses commissions à 10 % ou moins :
 
 ---
 
-## 8.8 Synthèse du modèle économique
+## 8.7 Synthèse du modèle économique
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐

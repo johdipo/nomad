@@ -221,27 +221,33 @@ Pour calibrer le SOM, analysons les trajectoires des acteurs comparables :
 | **Marchés actifs** | CH (romande) | CH + FR | CH + FR + DE | CH + FR + DE + AT/IT | 8 marchés |
 | **Terrains actifs** | 200 | 1 200 | 4 000 | 8 500 | 15 000 |
 | **Nuitées moyennes/terrain** | 25 | 35 | 45 | 50 | 55 |
-| **Prix moyen/nuit (€)** | 30 | 28 | 28 | 29 | 30 |
-| **Volume brut réservations (M€)** | 0,15 | 1,18 | 5,04 | 12,33 | 24,75 |
-| **Commission 15 % (M€)** | 0,02 | 0,18 | 0,76 | 1,85 | 3,71 |
-| **Services additionnels (M€)** | 0,01 | 0,06 | 0,25 | 0,62 | 1,24 |
-| **Premium hôtes & ads (M€)** | — | 0,02 | 0,10 | 0,30 | 0,60 |
-| **Revenu total Nomad (M€)** | **0,03** | **0,26** | **1,11** | **2,77** | **5,55** |
+| **Prix moyen/nuit (€)** | 22 | 22 | 22 | 23 | 24 |
+| **Volume brut réservations (M€)** | 0,11 | 0,92 | 3,96 | 9,78 | 19,80 |
+| **Commission 15 % (M€)** | 0,017 | 0,138 | 0,594 | 1,467 | 2,970 |
+| **Services additionnels (M€)** | 0,005 | 0,042 | 0,198 | 0,490 | 0,990 |
+| **Mise en avant payante (M€)** | — | 0,02 | 0,08 | 0,25 | 0,50 |
+| **Revenu total Nomad (M€)** | **0,022** | **0,200** | **0,870** | **2,207** | **4,460** |
 
 **Détail du calcul Y3 (année pivot) :**
-- 4 000 terrains × 45 nuits × 28 € = 5,04 M€ de volume brut
-- Commission 15 % = 756 K€
-- Services (eau, électricité, extras) : ~5 % du volume brut = 252 K€
-- Premium hôtes (analytics, mise en avant) : 500 hôtes × 200 €/an = 100 K€
-- **Total Y3 : ~1,1 M€ de chiffre d'affaires**
+- 4 000 terrains × 45 nuits × 22 € = 3,96 M€ de volume brut
+- Commission 15 % = 594 K€
+- Services (eau, électricité, extras) : ~5 % du volume brut = 198 K€
+- Mise en avant payante (à partir de Y2) : ~80 K€
+- **Total Y3 : ~0,87 M€ de chiffre d'affaires**
+
+> **Hypothèses documentées (source : §8.3, §8.4) :**
+> - Prix moyen/nuit : 22 € (médiane fourchette cible Nomad 15-30 €/nuit — cohérent avec Nomady CH/DE 25-35 CHF, AlpacaCamping DE 20-30 €)
+> - Nuitées/terrain/an : basées sur une saison de ~4 mois, taux d'occupation ~30 %, durée séjour ~2 nuits
+> - Commission : 15 % partagée (10 % voyageur + 5 % hôte)
+> - Volume brut = Terrains actifs × Nuitées/terrain/an × Prix moyen/nuit
 
 ### 4.4.3 Approche top-down — Part du SAM
 
 | | Y1 | Y3 | Y5 |
 |---|---|---|---|
 | SAM estimé (M€) | ~2 800 | ~3 800 | ~5 000 |
-| Volume brut Nomad (M€) | 0,15 | 5,04 | 24,75 |
-| **Part du SAM** | **0,005 %** | **0,13 %** | **0,50 %** |
+| Volume brut Nomad (M€) | 0,11 | 3,96 | 19,80 |
+| **Part du SAM** | **0,004 %** | **0,10 %** | **0,40 %** |
 
 Une part de 0,5 % du SAM en Y5 est conservatrice mais réaliste pour un nouvel entrant. À titre de comparaison :
 - Nomady après 5 ans : ~0,05-0,1 % du SAM (avec quasi-zéro funding)
@@ -254,13 +260,13 @@ Le SOM de Nomad suppose un funding de 1-3 M€ en seed/pre-seed et une exécutio
 
 | Pays | Terrains Y5 | Volume brut Y5 (M€) | Part du SOM |
 |------|------------|---------------------|-------------|
-| 🇫🇷 France | 7 000 | 12,6 | 51 % |
-| 🇨🇭 Suisse | 2 500 | 4,5 | 18 % |
-| 🇩🇪 Allemagne | 3 500 | 4,9 | 20 % |
-| 🇦🇹 Autriche | 1 000 | 1,4 | 6 % |
-| 🇮🇹 Italie | 700 | 0,9 | 4 % |
-| 🇳🇱🇧🇪 Benelux | 300 | 0,5 | 2 % |
-| **Total** | **15 000** | **24,75** | **100 %** |
+| 🇫🇷 France | 7 000 | 10,1 | 51 % |
+| 🇨🇭 Suisse | 2 500 | 3,6 | 18 % |
+| 🇩🇪 Allemagne | 3 500 | 4,0 | 20 % |
+| 🇦🇹 Autriche | 1 000 | 1,2 | 6 % |
+| 🇮🇹 Italie | 700 | 0,8 | 4 % |
+| 🇳🇱🇧🇪 Benelux | 300 | 0,4 | 2 % |
+| **Total** | **15 000** | **~19,80** | **100 %** |
 
 La France est le marché principal (51 % du SOM Y5) grâce à :
 - Plus grand marché camping d'Europe (113 M nuitées/an)
@@ -272,9 +278,9 @@ La France est le marché principal (51 % du SOM Y5) grâce à :
 
 | Scénario | Terrains Y5 | Volume brut Y5 (M€) | CA Nomad Y5 (M€) | Hypothèse |
 |----------|------------|---------------------|------------------|-----------|
-| **Pessimiste** | 5 000 | 7,5 | 1,5 | Funding minimal, expansion lente, concurrence forte |
-| **Base** | 15 000 | 24,75 | 5,55 | Seed 1-3 M€, exécution solide CH+FR+DE |
-| **Optimiste** | 30 000 | 54 | 12 | Série A rapide, acquisition d'un acteur existant, expansion accélérée |
+| **Pessimiste** | 5 000 | 6,0 | 1,2 | Funding minimal, expansion lente, concurrence forte |
+| **Base** | 15 000 | 19,80 | 4,46 | Seed 1-3 M€, exécution solide CH+FR+DE |
+| **Optimiste** | 30 000 | 43 | 9,7 | Série A rapide, acquisition d'un acteur existant, expansion accélérée |
 
 ---
 
@@ -291,8 +297,8 @@ La France est le marché principal (51 % du SOM Y5) grâce à :
 │    │    nature via plateforme digitale              │         │
 │    │                                                │         │
 │    │   ┌──────────────────────────┐                │         │
-│    │   │  SOM Y5 = ~25 M€ brut   │                │         │
-│    │   │  CA = ~5,5 M€           │                │         │
+│    │   │  SOM Y5 = ~20 M€ brut   │                │         │
+│    │   │  CA = ~4,5 M€           │                │         │
 │    │   │  15 000 terrains        │                │         │
 │    │   │  CH + FR + DE + AT/IT   │                │         │
 │    │   └──────────────────────────┘                │         │
@@ -304,8 +310,8 @@ La France est le marché principal (51 % du SOM Y5) grâce à :
 |-----------|------|------|------|
 | **TAM** (Camping EU-Ouest) | ~28 Md€ | ~45 Md€ | ~60 Md€ |
 | **SAM** (Terrains privés digitalisés) | ~2,8 Md€ | ~5,0 Md€ | ~6,8 Md€ |
-| **SOM** (Nomad, scénario base) | 0,15 M€ (Y1) | 24,75 M€ (Y5) | — |
-| **CA Nomad** (scénario base) | 0,03 M€ | 5,55 M€ (Y5) | — |
+| **SOM** (Nomad, scénario base) | 0,11 M€ (Y1) | 19,80 M€ (Y5) | — |
+| **CA Nomad** (scénario base) | 0,022 M€ | 4,46 M€ (Y5) | — |
 
 ---
 

@@ -65,7 +65,7 @@ Le quadrant **curé + paneuropéen** est vide. C'est exactement là que Nomad se
 | CA Nomad (M€) | 0,022 | 0,87 | 4,46 |
 | Marge opérationnelle | — | -50 % | **+18 %** |
 
-**Breakeven opérationnel en Y4-Y5 avec ~1,1 M€ de funding cumulé.** Trajectoire capital-efficient, type Booking.com, pas Airbnb. Estimation conservatrice basée sur des prix de marché observés (vs hypothèse précédente non sourcée).
+**Modèle capital-efficient : ~1,1 M€ de funding cumulé (pre-seed + seed) couvre les phases de validation et d'expansion initiale.** Rentabilité hors scope de ce whitepaper — voir business plan. Estimation basée sur des prix de marché observés.
 
 ---
 

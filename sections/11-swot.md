@@ -26,8 +26,8 @@ L'analyse SWOT synthétise l'ensemble des travaux précédents (PESTEL, concurre
 │   Hipcamp, Campspace prouvent    │ • Pas de produit : le MVP       │
 │   que le marché existe           │   n'existe pas encore           │
 │                                  │                                  │
-│ • Capital-efficient : breakeven  │ • Funding = zéro à ce stade.    │
-│   Y3-Y4 avec ~1 M€ de funding   │   Aucun track record startup    │
+│ • Capital-efficient : seed de    │ • Funding = zéro à ce stade.    │
+│   ~1,1 M€ suffit (pre-seed+seed)│   Aucun track record startup    │
 │                                  │   pour lever facilement         │
 │ • Timing macro exceptionnel :    │                                  │
 │   vanlife mainstream, slow       │ • Dépendance saisonnière :      │
@@ -116,7 +116,7 @@ Nomad ne propose pas un concept non testé. Nomady (1 600 spots, revenus), Hipca
 
 ### S5 — Capital-efficiency
 
-Le modèle atteint le breakeven opérationnel avec ~3 000-5 000 terrains et ~1M€ de funding cumulé (section 8.6). C'est une trajectoire Booking.com (profitable en Y5 avec ~3,7M€ d'IPO), pas Airbnb (10 ans et 6 Md$ avant la rentabilité). L'indépendance financière rapide réduit la dilution et le risque de mort par manque de cash.
+Le modèle est capital-efficient : ~1,1M€ de funding cumulé pre-seed + seed couvre les phases de validation et d'expansion initiale. La rentabilité est analysée dans le business plan Nomad (hors scope de ce whitepaper). L'indépendance financière rapide réduit la dilution et le risque de mort par manque de cash.
 
 ---
 
@@ -262,7 +262,7 @@ Aucun concurrent n'utilise l'IA de manière significative. Pricing dynamique, ma
 |---|---|
 | **W1 + T1** : Équipe solo + Hipcamp acquiert un concurrent | **Recruter un CTO avant tout** : le risque #1 (Hipcamp) se neutralise par la vitesse d'exécution, qui nécessite une équipe. Sans CTO, pas de produit ; sans produit, pas de moat |
 | **W2 + T2** : Aucune validation + Nomady s'étend au FR | **Valider MAINTENANT** : le plan "100 nuits" (section 13) coûte 3-5 K€ et prend 4 mois. Chaque mois de retard = un mois de plus pour Nomady pour décider de viser le francophone |
-| **W5 + T3** : Pas de funding + Géant entre dans le jeu | **Rester lean** : ne pas dépendre d'une levée massive. Le modèle capital-efficient (breakeven ~1M€) est la meilleure défense contre les scénarios "la fenêtre se ferme" |
+| **W5 + T3** : Pas de funding + Géant entre dans le jeu | **Rester lean** : ne pas dépendre d'une levée massive. Un modèle capital-efficient (seed ~1,1M€) est la meilleure défense contre les scénarios "la fenêtre se ferme" |
 
 ---
 
@@ -295,7 +295,7 @@ La fenêtre est ouverte. Le timing est bon. Mais les fenêtres se ferment.
 - Section 4 (Taille de marché) — TAM/SAM/SOM, projections Y1-Y5
 - Section 5 (Concurrence) — profils concurrents, forces/faiblesses, gaps
 - Section 7 (Proposition de valeur) — différenciation, matrice valeur/friction
-- Section 8 (Modèle économique) — unit economics, breakeven, projections financières
+- Section 8 (Modèle économique) — unit economics, projections financières Y1-Y5
 - Section 9 (GTM) — stratégie de lancement, acquisition supply/demand
 - Section 10 (Défense concurrentielle) — évaluation des moats, scénarios Hipcamp
 - Section 12 (Roadmap) — phases, jalons, conditions d'activation
