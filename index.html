@@ -780,12 +780,12 @@
     <li><a href="#s2">Constat &amp; Problème (Jobs-to-be-done)</a></li>
     <li><a href="#s3">Tendances &amp; Timing — Analyse PESTEL</a></li>
     <li><a href="#s4">Le Marché — TAM / SAM / SOM</a></li>
-    <li><a href="#s5">Analyse de la concurrence &amp; substituts</a> <span style="font-size:0.85em; color:var(--text-muted);">— incl. <a href="#s5-4-campspace">§5.4 Nomad vs. Campspace</a></span></li>
+    <li><a href="#s5">Analyse de la concurrence &amp; substituts</a> <span style="font-size:0.85em; color:var(--text-muted);">— incl. <a href="#s5-4-campspace">§5.4 Nomad vs. Campspace</a> · <a href="#s5-5-placetobee">§5.5 PlaceToBee + scénario acquisition</a></span></li>
     <li><a href="#s6">La solution Nomad — Produit &amp; parcours</a></li>
     <li><a href="#s7">Proposition de valeur &amp; différenciation</a></li>
     <li><a href="#s8">Modèle économique &amp; logique financière</a></li>
     <li><a href="#s9">Stratégie de mise sur le marché (GTM)</a></li>
-    <li><a href="#s10">Stratégie de défense concurrentielle</a> <span style="font-size:0.85em; color:var(--text-muted);">— incl. <a href="#s10-5">§10.5 Nomady : 4 scénarios d'alliance</a></span></li>
+    <li><a href="#s10">Stratégie de défense concurrentielle</a> <span style="font-size:0.85em; color:var(--text-muted);">— incl. <a href="#s10-5">§10.5 Nomady : 4 scénarios</a> · <a href="#s10-6">§10.6 PlaceToBee : partenariat ou acquisition</a></span></li>
     <li><a href="#s11">Analyse SWOT</a></li>
     <li><a href="#s12">Roadmap stratégique</a></li>
     <li><a href="#s13">Stratégie de validation terrain</a></li>
@@ -1356,6 +1356,7 @@ CA Nomad = Volume brut × taux de commission moyen (~22&nbsp;%)</p>
 <tr><td><strong>AlpacaCamping</strong></td><td>4&nbsp;000+</td><td style="text-align:center;white-space:nowrap;">🟢 Négligeable</td><td>⭐ Minimal<br><small>Paiement en ligne · Pas d'assurance ni vérification documentée</small></td><td>DE/AT</td><td>Terrain privé (fermes)</td><td>Web only</td><td>Commission</td><td>Bootstrap</td><td>Niche DACH bien servie, fermes et domaines</td><td>Géographiquement limité, pas d'app mobile, hors marchés cibles Nomad</td></tr>
 <tr><td><strong>PiNCAMP</strong></td><td>5&nbsp;800+ <em>[inspectés ADAC/ANWB/TCS — pincamp.de mars 2026]</em></td><td style="text-align:center;white-space:nowrap;">🟢 Négligeable</td><td>⭐⭐⭐ Solide (niche)<br><small>Inspection physique ADAC/ANWB/TCS · Campings certifiés uniquement · Hors segment terrain privé</small></td><td>DACH</td><td>Camping officiel</td><td>iOS : disponible / Android : disponible <em>[données non publiques]</em></td><td>Listing payant</td><td>ADAC</td><td>Backed ADAC (20M membres), ANWB, TCS</td><td>Campings institutionnels only — pas de terrain privé</td></tr>
 <tr><td><strong>Orbitz Camping PT</strong> / <strong>Camping.info PT</strong></td><td>260+</td><td style="text-align:center;white-space:nowrap;">🟢 Négligeable</td><td>❌ Aucun<br><small>Annuaire statique</small></td><td>Portugal</td><td>Camping officiel</td><td>Web only</td><td>Listing/annuaire</td><td>Non communiqué</td><td>Référencement campings officiels</td><td>Non transactionnel, pas de terrains privés</td></tr>
+<tr><td><strong>PlaceToBee</strong></td><td>160+</td><td style="text-align:center;white-space:nowrap;">🟠 Moyenne<br><small>(même marché CH romande + ambition FR)</small></td><td>⭐ Minimal<br><small>Modèle abonnement — pas de paiement par nuit, pas d'assurance RC documentée</small></td><td>CH (+ zones FR frontalières)</td><td>Terrain privé (fermes/producteurs)</td><td>iOS + Android <em>[App Store / Google Play, mars 2026]</em></td><td>Abonnement voyageur CHF 74/an — nuits gratuites</td><td>Bootstrap / Bee On Sàrl <em>[non public — estimé &lt;500K CHF]</em></td><td>Marque CH romande forte, réseau producteurs locaux, couverture médias (RTS, France 2, Forbes), communauté vanlife qualifiée</td><td>Modèle non-transactionnel (nuits gratuites), 160 spots seulement, van/camping-car uniquement (pas de tentes), expansion limitée</td></tr>
 <tr><td><strong>Agroturizam HR</strong> / <strong>Croatia Camping Union</strong></td><td>~250 campings</td><td style="text-align:center;white-space:nowrap;">🟢 Négligeable</td><td>❌ Aucun<br><small>Annuaire statique</small></td><td>Croatie</td><td>Camping officiel</td><td>Web only</td><td>Annuaire</td><td>Associatif</td><td>Couverture côtière solide</td><td>Pas de plateforme de réservation unifiée</td></tr>
 </tbody>
 </table>
@@ -1434,7 +1435,53 @@ CA Nomad = Volume brut × taux de commission moyen (~22&nbsp;%)</p>
 <p><strong>⚠️ Point d'attention :</strong> HomeCamper (bras francophone de Campspace) opère déjà en France et potentiellement en Suisse romande — soit exactement le marché d'entrée de Nomad. La différenciation clé est la <strong>curation qualitative + cadre contractuel structuré côté propriétaire</strong> vs. un catalogue large mais hétérogène. Campspace transfère la conformité légale à l'hôte via les CGU, sans guidance ni assurance RC intégrée. Nomad ne peut pas non plus certifier la légalité de chaque terrain — mais il peut offrir un accompagnement structuré (guides par pays, KYC propriétaire, assurance mutualisée) qui réduit réellement le risque des deux côtés. C'est ce vide opérationnel que Nomad doit occuper. <small><em>Sources : campspace.com/en/about-campspace (mars 2026) ; campspace.com/en/host (mars 2026 — Security-Plan 10K€, photos pro) ; LinkedIn Campspace (mars 2026 — 11-50 employés, HQ Haarlem).</em></small></p>
 </div>
 
-<h3>5.5 Matrice de positionnement</h3>
+<h3 id="s5-5-placetobee">5.5 PlaceToBee — Concurrent local & cible d'acquisition potentielle</h3>
+
+<p style="margin-bottom:1rem;">PlaceToBee est une startup suisse romande (Bee On Sàrl) qui connecte des campeurs vanlifers avec des producteurs locaux (vignerons, agriculteurs) — contre un abonnement annuel de CHF 74 qui donne accès à des nuits <strong>gratuites</strong> chez les hôtes. 160+ spots CH + zones frontalières. Couverture médias remarquable pour sa taille : RTS, France 2 (13h), Forbes, TCS Magazine (2024-2025). App iOS + Android. <small><em>Sources : place-to-bee.com/fr/devenir-membre/ ; place-to-bee.com/fr/presse-medias/ (mars 2026).</em></small></p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Critère</th><th>PlaceToBee</th><th>Nomad</th></tr></thead>
+<tbody>
+<tr><td>Géographie</td><td>CH romande + zones FR frontalières</td><td>CH romande · FR · ES · IT · PT · HR</td></tr>
+<tr><td>Modèle revenus</td><td>Abonnement voyageur CHF 74/an — nuits gratuites chez l'hôte</td><td>Commission 22% par réservation transactionnelle</td></tr>
+<tr><td>Revenu hôte</td><td>Indirect — ventes de produits locaux (vin, fromage…)</td><td>Direct — paiement par nuit</td></tr>
+<tr><td>Catalogue</td><td>160+ spots — fermes, domaines viticoles, producteurs</td><td>Terrains privés variés — ambition millier de spots Y1</td></tr>
+<tr><td>Profil voyageur</td><td>Vanlifer "épicurien" — van/camping-car uniquement, pas de tentes</td><td>Large — van, camping-car, tente, bikepacker</td></tr>
+<tr><td>Marque CH</td><td>Forte — notoriété locale, ambassade médiatique, cofondatrice visible</td><td>À construire</td></tr>
+<tr><td>Financement</td><td>Bootstrap estimé — Bee On Sàrl, capital non public</td><td>1 M CHF disponible</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout callout-warn" style="margin-top:1rem;">
+<p><strong>⚠️ Risque de compétition pour le stock d'hôtes :</strong> PlaceToBee et Nomad ciblent les mêmes propriétaires en CH romande — vignerons, agriculteurs, domaines ruraux. Un hôte déjà inscrit sur PlaceToBee (avec des nuits gratuites) pourrait ne pas voir l'intérêt de s'inscrire sur Nomad (payant). La fenêtre pour signer ces hôtes en priorité est ouverte maintenant — avant une éventuelle levée de fonds PlaceToBee.</p>
+</div>
+
+<h4 id="s5-5b">Scénario d'acquisition — Racheter PlaceToBee pour accélérer</h4>
+
+<p>Si Nomad lève 1 M CHF, une acquisition de PlaceToBee en Y1-Y2 est une option stratégique réelle. Voici l'analyse honnête :</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Dimension</th><th>Analyse</th></tr></thead>
+<tbody>
+<tr><td><strong>Ce qu'on achète réellement</strong></td><td>Marque CH romande établie · Réseau ~160 hôtes producteurs locaux déjà confiants · Cofondatrice (Anneline Cachat) avec capital relationnel terrain · Communauté de vanlifers qualifiés · App fonctionnelle iOS+Android</td></tr>
+<tr><td><strong>Prix estimé</strong></td><td>200–500 K CHF (bootstrap, revenus abonnements ~CHF 74 × N membres — probablement quelques centaines à quelques milliers) — à confirmer par due diligence</td></tr>
+<tr><td><strong>Ce qui plaide pour</strong></td><td>Catalogue CH romande prêt sans 12-18 mois de prospection terrain · Notoriété immédiate · Réseau hôtes = avantage concurrentiel durable difficile à répliquer · Prix probablement accessible (&lt; 500K CHF)</td></tr>
+<tr><td><strong>Ce qui plaide contre</strong></td><td>Modèle "nuits gratuites" = promesse aux hôtes et voyageurs à re-négocier · Risque de churn hôtes si passage au payant · Dépendance forte à la cofondatrice (si elle part, le réseau se fragilise) · Distraction opérationnelle en phase MVP</td></tr>
+<tr><td><strong>La vraie question</strong></td><td>Est-ce que les hôtes PlaceToBee accepteraient de passer à un modèle payant ? Si 50%+ acceptent → acquisition rentable. Si &lt;30% → on achète surtout la marque et l'app, pas le catalogue.</td></tr>
+<tr><td><strong>Mitigation</strong></td><td>Maintenir PlaceToBee comme marque distincte (abonnement) en parallèle de Nomad (transactionnel) — deux segments, deux promesses. Éviter la migration forcée.</td></tr>
+<tr><td><strong>Timing optimal</strong></td><td>Après validation MVP Nomad (100 nuits) — avant une levée de fonds PlaceToBee qui ferait monter la valorisation</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout callout-info">
+<p><strong>💡 Stratégie alternative :</strong> Avant d'acheter, tester un <strong>partenariat commercial</strong> — PlaceToBee recommande Nomad pour les voyageurs qui veulent réserver (pas juste dormir gratuitement), Nomad référence les hôtes PlaceToBee sur sa carte. Coût : zéro. Si ça fonctionne, ça valide l'alignement avant une acquisition. <small><em>Contact : Anneline Cachat, cofondatrice — identifiée via RTS Basik (mai 2025).</em></small></p>
+</div>
+
+<h3>5.6 Matrice de positionnement</h3>
 <div class="chart-wrap">
   <p class="chart-title">Positionnement concurrentiel — Type de spots × Modèle transactionnel</p>
   <div class="chart-canvas-wrap" style="height:340px;"><canvas id="chart-positioning"></canvas></div>
@@ -2264,6 +2311,28 @@ Revenu Nomad = Volume brut × taux de commission moyen (~22&nbsp;% = commission 
 <tr><td>Dette technique Nomady non compatible</td><td>Moyenne (stack non auditée)</td><td>Élevé (Scénario D dépend de la tech)</td><td>Audit technique obligatoire avant toute discussion capitalistique</td></tr>
 </tbody>
 </table>
+</div>
+
+<h3 id="s10-6">10.6 Stratégie vis-à-vis de PlaceToBee — partenariat ou acquisition</h3>
+
+<p>PlaceToBee est l'acteur le plus directement superposable à Nomad sur le marché d'entrée (CH romande). Deux stratégies sont envisageables, non exclusives :</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th></th><th>Partenariat commercial</th><th>Acquisition</th></tr></thead>
+<tbody>
+<tr><td><strong>Description</strong></td><td>Accord de référencement croisé : PlaceToBee envoie ses membres vers Nomad pour réserver (transactionnel), Nomad référence les hôtes PlaceToBee sur sa carte</td><td>Rachat de Bee On Sàrl — absorption catalogue, marque, app, équipe</td></tr>
+<tr><td><strong>Coût estimé</strong></td><td>Quasi nul</td><td>200–500 K CHF (estimation — due diligence requise)</td></tr>
+<tr><td><strong>Ce qu'on gagne</strong></td><td>Visibilité croisée · Test d'alignement sans risque · Canal d'acquisition voyageurs qualifiés</td><td>160+ hôtes CH romande immédiats · Marque établie · App · Réseau médias · Communauté</td></tr>
+<tr><td><strong>Risque principal</strong></td><td>Faible — accord non exclusif, facile à résilier</td><td>Re-négociation hôtes vers modèle payant (risque churn) · Dépendance à la cofondatrice</td></tr>
+<tr><td><strong>Timing</strong></td><td>Immédiat — dès MVP Nomad validé (100 nuits)</td><td>Y1-Y2 — avant une éventuelle levée de fonds PlaceToBee qui ferait monter la valorisation</td></tr>
+<tr><td><strong>Recommandation</strong></td><td>✅ Priorité — tester le partenariat d'abord</td><td>⏳ Option ouverte — à activer si partenariat confirme l'alignement</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout callout-info">
+<p><strong>💡 Séquence recommandée :</strong> (1) Contact exploratoire avec Anneline Cachat (cofondatrice PlaceToBee) dès M1-M2. Angle : complémentarité des modèles (gratuit vs. payant = deux segments différents, pas de cannibalisation). (2) Si alignement confirmé → partenariat commercial simple. (3) Si PlaceToBee montre des signaux d'ouverture à un exit ou à un financement → ouvrir la discussion acquisition. <strong>Ne pas proposer une acquisition avant d'avoir établi une relation de confiance.</strong></p>
 </div>
 
 <div class="sources">
