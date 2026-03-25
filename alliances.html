@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nomad — Stratégie d'alliance 2026</title>
+<meta name="description" content="Nomad — Stratégie d'alliance : document complémentaire au whitepaper. Trajectoires Nomady, Campspace et Nomad indépendant. Mars 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #fafaf9;
+    --bg-alt: #f5f5f0;
+    --text: #1a1a1a;
+    --text-muted: #6b6b6b;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --border: #e5e5e0;
+    --border-dark: #d4d4cc;
+    --success: #16a34a;
+    --warning: #d97706;
+    --danger: #dc2626;
+    --code-bg: #f0f0ea;
+    --max-w: 720px;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-serif: 'Georgia', 'Times New Roman', serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: #fff;
+    padding: 80px 24px 60px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+  .hero .subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: #94a3b8;
+    max-width: 540px;
+    margin: 0 auto 24px;
+    line-height: 1.6;
+  }
+  .hero .meta {
+    font-size: 0.85rem;
+    color: #64748b;
+  }
+  .hero .back-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    text-decoration: none;
+    border: 1px solid #334155;
+    padding: 6px 16px;
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .hero .back-link:hover {
+    background: #334155;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  /* ── Container ── */
+  .container {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Table of Contents ── */
+  .toc {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin: 48px auto;
+    max-width: var(--max-w);
+  }
+  .toc h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+  }
+  .toc ol {
+    list-style: none;
+    counter-reset: toc-counter;
+    padding: 0;
+  }
+  .toc ol li {
+    counter-increment: toc-counter;
+    margin-bottom: 8px;
+  }
+  .toc ol li a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .toc ol li a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .toc ol li a::before {
+    content: counter(toc-counter, decimal-leading-zero);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    min-width: 24px;
+  }
+
+  /* ── Sections ── */
+  section {
+    padding: 56px 0 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  h2.section-title {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    color: var(--text);
+  }
+  h2.section-title .num {
+    color: var(--accent);
+    margin-right: 8px;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 36px 0 12px;
+    color: var(--text);
+  }
+
+  h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 28px 0 8px;
+    color: var(--text);
+  }
+
+  p {
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  strong { font-weight: 600; }
+
+  em { font-style: italic; }
+
+  /* ── Links ── */
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── Lists ── */
+  ul, ol {
+    margin: 0 0 16px 24px;
+  }
+  li { margin-bottom: 6px; }
+  li::marker { color: var(--accent); }
+
+  /* ── Tables ── */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 20px 0;
+    -webkit-overflow-scrolling: touch;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  thead th {
+    background: var(--bg-alt);
+    font-weight: 600;
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 2px solid var(--border-dark);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody tr:hover { background: var(--bg-alt); }
+
+  /* ── Blockquotes ── */
+  blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 12px 20px;
+    margin: 20px 0;
+    background: var(--accent-light);
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: #1e40af;
+  }
+
+  /* ── Code / Pre ── */
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 20px 0;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  /* ── Callout boxes ── */
+  .callout {
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 0.95rem;
+  }
+  .callout-info {
+    background: #eff6ff;
+    border-left: 3px solid var(--accent);
+  }
+  .callout-warn {
+    background: #fffbeb;
+    border-left: 3px solid var(--warning);
+  }
+  .callout-warning {
+    background: #fffbeb;
+    border-left: 3px solid var(--warning);
+  }
+  .callout-danger {
+    background: #fef2f2;
+    border-left: 3px solid var(--danger);
+  }
+  .callout-success {
+    background: #f0fdf4;
+    border-left: 3px solid var(--success);
+  }
+
+  /* ── Horizontal rule ── */
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Sources ── */
+  .sources {
+    background: var(--bg-alt);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 32px 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .sources h4 {
+    margin: 0 0 12px;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+  .sources ol { margin-left: 20px; }
+  .sources li { margin-bottom: 4px; }
+
+  /* ── Note méthodologique ── */
+  .methodo-note {
+    background: var(--bg-alt);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+  .methodo-note h4 {
+    margin: 0 0 10px;
+    font-size: 0.9rem;
+    color: var(--text);
+    letter-spacing: 0.3px;
+  }
+  .methodo-note ul, .methodo-note ol {
+    margin-left: 18px;
+    margin-top: 6px;
+  }
+  .methodo-note li { margin-bottom: 4px; }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  /* ── Back to top ── */
+  .back-top {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .back-top:hover { text-decoration: underline; }
+
+  /* ── Chapnav FAB ── */
+  .chapnav-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+  .chapnav-fab:hover { transform: scale(1.08); box-shadow: 0 6px 24px rgba(0,0,0,0.25); }
+  .chapnav-fab[aria-expanded="true"] { background: var(--text); }
+
+  .chapnav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+  }
+  .chapnav-overlay.open { opacity: 1; visibility: visible; }
+
+  .chapnav-panel {
+    position: fixed;
+    z-index: 1001;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    overflow-y: auto;
+    transition: transform 0.25s cubic-bezier(.4,0,.2,1);
+  }
+  @media (min-width: 641px) {
+    .chapnav-panel {
+      top: 0; right: 0; bottom: 0;
+      width: 280px;
+      border-radius: 0;
+      transform: translateX(100%);
+      padding: 32px 20px;
+    }
+    .chapnav-panel.open { transform: translateX(0); }
+  }
+  @media (max-width: 640px) {
+    .chapnav-panel {
+      left: 0; right: 0; bottom: 0;
+      border-radius: 16px 16px 0 0;
+      transform: translateY(100%);
+      padding: 24px 20px 32px;
+      max-height: 60vh;
+    }
+    .chapnav-panel.open { transform: translateY(0); }
+    .chapnav-panel::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 4px;
+      background: var(--border-dark);
+      border-radius: 2px;
+      margin: 0 auto 20px;
+    }
+  }
+  .chapnav-panel .chapnav-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .chapnav-panel ol {
+    list-style: none;
+    counter-reset: chapnav;
+    padding: 0;
+    margin: 0;
+  }
+  .chapnav-panel ol li {
+    counter-increment: chapnav;
+  }
+  .chapnav-panel ol li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+  }
+  .chapnav-panel ol li a::before {
+    content: counter(chapnav, decimal-leading-zero);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    min-width: 20px;
+    flex-shrink: 0;
+  }
+  .chapnav-panel ol li a:hover {
+    background: var(--bg-alt);
+    color: var(--accent);
+  }
+  .chapnav-panel ol li a.active {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .hero { padding: 60px 20px 48px; }
+    .toc { padding: 24px 20px; margin: 32px 16px; }
+    .container { padding: 0 16px; }
+    section { padding: 40px 0 32px; }
+    table { font-size: 0.8rem; }
+    thead th, tbody td { padding: 8px 8px; }
+    pre { padding: 14px; font-size: 0.78rem; }
+  }
+
+  @media print {
+    @page {
+      size: A4;
+      margin: 15mm 14mm 18mm 14mm;
+    }
+    body { font-size: 9pt; line-height: 1.35; color: #111; background: #fff !important; }
+    .hero { background: #1e293b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 10mm 12mm !important; }
+    .hero h1 { font-size: 20pt !important; margin-bottom: 4pt !important; }
+    .hero .subtitle { font-size: 10pt !important; }
+    .hero .back-link, .chapnav-fab, .chapnav-overlay, .chapnav-panel, .back-top { display: none !important; }
+    .toc { break-after: page; font-size: 8.5pt; }
+    .toc li { margin: 1pt 0; }
+    section { break-inside: avoid-page; margin-bottom: 6pt; }
+    .section-title { font-size: 13pt; margin: 8pt 0 4pt; border-bottom: 1pt solid #334155; padding-bottom: 2pt; }
+    h3 { font-size: 10.5pt; margin: 6pt 0 3pt; }
+    h4 { font-size: 9.5pt; margin: 4pt 0 2pt; }
+    p, li { margin: 2pt 0; }
+    table { font-size: 7.5pt; border-collapse: collapse; width: 100%; margin: 4pt 0; }
+    th, td { padding: 2pt 4pt; border: 0.5pt solid #cbd5e1; vertical-align: top; }
+    th { background: #1e293b !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; font-size: 7pt; }
+    .table-wrap { overflow: visible; }
+    .callout { font-size: 8pt; padding: 4pt 7pt; margin: 4pt 0; border-left: 3pt solid #334155; background: #f8fafc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .callout-info { border-color: #3b82f6 !important; }
+    .callout-warn { border-color: #f59e0b !important; }
+    blockquote { font-size: 8.5pt; margin: 3pt 0 3pt 8pt; padding: 2pt 6pt; border-left: 2pt solid #94a3b8; color: #444; }
+    a { color: #1e40af; text-decoration: none; }
+    a[href]::after { content: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--                         HERO                               -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<header class="hero" id="top">
+  <h1>Stratégie d'alliance — Nomad</h1>
+  <p class="subtitle">Document complémentaire au whitepaper · Mars 2026</p>
+  <p class="meta">Confidentiel — Usage interne</p>
+  <a href="index.html" class="back-link">← Retour au whitepaper</a>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--                   TABLE OF CONTENTS                        -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<nav class="toc container" aria-label="Table des matières">
+  <h2>Table des matières</h2>
+  <ol>
+    <li><a href="#s1">Contexte</a></li>
+    <li><a href="#s2">Pourquoi alliance &gt; build</a></li>
+    <li><a href="#s3">Trajectoire A — Nomady</a></li>
+    <li><a href="#s4">Trajectoire B — Campspace</a></li>
+    <li><a href="#s5">Trajectoire C — Nomad indépendant</a></li>
+    <li><a href="#s6">Séquence de contact</a></li>
+    <li><a href="#s7">Framework de décision</a></li>
+  </ol>
+</nav>
+
+<main class="container">
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--                  SECTION 1 — CONTEXTE                      -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s1">
+<h2 class="section-title"><span class="num">01</span> Contexte</h2>
+
+<!-- TODO -->
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--            SECTION 2 — POURQUOI ALLIANCE > BUILD           -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s2">
+<h2 class="section-title"><span class="num">02</span> Pourquoi alliance &gt; build</h2>
+
+<!-- TODO -->
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--          SECTION 3 — TRAJECTOIRE A : NOMADY                -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s3">
+<h2 class="section-title"><span class="num">03</span> Trajectoire A — Nomady</h2>
+
+<!-- TODO -->
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--         SECTION 4 — TRAJECTOIRE B : CAMPSPACE              -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s4">
+<h2 class="section-title"><span class="num">04</span> Trajectoire B — Campspace</h2>
+
+<!-- TODO -->
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--       SECTION 5 — TRAJECTOIRE C : NOMAD INDÉPENDANT        -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s5">
+<h2 class="section-title"><span class="num">05</span> Trajectoire C — Nomad indépendant</h2>
+
+<!-- TODO -->
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--           SECTION 6 — SÉQUENCE DE CONTACT                  -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s6">
+<h2 class="section-title"><span class="num">06</span> Séquence de contact</h2>
+
+<!-- TODO -->
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--           SECTION 7 — FRAMEWORK DE DÉCISION                -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section id="s7">
+<h2 class="section-title"><span class="num">07</span> Framework de décision</h2>
+
+<!-- TODO -->
+
+<a href="#top" class="back-top">↑ Retour en haut</a>
+</section>
+
+</main>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--                        FOOTER                              -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<footer>
+  <p><strong>Nomad</strong> — Stratégie d'alliance v0.1</p>
+  <p>Mars 2026 · Document complémentaire au <a href="index.html">whitepaper</a></p>
+  <p style="margin-top:8px; font-size:0.8rem; color:#94a3b8;">Assemblé par Isaak · Document confidentiel — usage interne uniquement.</p>
+</footer>
+
+<div class="chapnav-overlay" id="chapnav-overlay"></div>
+<nav class="chapnav-panel" id="chapnav-panel" aria-label="Navigation rapide">
+  <div class="chapnav-title">Sections</div>
+  <ol id="chapnav-list"></ol>
+</nav>
+<button class="chapnav-fab" id="chapnav-fab" aria-label="Naviguer entre sections" aria-expanded="false" title="Sections">☰</button>
+
+<script>
+(function() {
+  var fab = document.getElementById('chapnav-fab');
+  var panel = document.getElementById('chapnav-panel');
+  var overlay = document.getElementById('chapnav-overlay');
+  var list = document.getElementById('chapnav-list');
+
+  var sections = document.querySelectorAll('section[id^="s"]');
+  sections.forEach(function(sec) {
+    var h2 = sec.querySelector('h2.section-title');
+    if (!h2) return;
+    var text = h2.textContent.replace(/^\d+\s*/, '').trim();
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.href = '#' + sec.id;
+    a.textContent = text;
+    a.dataset.target = sec.id;
+    a.addEventListener('click', function() { closeNav(); });
+    li.appendChild(a);
+    list.appendChild(li);
+  });
+
+  function openNav() {
+    panel.classList.add('open');
+    overlay.classList.add('open');
+    fab.setAttribute('aria-expanded', 'true');
+    fab.textContent = '✕';
+    updateActive();
+  }
+
+  function closeNav() {
+    panel.classList.remove('open');
+    overlay.classList.remove('open');
+    fab.setAttribute('aria-expanded', 'false');
+    fab.textContent = '☰';
+  }
+
+  function toggleNav() {
+    panel.classList.contains('open') ? closeNav() : openNav();
+  }
+
+  fab.addEventListener('click', toggleNav);
+  overlay.addEventListener('click', closeNav);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && panel.classList.contains('open')) closeNav();
+  });
+
+  function updateActive() {
+    var scrollY = window.scrollY || window.pageYOffset;
+    var current = null;
+    sections.forEach(function(sec) {
+      if (sec.offsetTop - 120 <= scrollY) current = sec.id;
+    });
+    list.querySelectorAll('a').forEach(function(a) {
+      a.classList.toggle('active', a.dataset.target === current);
+    });
+  }
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+})();
+</script>
+
+</body>
+</html>
