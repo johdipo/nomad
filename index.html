@@ -568,14 +568,81 @@
   }
 
   @media print {
-    .hero { background: #1e293b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .back-top { display: none; }
-    .toc { break-after: page; }
-    section { break-inside: avoid; }
-    pre { white-space: pre-wrap; word-break: break-all; }
-    a[href]::after { content: " (" attr(href) ")"; font-size: 0.75em; color: #888; }
+    /* ── Page setup ── */
+    @page {
+      size: A4;
+      margin: 15mm 14mm 18mm 14mm;
+      @bottom-center {
+        content: "Nomad — Whitepaper confidentiel · " counter(page) " / " counter(pages);
+        font-size: 8pt;
+        color: #888;
+      }
+    }
+
+    /* ── Reset web chrome ── */
+    body { font-size: 9pt; line-height: 1.35; color: #111; background: #fff !important; }
+    .hero { background: #1e293b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 10mm 12mm !important; }
+    .hero h1 { font-size: 20pt !important; margin-bottom: 4pt !important; }
+    .hero .subtitle { font-size: 10pt !important; }
+    .hero .meta-badges, .hero .badge { font-size: 7.5pt !important; }
+
+    /* ── Hide web-only elements ── */
+    .back-top, .chapnav-fab, .chapnav-overlay, .chapnav-panel,
+    nav, .toc-toggle, button { display: none !important; }
+
+    /* ── TOC on its own page ── */
+    .toc { break-after: page; font-size: 8.5pt; }
+    .toc li { margin: 1pt 0; }
+
+    /* ── Sections ── */
+    section { break-inside: avoid-page; margin-bottom: 6pt; }
+    .section-title { font-size: 13pt; margin: 8pt 0 4pt; border-bottom: 1pt solid #334155; padding-bottom: 2pt; }
+    h3 { font-size: 10.5pt; margin: 6pt 0 3pt; }
+    h4 { font-size: 9.5pt; margin: 4pt 0 2pt; }
+    p, li { margin: 2pt 0; }
+
+    /* ── Tables — compact ── */
+    table { font-size: 7.5pt; border-collapse: collapse; width: 100%; margin: 4pt 0; }
+    th, td { padding: 2pt 4pt; border: 0.5pt solid #cbd5e1; vertical-align: top; }
+    th { background: #1e293b !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; font-size: 7pt; }
+    .table-wrap { overflow: visible; }
+
+    /* ── Callouts — compact ── */
+    .callout { font-size: 8pt; padding: 4pt 7pt; margin: 4pt 0; border-left: 3pt solid #334155; background: #f8fafc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .callout-info { border-color: #3b82f6 !important; }
+    .callout-warn { border-color: #f59e0b !important; }
+
+    /* ── Blockquotes ── */
+    blockquote { font-size: 8.5pt; margin: 3pt 0 3pt 8pt; padding: 2pt 6pt; border-left: 2pt solid #94a3b8; color: #444; }
+
+    /* ── Sources ── */
+    .sources { font-size: 7pt; color: #555; margin-top: 4pt; }
+    .sources h4 { font-size: 8pt; }
+
+    /* ── Charts — don't break ── */
+    canvas { max-width: 100% !important; break-inside: avoid; }
+
+    /* ── Screenshots grid — compact ── */
+    .screenshot-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 4pt !important; }
+    .screenshot-card img { max-height: 60pt !important; }
+
+    /* ── Links — no URL expansion ── */
+    a { color: #1e40af; text-decoration: none; }
+    a[href]::after { content: none; }
     a.back-top::after, nav a::after { content: none; }
-    .chapnav-fab, .chapnav-overlay, .chapnav-panel { display: none !important; }
+
+    /* ── Revision table — very compact ── */
+    #s-revisions table { font-size: 6.5pt; }
+    #s-revisions td { padding: 1pt 3pt; }
+
+    /* ── Cite superscripts ── */
+    .cite { font-size: 6pt; }
+
+    /* ── Page breaks ── */
+    .section-title { break-before: page; }
+    .hero, .toc { break-before: avoid; }
+    h3, h4 { break-after: avoid; }
+    tr { break-inside: avoid; }
   }
 
   /* ── Chapter Navigation Panel ── */
